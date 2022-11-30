@@ -1,0 +1,12 @@
+<h1>Editing menu item</h1>
+
+<%= turbo_frame_tag @menu_item do %>
+  <%= render "form", menu_item: @menu_item %>
+
+  <br>
+
+  <div>
+    <%= link_to "Cancel", @menu_item.menu %> |
+    <%= link_to "Destroy", @menu_item, data: { turbo_method: :delete } %>
+  </div>
+<% end %>

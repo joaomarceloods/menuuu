@@ -15,21 +15,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_11_024428) do
   enable_extension "plpgsql"
 
   create_table "menu_items", force: :cascade do |t|
-    t.bigint "menu_section_id", null: false
+    t.bigint "menu_id", null: false
     t.string "name", null: false
     t.string "description"
     t.decimal "price", precision: 8, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["menu_section_id"], name: "index_menu_items_on_menu_section_id"
-  end
-
-  create_table "menu_sections", force: :cascade do |t|
-    t.bigint "menu_id", null: false
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["menu_id"], name: "index_menu_sections_on_menu_id"
+    t.index ["menu_id"], name: "index_menu_items_on_menu_id"
   end
 
   create_table "menus", force: :cascade do |t|
@@ -38,6 +30,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_11_024428) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "menu_items", "menu_sections"
-  add_foreign_key "menu_sections", "menus"
+  add_foreign_key "menu_items", "menus"
 end

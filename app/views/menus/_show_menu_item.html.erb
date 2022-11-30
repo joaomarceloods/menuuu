@@ -1,0 +1,5 @@
+<%= turbo_frame_tag menu_item do %>
+  <%= link_to edit_menu_item_path(menu_item, menu_id: menu_item.menu_id) do %>
+    <%= render menu_item %>
+  <% end %>
+<% end %>
