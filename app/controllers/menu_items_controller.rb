@@ -12,6 +12,7 @@ class MenuItemsController < ApplicationController
 
   # POST /menu_items
   def create
+    @new_menu_item = MenuItem.new(menu_id: menu_item_params[:menu_id])
     @menu_item = MenuItem.new(menu_item_params)
 
     if @menu_item.save
