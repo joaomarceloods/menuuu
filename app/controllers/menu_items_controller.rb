@@ -30,7 +30,12 @@ class MenuItemsController < ApplicationController
   # PATCH/PUT /menu_items/1
   def update
     if @menu_item.update(menu_item_params)
-      redirect_to @menu_item.menu, notice: "Menu item was successfully updated."
+      respond_to do |format|
+        format.turbo_stream
+        format.html do
+          redirect_to @menu_item.menu, notice: "Menu item was successfully updated."
+        end
+      end
     else
       render :edit, status: :unprocessable_entity
     end
