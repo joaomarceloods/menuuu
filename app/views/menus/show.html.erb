@@ -3,8 +3,8 @@
 <%= render @menu %>
 
 <div id="menu_items">
-  <% @menu.menu_items.each do |menu_item| %>
-    <%= render "show_menu_item", menu_item: menu_item %>
+  <% @menu_items.each do |menu_item| %>
+    <%= render "menu_items/form", menu_item: menu_item %>
   <% end %>
 </div>
 

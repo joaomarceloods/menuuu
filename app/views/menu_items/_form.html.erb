@@ -1,33 +1,37 @@
-<%= turbo_frame_tag :new_menu_item do %>
-  <%= form_with(model: menu_item) do |form| %>
-    <% if menu_item.errors.any? %>
-      <div style="color: red">
-        <h2><%= pluralize(menu_item.errors.count, "error") %> prohibited this menu_item from being saved:</h2>
-
-        <ul>
-          <% menu_item.errors.each do |error| %>
-            <li><%= error.full_message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+<%= turbo_frame_tag menu_item do %>
+  <%= form_with \
+        model: menu_item,
+        data: {
+          controller: 'auto-submit',
+          action: 'input->auto-submit#input turbo:before-stream-render@window->auto-submit#beforeStreamRender',
+          parent_id: dom_id(menu_item),
+        } do |form| %>
 
     <div>
-      <%= form.label :name, style: "display: block" %>
-      <%= form.text_field :name, autocomplete: :off %>
+      <%= form.text_field \
+            :name,
+            autocomplete: :off,
+            placeholder: :name,
+            class: class_names(
+              error: menu_item.errors.has_key?(:name),
+              saved: menu_item.saved_change_to_name?) %>
     </div>
 
     <div>
-      <%= form.label :price, style: "display: block" %>
-      <%= form.text_field :price, autocomplete: :off %>
+      <%= form.text_field \
+            :price,
+            autocomplete: :off,
+            placeholder: :price,
+            value: number_to_currency(menu_item.price, unit: ''),
+            class: class_names(
+              error: menu_item.errors.has_key?(:price),
+              saved: menu_item.saved_change_to_price?) %>
     </div>
 
     <div>
       <%= form.hidden_field :menu_id %>
     </div>
 
-    <div>
-      <%= form.submit %>
-    </div>
+    <br/>
   <% end %>
 <% end %>

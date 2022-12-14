@@ -1,0 +1,13 @@
+input.error {
+  border-color: red;
+}
+
+input.saved {
+  animation-name: input_changed;
+  animation-duration: 250ms;
+}
+
+@keyframes input_changed {
+  from { border-color: greenyellow; }
+  to { border-color: inherit; }
+}

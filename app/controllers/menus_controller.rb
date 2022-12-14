@@ -8,6 +8,7 @@ class MenusController < ApplicationController
 
   # GET /menus/1
   def show
+    @menu_items = @menu.menu_items.order(:created_at)
   end
 
   # GET /menus/new
