@@ -4,7 +4,8 @@
         data: {
           controller: 'auto-submit',
           action: 'input->auto-submit#input turbo:before-stream-render@window->auto-submit#beforeStreamRender',
-          parent_id: dom_id(menu_item),
+          just_created: menu_item.previously_new_record?,
+          parent_element_id: dom_id(menu_item),
         } do |form| %>
 
     <div>

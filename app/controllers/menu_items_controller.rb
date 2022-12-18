@@ -12,14 +12,15 @@ class MenuItemsController < ApplicationController
 
   # POST /menu_items
   def create
-    @new_menu_item = MenuItem.new(menu_id: menu_item_params[:menu_id])
     @menu_item = MenuItem.new(menu_item_params)
 
     if @menu_item.save
       respond_to do |format|
-        format.turbo_stream
+        format.turbo_stream do
+          @new_menu_item = MenuItem.new(menu: @menu_item.menu)
+        end
         format.html do
-          redirect_to @menu_item.menu, notice: "Menu item was successfully created."
+          redirect_to @menu_item.menu
         end
       end
     else
@@ -29,7 +30,16 @@ class MenuItemsController < ApplicationController
 
   # PATCH/PUT /menu_items/1
   def update
-    @menu_item.update(menu_item_params)
+    if @menu_item.update(menu_item_params)
+      respond_to do |format|
+        format.turbo_stream
+        format.html do
+          redirect_to @menu_item.menu
+        end
+      end
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   # DELETE /menu_items/1

@@ -1,2 +1,2 @@
-<%= turbo_stream.append :menu_items, partial: "menus/show_menu_item", locals: { menu_item: @menu_item } %>
-<%= turbo_stream.update :new_menu_item, partial: "menu_items/form", locals: { menu_item: @new_menu_item } %>
+<%= turbo_stream.append :menu_items, partial: "menu_items/form", locals: { menu_item: @menu_item } %>
+<%= turbo_stream.replace :new_menu_item, partial: "menu_items/form", locals: { menu_item: @new_menu_item } %>

@@ -9,44 +9,55 @@ export default class extends Controller {
   }
 
   // input->auto-submit#input
-  // requestSubmit() dispatches the submit event that Turbo needs to handle, while submit() doesn't.
   input() {
+    // Turbo Drive requires usage of requestSubmit() instead of submit().
+    // https://turbo.hotwired.dev/handbook/drive#form-submissions
     this.element.requestSubmit()
   }
 
   // turbo:before-stream-render@window->auto-submit#beforeStreamRender
-  // Handles the Turbo Stream response from the server.
   beforeStreamRender() {
     this.#storeActiveElement()
   }
 
   #restoreActiveElement() {
-    if (window.menuuu?.activeElement) {
-      const { querySelector, selectionStart, selectionEnd, selectionDirection } = window.menuuu.activeElement
+    if (window.menuuu?.autoSubmitController?.activeElementInfo) {
 
-      const inputElement = document.querySelector(querySelector)
+      const { parentElementId, activeElementId, selectionStart, selectionEnd, selectionDirection } = window.menuuu.autoSubmitController.activeElementInfo
 
-      if (this.element.contains(inputElement)) {
-        inputElement.focus()
-        inputElement.selectionStart = selectionStart
-        inputElement.selectionEnd = selectionEnd
-        inputElement.selectionDirection = selectionDirection
+      if (parentElementId != null || activeElementId != null || selectionStart != null || selectionEnd != null || selectionDirection != null) {
 
-        window.menuuu.activeElement = undefined
+        // If the record has just been created, it steals the focus (usually from the 'new record' form).
+        // If the record already existed, it steals the focus from its own form (replaced by the Turbo Stream response body).
+        const querySelector = this.element.dataset.justCreated
+          ? `#${this.element.dataset.parentElementId} #${activeElementId}`
+          : `#${parentElementId} #${activeElementId}`
+
+        const activeElement = document.querySelector(querySelector)
+
+        if (this.element.contains(activeElement)) {
+          activeElement.focus()
+          activeElement.selectionStart = selectionStart
+          activeElement.selectionEnd = selectionEnd
+          activeElement.selectionDirection = selectionDirection
+
+          window.menuuu.autoSubmitController.activeElementInfo = undefined
+        }
       }
     }
   }
 
   #storeActiveElement() {
     if (this.element.contains(document.activeElement)) {
-      const parentElementId = this.element.dataset.parentId
+      const parentElementId = this.element.dataset.parentElementId
       const activeElementId = document.activeElement.id
-      const querySelector = `#${parentElementId} #${activeElementId}`
       const { selectionStart, selectionEnd, selectionDirection } = document.activeElement
 
       window.menuuu = {
         ...window.menuuu,
-        activeElement: { querySelector, selectionStart, selectionEnd, selectionDirection }
+        autoSubmitController: {
+          activeElementInfo: { parentElementId, activeElementId, selectionStart, selectionEnd, selectionDirection }
+        }
       }
     }
   }

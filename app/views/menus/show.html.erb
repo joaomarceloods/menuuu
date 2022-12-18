@@ -1,6 +1,10 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render @menu %>
+
+<div>
+  <%= link_to "Edit name", edit_menu_path(@menu) %>
+  <br/>
+  <br/>
+</div>
 
 <div id="menu_items">
   <% @menu_items.each do |menu_item| %>
@@ -9,12 +13,10 @@
 </div>
 
 <div>
-  <h2>New menu item</h2>
   <%= turbo_frame_tag :new_menu_item, src: new_menu_item_path(menu_item: { menu_id: @menu.id }) %>
 </div>
 
 <div>
-  <%= link_to "Edit this menu", edit_menu_path(@menu) %> |
   <%= link_to "Back to menus", menus_path %>
 
   <%= button_to "Destroy this menu", @menu, method: :delete %>
