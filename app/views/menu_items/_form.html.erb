@@ -3,7 +3,7 @@
         model: menu_item,
         data: {
           controller: 'auto-submit',
-          action: 'input->auto-submit#input turbo:before-stream-render@window->auto-submit#beforeStreamRender',
+          action: 'input->auto-submit#input keydown.enter->auto-submit#enter:prevent turbo:before-stream-render@window->auto-submit#beforeStreamRender',
           just_created: menu_item.previously_new_record?,
           parent_element_id: dom_id(menu_item),
         } do |form| %>
@@ -13,6 +13,7 @@
             :name,
             autocomplete: :off,
             placeholder: :name,
+            enterkeyhint: :next,
             class: class_names(
               error: menu_item.errors.has_key?(:name),
               saved: menu_item.saved_change_to_name?) %>
@@ -23,6 +24,7 @@
             :price,
             autocomplete: :off,
             placeholder: :price,
+            enterkeyhint: :next,
             value: number_to_currency(menu_item.price, unit: ''),
             class: class_names(
               error: menu_item.errors.has_key?(:price),

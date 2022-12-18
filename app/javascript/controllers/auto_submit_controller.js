@@ -15,6 +15,10 @@ export default class extends Controller {
     this.element.requestSubmit()
   }
 
+  enter() {
+    this.#focusNextElement()
+  }
+
   // turbo:before-stream-render@window->auto-submit#beforeStreamRender
   beforeStreamRender() {
     this.#storeActiveElement()
@@ -58,6 +62,27 @@ export default class extends Controller {
         autoSubmitController: {
           activeElementInfo: { parentElementId, activeElementId, selectionStart, selectionEnd, selectionDirection }
         }
+      }
+    }
+  }
+
+  #focusNextElement() {
+    // Add all elements we want to include in our selection
+    const focussableElements = 'a:not([disabled]), button:not([disabled]), input[type=text]:not([disabled]), [tabindex]:not([disabled]):not([tabindex="-1"])';
+
+    if (document.activeElement && document.activeElement.form) {
+
+      // Check for visibility while always include the current activeElement
+      const focussable = Array.prototype.filter.call(
+        document.querySelectorAll(focussableElements),
+        element => element.offsetWidth > 0 || element.offsetHeight > 0 || element === document.activeElement
+      )
+
+      const index = focussable.indexOf(document.activeElement)
+
+      if (index > -1) {
+        const nextElement = focussable[index + 1] || focussable[0]
+        nextElement.focus()
       }
     }
   }
