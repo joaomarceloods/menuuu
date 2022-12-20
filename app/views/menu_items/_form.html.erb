@@ -2,8 +2,8 @@
   <%= form_with \
         model: menu_item,
         data: {
-          controller: 'auto-submit',
-          action: 'input->auto-submit#input keydown.enter->auto-submit#enter:prevent turbo:before-stream-render@window->auto-submit#beforeStreamRender',
+          controller: 'menu-item-form',
+          action: 'input->menu-item-form#input keydown.enter->menu-item-form#enter:prevent',
           just_created: menu_item.previously_new_record?,
           parent_element_id: dom_id(menu_item),
         } do |form| %>

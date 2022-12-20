@@ -16,9 +16,7 @@ class MenuItemsController < ApplicationController
 
     if @menu_item.save
       respond_to do |format|
-        format.turbo_stream do
-          @new_menu_item = MenuItem.new(menu: @menu_item.menu)
-        end
+        format.turbo_stream
         format.html do
           redirect_to @menu_item.menu
         end
@@ -32,7 +30,9 @@ class MenuItemsController < ApplicationController
   def update
     if @menu_item.update(menu_item_params)
       respond_to do |format|
-        format.turbo_stream
+        format.turbo_stream do
+          head :ok
+        end
         format.html do
           redirect_to @menu_item.menu
         end
