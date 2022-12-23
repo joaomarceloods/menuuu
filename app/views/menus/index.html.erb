@@ -1,14 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
+<%= link_to "New menu", new_menu_path %>
+
 <h1>Menus</h1>
 
-<div id="menus">
+<ul id="menus">
   <% @menus.each do |menu| %>
-    <%= render menu %>
-    <p>
-      <%= link_to "Show this menu", menu %>
-    </p>
+    <li><%= link_to menu.name, menu %></li>
   <% end %>
-</div>
-
-<%= link_to "New menu", new_menu_path %>
+</ul>

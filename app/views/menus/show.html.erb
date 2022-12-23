@@ -1,10 +1,10 @@
-<%= render @menu %>
+<div><%= link_to "Back to menus", menus_path %></div>
+<div><%= link_to "Edit name", edit_menu_path(@menu) %></div>
+<div><%= link_to "Delete menu", @menu, data: { turbo_method: :delete, turbo_confirm: "Delete #{@menu.name}?" } %></div>
 
-<div>
-  <%= link_to "Edit name", edit_menu_path(@menu) %>
-  <br/>
-  <br/>
-</div>
+<h1>
+  <%= @menu.name %>
+</h1>
 
 <div id="menu_items">
   <% @menu_items.each do |menu_item| %>
@@ -13,9 +13,3 @@
 </div>
 
 <%= render "menu_items/form", menu_item: @menu.menu_items.build %>
-
-<div>
-  <%= link_to "Back to menus", menus_path %>
-
-  <%= button_to "Destroy this menu", @menu, method: :delete %>
-</div>
