@@ -16,7 +16,7 @@ export default class extends Controller {
 
   // enter->menu-item-form#enter
   enter() {
-    this.#focusOnNextElement()
+    this.#focusOnNextInput()
   }
 
   #focusIfJustCreated() {
@@ -41,11 +41,12 @@ export default class extends Controller {
     }
   }
 
-  #focusOnNextElement() {
-    if (document.activeElement && document.activeElement.form) {
-      const focussableElementsQuery = 'a:not([disabled]), button:not([disabled]), input[type=text]:not([disabled]), [tabindex]:not([disabled]):not([tabindex="-1"])';
+  // Source: https://stackoverflow.com/a/35173443/4668975
+  #focusOnNextInput() {
+    if (document.activeElement) {
+      const focussableElementsQuery = 'input[type=text]:not([disabled])';
 
-      const focussableElements = document.querySelectorAll(focussableElementsQuery).filter(
+      const focussableElements = [...document.querySelectorAll(focussableElementsQuery)].filter(
         element => element.offsetWidth > 0 || element.offsetHeight > 0 || element === document.activeElement
       )
 
