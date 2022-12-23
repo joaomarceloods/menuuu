@@ -20,7 +20,7 @@ export default class extends Controller {
   }
 
   #focusIfJustCreated() {
-    if (this.element.dataset.justCreated) {
+    if (this.element.dataset.justCreated === 'true') {
       const activeElement = document.activeElement
       const newMenuItemForm = document.getElementById('new_menu_item')
 

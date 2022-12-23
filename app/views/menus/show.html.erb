@@ -12,9 +12,7 @@
   <% end %>
 </div>
 
-<div>
-  <%= turbo_frame_tag :new_menu_item, src: new_menu_item_path(menu_item: { menu_id: @menu.id }) %>
-</div>
+<%= render "menu_items/form", menu_item: @menu.menu_items.build %>
 
 <div>
   <%= link_to "Back to menus", menus_path %>

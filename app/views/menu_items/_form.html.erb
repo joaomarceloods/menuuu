@@ -14,9 +14,7 @@
             autocomplete: :off,
             placeholder: :name,
             enterkeyhint: :next,
-            class: class_names(
-              error: menu_item.errors.has_key?(:name),
-              saved: menu_item.saved_change_to_name?) %>
+            class: class_names(error: menu_item.errors.has_key?(:name)) %>
     </div>
 
     <div>
@@ -27,15 +25,18 @@
             enterkeyhint: :next,
             inputmode: :decimal,
             value: number_to_currency(menu_item.price, unit: ''),
-            class: class_names(
-              error: menu_item.errors.has_key?(:price),
-              saved: menu_item.saved_change_to_price?) %>
+            class: class_names(error: menu_item.errors.has_key?(:price)) %>
     </div>
 
     <div>
       <%= form.hidden_field :menu_id %>
     </div>
-
-    <br/>
   <% end %>
+
+  <% if menu_item.persisted? %>
+    <%= link_to 'Remove', menu_item, data: { turbo_method: :delete } %>
+  <% end %>
+
+  <br/>
+  <br/>
 <% end %>
