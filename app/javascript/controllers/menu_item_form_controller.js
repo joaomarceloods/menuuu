@@ -3,7 +3,7 @@ import debounce from "lodash.debounce"
 
 export default class extends Controller {
   connect() {
-    this.input = debounce(this.input, 1000).bind(this)
+    this.input = debounce(this.input, 300).bind(this)
     this.#focusIfJustCreated()
   }
 
