@@ -1,0 +1,9 @@
+<%= link_to "New menu", [:new, :private, :menu] %>
+
+<h1>Menus</h1>
+
+<ul id="menus">
+  <% @menus.each do |menu| %>
+    <li><%= link_to menu.name, [:private, menu] %></li>
+  <% end %>
+</ul>

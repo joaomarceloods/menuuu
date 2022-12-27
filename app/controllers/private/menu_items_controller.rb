@@ -1,4 +1,4 @@
-class Business::MenuItemsController < Business::ApplicationController
+class Private::MenuItemsController < Private::ApplicationController
   before_action :set_menu_item, only: %i[ edit update destroy ]
 
   # POST /menu_items
@@ -8,7 +8,7 @@ class Business::MenuItemsController < Business::ApplicationController
     respond_to do |format|
       format.turbo_stream
       format.html do
-        redirect_to [:business, @menu_item.menu]
+        redirect_to [:private, @menu_item.menu]
       end
     end
   end
@@ -20,7 +20,7 @@ class Business::MenuItemsController < Business::ApplicationController
     respond_to do |format|
       format.turbo_stream
       format.html do
-        redirect_to [:business, @menu_item.menu]
+        redirect_to [:private, @menu_item.menu]
       end
     end
   end
@@ -32,7 +32,7 @@ class Business::MenuItemsController < Business::ApplicationController
     respond_to do |format|
       format.turbo_stream
       format.html do
-        redirect_to [:business, @menu_item.menu]
+        redirect_to [:private, @menu_item.menu]
       end
     end
   end

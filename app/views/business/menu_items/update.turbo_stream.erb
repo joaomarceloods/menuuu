@@ -1,3 +1,0 @@
-<% if @menu_item.invalid? %>
-  <%= turbo_stream.replace @menu_item, partial: "business/menu_items/form", locals: { menu_item: @menu_item } %>
-<% end %>

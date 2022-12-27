@@ -1,7 +1,7 @@
 <%= turbo_frame_tag menu_item do %>
   <%= form_with \
         model: menu_item,
-        url: [:business, menu_item],
+        url: [:private, menu_item],
         data: {
           controller: 'menu-item-form',
           action: 'input->menu-item-form#input keydown.enter->menu-item-form#enter:prevent',
@@ -35,7 +35,7 @@
   <% end %>
 
   <% if menu_item.persisted? %>
-    <%= link_to 'Remove', [:business, menu_item], data: { turbo_method: :delete } %>
+    <%= link_to 'Remove', [:private, menu_item], data: { turbo_method: :delete } %>
   <% end %>
 
   <br/>

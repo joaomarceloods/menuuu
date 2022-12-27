@@ -1,4 +1,4 @@
-class Business::MenusController < Business::ApplicationController
+class Private::MenusController < Private::ApplicationController
   before_action :set_menu, only: %i[ show edit update destroy ]
 
   # GET /menus
@@ -26,7 +26,7 @@ class Business::MenusController < Business::ApplicationController
     @menu = Menu.new(menu_params)
 
     if @menu.save
-      redirect_to [:business, @menu], notice: "Menu was successfully created."
+      redirect_to [:private, @menu], notice: "Menu was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -41,7 +41,7 @@ class Business::MenusController < Business::ApplicationController
         head :ok
       end
       format.html do
-        redirect_to [:business, @menu]
+        redirect_to [:private, @menu]
       end
     end
   end
@@ -49,7 +49,7 @@ class Business::MenusController < Business::ApplicationController
   # DELETE /menus/1
   def destroy
     @menu.destroy
-    redirect_to [:business, :menus], notice: "Menu was successfully destroyed."
+    redirect_to [:private, :menus], notice: "Menu was successfully destroyed."
   end
 
   private
