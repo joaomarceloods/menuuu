@@ -1,9 +1,9 @@
-class MenusController < ApplicationController
+class Business::MenusController < ApplicationController
   before_action :set_menu, only: %i[ show edit update destroy ]
 
   # GET /menus
   def index
-    @menus = Menu.all
+    @menus = Menu.order(:created_at)
   end
 
   # GET /menus/1
@@ -26,7 +26,7 @@ class MenusController < ApplicationController
     @menu = Menu.new(menu_params)
 
     if @menu.save
-      redirect_to @menu, notice: "Menu was successfully created."
+      redirect_to [:business, @menu], notice: "Menu was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class MenusController < ApplicationController
   # PATCH/PUT /menus/1
   def update
     if @menu.update(menu_params)
-      redirect_to @menu, notice: "Menu was successfully updated."
+      redirect_to [:business, @menu], notice: "Menu was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -44,7 +44,7 @@ class MenusController < ApplicationController
   # DELETE /menus/1
   def destroy
     @menu.destroy
-    redirect_to menus_url, notice: "Menu was successfully destroyed."
+    redirect_to [:business, :menus], notice: "Menu was successfully destroyed."
   end
 
   private

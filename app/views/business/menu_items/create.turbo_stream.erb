@@ -1,0 +1,6 @@
+<% if @menu_item.persisted? %>
+  <%= turbo_stream.append :menu_items, partial: "business/menu_items/form", locals: { menu_item: @menu_item } %>
+  <%= turbo_stream.replace :new_menu_item, partial: "business/menu_items/form", locals: { menu_item: @menu_item.menu.menu_items.build } %>
+<% else %>
+  <%= turbo_stream.replace :new_menu_item, partial: "business/menu_items/form", locals: { menu_item: @menu_item } %>
+<% end %>
