@@ -1,4 +1,4 @@
-class Business::MenusController < ApplicationController
+class Business::MenusController < Business::ApplicationController
   before_action :set_menu, only: %i[ show edit update destroy ]
 
   # GET /menus

@@ -7,4 +7,8 @@ Rails.application.routes.draw do
     resources :menus
     resources :menu_items, only: %i[ create update destroy ]
   end
+
+  namespace :public, path: nil do
+    resources :menus, only: %i[ show ]
+  end
 end

@@ -1,4 +1,4 @@
-class Business::MenuItemsController < ApplicationController
+class Business::MenuItemsController < Business::ApplicationController
   before_action :set_menu_item, only: %i[ edit update destroy ]
 
   # POST /menu_items
