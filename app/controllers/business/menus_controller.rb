@@ -34,10 +34,15 @@ class Business::MenusController < ApplicationController
 
   # PATCH/PUT /menus/1
   def update
-    if @menu.update(menu_params)
-      redirect_to [:business, @menu], notice: "Menu was successfully updated."
-    else
-      render :edit, status: :unprocessable_entity
+    @menu.update(menu_params)
+
+    respond_to do |format|
+      format.turbo_stream do
+        head :ok
+      end
+      format.html do
+        redirect_to [:business, @menu]
+      end
     end
   end
 
@@ -55,6 +60,6 @@ class Business::MenusController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def menu_params
-      params.require(:menu).permit(:name)
+      params.require(:menu).permit(:name, :published)
     end
 end

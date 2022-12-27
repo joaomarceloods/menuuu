@@ -2,6 +2,15 @@
 <div><%= link_to "Edit name", [:edit, :business, @menu] %></div>
 <div><%= link_to "Delete menu", [:business, @menu], data: { turbo_method: :delete, turbo_confirm: "Delete #{@menu.name}?" } %></div>
 
+<br/>
+
+<%= turbo_frame_tag @menu do %>
+  <%= form_for @menu, url: [:business, @menu], html: { oninput: "this.requestSubmit()" } do |f| %>
+    <%= f.check_box :published %>
+    <%= f.label :published %>
+  <% end %>
+<% end %>
+
 <h1>
   <%= @menu.name %>
 </h1>
