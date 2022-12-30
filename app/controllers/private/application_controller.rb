@@ -1,3 +1,4 @@
 class Private::ApplicationController < ApplicationController
-  before_action :authenticate_user!
+  include AuthenticateUser
+  include RequireBusiness
 end

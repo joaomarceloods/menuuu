@@ -1,6 +1,8 @@
-<%= link_to "New menu", [:new, :private, :menu] %>
+<h1>
+  <%= current_user.business.name %> Menus
+</h1>
 
-<h1>Menus</h1>
+<%= link_to "New menu", [:new, :private, :menu] %>
 
 <ul id="menus">
   <% @menus.each do |menu| %>

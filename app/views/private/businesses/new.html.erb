@@ -1,0 +1,9 @@
+<h1>Welcome!</h1>
+
+<p>What's your business' name?</p>
+
+<%= form_for @business, url: [:private, :business] do |f| %>
+  <%= f.text_field :name, placeholder: "My Business" %>
+
+  <%= f.submit %>
+<% end %>
