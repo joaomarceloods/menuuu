@@ -3,7 +3,7 @@
 </h1>
 
 <ul>
-  <% @menu.menu_items.each do |menu_item| %>
+  <% @menu.publicly_visible_menu_items.each do |menu_item| %>
     <li>
       <%= menu_item.name %> - <%= number_to_currency(menu_item.price) %>
     </li>
