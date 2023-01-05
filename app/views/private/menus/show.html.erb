@@ -17,8 +17,8 @@
 
 <div id="menu_items">
   <% @menu_items.each do |menu_item| %>
-    <%= render "private/menu_items/form", menu_item: menu_item %>
+    <%= render "private/menu_items/edit_form", menu_item: menu_item %>
   <% end %>
 </div>
 
-<%= render "private/menu_items/form", menu_item: @menu.menu_items.build %>
+<%= render "private/menu_items/new_form", menu_item: @menu.menu_items.build %>

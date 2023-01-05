@@ -2,42 +2,28 @@ import { Controller } from "@hotwired/stimulus"
 import debounce from "lodash.debounce"
 
 export default class extends Controller {
+  static targets = ["nameInput"]
+
   connect() {
     this.input = debounce(this.input, 300).bind(this)
     this.#focusIfJustCreated()
   }
 
-  // input->menu-item-form#input
+  // input->menu-item-new-form#input
   input() {
     // Turbo Drive requires usage of requestSubmit() instead of submit().
     // https://turbo.hotwired.dev/handbook/drive#form-submissions
     this.element.requestSubmit()
   }
 
-  // enter->menu-item-form#enter
-  enter() {
+  // keypress:enter->menu-item-new-form#keypressEnter
+  keypressEnter() {
     this.#focusOnNextInput()
   }
 
   #focusIfJustCreated() {
     if (this.element.dataset.justCreated === 'true') {
-      const activeElement = document.activeElement
-      const newMenuItemForm = document.getElementById('new_menu_item')
-
-      if (newMenuItemForm.contains(activeElement)) {
-        const oldActiveElement = activeElement
-        const newActiveElement = document.querySelector(
-          `#${this.element.dataset.parentElementId} #${oldActiveElement.id}`
-        )
-
-        if (newActiveElement) {
-          const { selectionStart, selectionEnd, selectionDirection } = oldActiveElement
-          newActiveElement.focus()
-          newActiveElement.selectionStart = selectionStart
-          newActiveElement.selectionEnd = selectionEnd
-          newActiveElement.selectionDirection = selectionDirection
-        }
-      }
+      this.nameInputTarget.focus()
     }
   }
 

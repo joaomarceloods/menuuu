@@ -1,0 +1,12 @@
+<%= turbo_frame_tag menu_item do %>
+  <%= form_with \
+        model: menu_item,
+        url: [:private, menu_item],
+        data: {
+          controller: 'menu-item-new-form',
+          action: 'focusin->menu-item-new-form#focusin keypress->menu-item-edit-form#keypress:prevent',
+        } do |form| %>
+
+    <%= render "private/menu_items/form_fields", form: form %>
+  <% end %>
+<% end %>
