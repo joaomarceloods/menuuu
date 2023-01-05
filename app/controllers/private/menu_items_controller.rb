@@ -3,6 +3,7 @@ class Private::MenuItemsController < Private::ApplicationController
 
   # POST /menu_items
   def create
+    # TODO: handle error
     @menu_item = MenuItem.create(menu_item_params)
 
     respond_to do |format|
@@ -15,6 +16,7 @@ class Private::MenuItemsController < Private::ApplicationController
 
   # PATCH/PUT /menu_items/1
   def update
+    # TODO: handle error
     @menu_item.update(menu_item_params)
 
     respond_to do |format|
@@ -40,7 +42,7 @@ class Private::MenuItemsController < Private::ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_menu_item
-      @menu_item = MenuItem.find(params[:id])
+      @menu_item = Current.user.menu_items.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

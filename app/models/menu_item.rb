@@ -1,3 +1,4 @@
 class MenuItem < ApplicationRecord
-  belongs_to :menu
+  # TODO: test that it fails with a different user's menu
+  belongs_to :menu, -> { where(business_id: Current.user.business.id) }
 end

@@ -4,7 +4,7 @@ class Private::BusinessesController < Private::ApplicationController
   end
 
   def create
-    @business = Business.new(business_params)
+    @business = Current.user.build_business(business_params)
 
     if @business.save
       redirect_to [:private, :menus]
@@ -14,7 +14,8 @@ class Private::BusinessesController < Private::ApplicationController
   end
 
   def update
-    @business = Business.find(params[:id])
+    # The RequireBusiness concern ensures the business exists.
+    @business = Current.user.business
 
     if @business.update(business_params)
       head :ok
@@ -26,6 +27,6 @@ class Private::BusinessesController < Private::ApplicationController
   private
 
   def business_params
-    params.require(:business).permit(:name).merge(user: current_user)
+    params.require(:business).permit(:name)
   end
 end

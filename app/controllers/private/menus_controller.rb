@@ -3,7 +3,7 @@ class Private::MenusController < Private::ApplicationController
 
   # GET /menus
   def index
-    @menus = Menu.order(:created_at)
+    @menus = Current.user.menus.order(:created_at)
   end
 
   # GET /menus/1
@@ -23,7 +23,7 @@ class Private::MenusController < Private::ApplicationController
 
   # POST /menus
   def create
-    @menu = Menu.new(menu_params)
+    @menu = Current.user.menus.build(menu_params)
 
     if @menu.save
       redirect_to [:private, @menu], notice: "Menu was successfully created."
@@ -34,14 +34,15 @@ class Private::MenusController < Private::ApplicationController
 
   # PATCH/PUT /menus/1
   def update
+    # TODO: handle error
     @menu.update(menu_params)
 
     respond_to do |format|
       format.turbo_stream do
-        head :ok
+        redirect_to [:private, @menu], notice: "Menu was successfully updated."
       end
       format.html do
-        redirect_to [:private, @menu]
+        render :edit, status: :unprocessable_entity
       end
     end
   end
@@ -55,7 +56,7 @@ class Private::MenusController < Private::ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_menu
-      @menu = Menu.find(params[:id])
+      @menu = Current.user.menus.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

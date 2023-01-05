@@ -2,15 +2,17 @@ module RequireBusiness
   extend ActiveSupport::Concern
 
   included do
-    before_action do
-      if !user_has_business? && !is_new_business_page?
-        redirect_to [:new, :private, :business]
-      end
+    before_action :require_business
+  end
+
+  def require_business
+    if !user_has_business? && !is_new_business_page?
+      redirect_to [:new, :private, :business]
     end
   end
 
   def user_has_business?
-    current_user.business.present?
+    Current.user.business.present?
   end
 
   def is_new_business_page?
