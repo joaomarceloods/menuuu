@@ -11,5 +11,6 @@ Rails.application.routes.draw do
 
   namespace :public, path: nil do
     resources :menus, only: %i[ show ]
+    resources :qrcodes, only: %i[ show ], param: :url
   end
 end
