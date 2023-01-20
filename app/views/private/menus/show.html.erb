@@ -4,12 +4,6 @@
 
 <br/>
 
-<%# TODO: link to business instead of menu %>
-<% destination_url = public_menu_url(@menu) %>
-<%= link_to destination_url do %>
-  <%= image_tag public_qrcode_url(destination_url) %>
-<% end %>
-
 <%= turbo_frame_tag @menu do %>
   <%= form_for @menu, url: [:private, @menu], html: { oninput: "this.requestSubmit()" } do |f| %>
     <%= f.check_box :published %>

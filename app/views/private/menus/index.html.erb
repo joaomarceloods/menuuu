@@ -1,3 +1,9 @@
+<% if @menus.any? %>
+  <div>
+    <%= render "public/qrcodes/image_link", destination_url: public_business_url(current_user.business) %>
+  </div>
+<% end %>
+
 <h1>
   <%= current_user.business.name %> Menus
 </h1>
