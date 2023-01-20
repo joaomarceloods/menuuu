@@ -1,0 +1,15 @@
+<h1>
+  <%= @business.name %>
+</h1>
+
+<ul>
+  <% @menus.each do |menu| %>
+    <li>
+      <%= link_to menu.name, [:public, menu] %>
+    </li>
+  <% end %>
+</ul>
+
+<% if @menus.empty? %>
+  <p>Our menus are unavailable right now.</p>
+<% end %>
