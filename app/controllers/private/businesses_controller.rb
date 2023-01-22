@@ -4,10 +4,10 @@ class Private::BusinessesController < Private::ApplicationController
   end
 
   def create
-    @business = Current.user.build_business(business_params)
+    @business, menu = create_business_and_default_menu
 
-    if @business.save
-      redirect_to [:private, :menus]
+    if menu.present?
+      redirect_to [:private, menu]
     else
       render :new
     end
@@ -28,5 +28,18 @@ class Private::BusinessesController < Private::ApplicationController
 
   def business_params
     params.require(:business).permit(:name)
+  end
+
+  def create_business_and_default_menu
+    ActiveRecord::Base.transaction do
+      business = Current.user.create_business!(business_params)
+      menu = business.menus.create!(name: "#{business.name} Menu")
+      menu.menu_items.create!([
+        { name: "Cheese Burger", price: "15" },
+        { name: "French Fries", price: "10" },
+        { name: "Soda", price: "5" },
+      ])
+      [business, menu]
+    end
   end
 end
