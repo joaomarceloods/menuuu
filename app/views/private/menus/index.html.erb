@@ -1,12 +1,14 @@
 <% if @menus.any? %>
   <div>
-    <%= render "public/qrcodes/image_link", destination_url: public_business_url(current_user.business) %>
+    <%= render "public/qrcodes/image_link", destination_url: public_business_url(@business) %>
   </div>
 <% end %>
 
-<h1>
-  <%= current_user.business.name %>
-</h1>
+<%= turbo_frame_tag @business do %>
+  <%= form_for @business, url: [:private, :business], html: { oninput: "this.requestSubmit()" } do |f| %>
+    <%= f.text_field :name, placeholder: "Business Name", autocomplete: :off, style: "font-size: 2em; margin-bottom: 1em;" %>
+  <% end %>
+<% end %>
 
 <%= button_to "Create new menu", [:private, :menus] %>
 

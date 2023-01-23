@@ -5,7 +5,8 @@ class Private::MenusController < Private::ApplicationController
 
   # GET /menus
   def index
-    @menus = Current.user.menus.order(:created_at)
+    @business = current_user.business
+    @menus = @business.menus.order(:created_at)
   end
 
   # GET /menus/1
