@@ -26,9 +26,9 @@ class Private::MenusController < Private::ApplicationController
 
   # POST /menus
   def create
-    @menu = create_demonstrative_menu(Current.user.business)
+    @menu = Current.user.menus.build(name: "Menu")
 
-    if @menu.persisted?
+    if @menu.save
       redirect_to [:private, @menu], notice: "Menu was successfully created."
     else
       redirect_to [:private, :menus], notice: "Failed to create a new menu. Try again later."
