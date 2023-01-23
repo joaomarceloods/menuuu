@@ -1,7 +1,7 @@
 class Menu < ApplicationRecord
   belongs_to :business
 
-  has_many :menu_items
+  has_many :menu_items, dependent: :destroy
 
   has_many :publicly_visible_menu_items, -> {
     where.not(price: nil).
