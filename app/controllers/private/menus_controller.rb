@@ -1,4 +1,6 @@
 class Private::MenusController < Private::ApplicationController
+  include Private::CreateDemonstrativeMenu
+
   before_action :set_menu, only: %i[ show edit update destroy ]
 
   # GET /menus
@@ -23,12 +25,12 @@ class Private::MenusController < Private::ApplicationController
 
   # POST /menus
   def create
-    @menu = Current.user.menus.build(menu_params)
+    @menu = create_demonstrative_menu(Current.user.business)
 
-    if @menu.save
+    if @menu.persisted?
       redirect_to [:private, @menu], notice: "Menu was successfully created."
     else
-      render :new, status: :unprocessable_entity
+      redirect_to [:private, :menus], notice: "Failed to create a new menu. Try again later."
     end
   end
 

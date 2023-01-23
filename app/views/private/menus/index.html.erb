@@ -8,7 +8,7 @@
   <%= current_user.business.name %>
 </h1>
 
-<%= link_to "New menu", [:new, :private, :menu] %>
+<%= button_to "Create new menu", [:private, :menus] %>
 
 <ul id="menus">
   <% @menus.each do |menu| %>

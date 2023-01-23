@@ -1,4 +1,6 @@
 class Private::BusinessesController < Private::ApplicationController
+  include Private::CreateDemonstrativeMenu
+
   def new
     @business = Business.new
   end
@@ -33,12 +35,7 @@ class Private::BusinessesController < Private::ApplicationController
   def create_business_and_default_menu
     ActiveRecord::Base.transaction do
       business = Current.user.create_business!(business_params)
-      menu = business.menus.create!(name: "#{business.name} Menu")
-      menu.menu_items.create!([
-        { name: "Cheese Burger", price: "15" },
-        { name: "French Fries", price: "10" },
-        { name: "Soda", price: "5" },
-      ])
+      menu = create_demonstrative_menu(business)
       [business, menu]
     end
   end
