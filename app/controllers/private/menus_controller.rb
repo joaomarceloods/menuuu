@@ -38,11 +38,9 @@ class Private::MenusController < Private::ApplicationController
     @menu.update(menu_params)
 
     respond_to do |format|
-      format.turbo_stream do
-        redirect_to [:private, @menu], notice: "Menu was successfully updated."
-      end
+      format.turbo_stream
       format.html do
-        render :edit, status: :unprocessable_entity
+        redirect_to [:private, @menu]
       end
     end
   end

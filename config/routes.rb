@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   namespace :private do
     resource :business, only: %i[ new create update ]
-    resources :menus
+    resources :menus, only: %i[ index new show create update destroy ]
     resources :menu_items, only: %i[ create update destroy ]
   end
 

@@ -1,19 +1,20 @@
 <div><%= link_to "Back to menus", [:private, :menus] %></div>
-<div><%= link_to "Edit name", [:edit, :private, @menu] %></div>
 <div><%= link_to "Delete menu", [:private, @menu], data: { turbo_method: :delete, turbo_confirm: "Delete #{@menu.name}?" } %></div>
 
 <br/>
 
-<%= turbo_frame_tag @menu do %>
+<%= turbo_frame_tag dom_id(@menu, :publish) do %>
   <%= form_for @menu, url: [:private, @menu], html: { oninput: "this.requestSubmit()" } do |f| %>
     <%= f.check_box :published %>
     <%= f.label :published %>
   <% end %>
 <% end %>
 
-<h1>
-  <%= @menu.name %>
-</h1>
+<%= turbo_frame_tag dom_id(@menu, :edit) do %>
+  <%= form_for @menu, url: [:private, @menu], html: { oninput: "this.requestSubmit()" } do |f| %>
+    <%= f.text_field :name, placeholder: "Menu Name", autocomplete: :off, style: "font-size: 2em; margin-bottom: 1em;" %>
+  <% end %>
+<% end %>
 
 <div id="menu_items">
   <% @menu_items.each do |menu_item| %>
