@@ -6,7 +6,9 @@ module RequireBusiness
   end
 
   def require_business
-    if !user_has_business? && !is_new_business_page?
+    if is_new_business_page? && user_has_business?
+      redirect_to [:private, :menus]
+    elsif !is_new_business_page? && !user_has_business?
       redirect_to [:new, :private, :business]
     end
   end
