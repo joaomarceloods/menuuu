@@ -16,7 +16,7 @@
   <% end %>
 <% end %>
 
-<div id="menu_items">
+<div id="menu_items" data-controller="sortable">
   <% @menu_items.each do |menu_item| %>
     <%= render "private/menu_items/edit_form", menu_item: menu_item %>
   <% end %>
