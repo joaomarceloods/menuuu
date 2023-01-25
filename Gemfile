@@ -42,8 +42,17 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-# Flexible authentication solution for Rails with Warden. [https://github.com/heartcombo/devise]
+# Flexible authentication solution for Rails with Warden [https://github.com/heartcombo/devise]
 gem "devise", "~> 4.8"
+
+# A Ruby library that encodes QR Codes [https://github.com/whomwah/rqrcode]
+gem "rqrcode", "~> 2.1"
+
+# An ActiveRecord plugin for managing lists [https://github.com/brendon/acts_as_list]
+gem "acts_as_list", "~> 1.0"
+
+# Rails Request.JS encapsulates the logic to send by default some headers that are required by rails applications like the X-CSRF-Token. [https://github.com/rails/requestjs-rails]
+gem "requestjs-rails", "~> 0.0.10"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -67,5 +76,3 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
-
-gem "rqrcode", "~> 2.1"

@@ -21,6 +21,9 @@ class Private::MenuItemsController < Private::ApplicationController
 
     respond_to do |format|
       format.turbo_stream
+      format.json do
+        head :ok
+      end
       format.html do
         redirect_to [:private, @menu_item.menu]
       end
@@ -47,6 +50,6 @@ class Private::MenuItemsController < Private::ApplicationController
 
     # Only allow a list of trusted parameters through.
     def menu_item_params
-      params.require(:menu_item).permit(:name, :price, :menu_id)
+      params.require(:menu_item).permit(:name, :price, :position, :menu_id)
     end
 end
