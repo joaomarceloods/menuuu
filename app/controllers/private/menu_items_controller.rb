@@ -3,30 +3,22 @@ class Private::MenuItemsController < Private::ApplicationController
 
   # POST /menu_items
   def create
-    # TODO: handle error
     @menu_item = MenuItem.create(menu_item_params)
 
     respond_to do |format|
       format.turbo_stream
-      format.html do
-        redirect_to [:private, @menu_item.menu]
-      end
+      format.html { redirect_back(root_path) }
     end
   end
 
   # PATCH/PUT /menu_items/1
   def update
-    # TODO: handle error
     @menu_item.update(menu_item_params)
 
     respond_to do |format|
       format.turbo_stream
-      format.json do
-        head :ok
-      end
-      format.html do
-        redirect_to [:private, @menu_item.menu]
-      end
+      format.json { head :ok }
+      format.html { redirect_back(root_path) }
     end
   end
 
@@ -36,9 +28,7 @@ class Private::MenuItemsController < Private::ApplicationController
 
     respond_to do |format|
       format.turbo_stream
-      format.html do
-        redirect_to [:private, @menu_item.menu]
-      end
+      format.html { redirect_back(root_path) }
     end
   end
 
