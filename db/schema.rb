@@ -23,14 +23,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_30_005631) do
   end
 
   create_table "menu_items", force: :cascade do |t|
-    t.bigint "menu_id", null: false
+    t.bigint "menu_section_id", null: false
     t.string "name"
     t.string "description"
     t.decimal "price", precision: 8, scale: 2
     t.integer "position", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["menu_id"], name: "index_menu_items_on_menu_id"
+    t.index ["menu_section_id"], name: "index_menu_items_on_menu_section_id"
+  end
+
+  create_table "menu_sections", force: :cascade do |t|
+    t.bigint "menu_id", null: false
+    t.string "name"
+    t.integer "position", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["menu_id"], name: "index_menu_sections_on_menu_id"
   end
 
   create_table "menus", force: :cascade do |t|
@@ -55,6 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_30_005631) do
   end
 
   add_foreign_key "businesses", "users"
-  add_foreign_key "menu_items", "menus"
+  add_foreign_key "menu_items", "menu_sections"
+  add_foreign_key "menu_sections", "menus"
   add_foreign_key "menus", "businesses"
 end

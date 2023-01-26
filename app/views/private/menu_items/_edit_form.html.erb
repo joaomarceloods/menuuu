@@ -1,4 +1,4 @@
-<%= turbo_frame_tag menu_item, data: { sortable_url: private_menu_item_path(menu_item) } do %>
+<%= turbo_frame_tag menu_item, data: { update_url: private_menu_item_path(menu_item) } do %>
   <%= form_with \
         model: menu_item,
         url: [:private, menu_item],

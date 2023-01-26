@@ -1,7 +1,10 @@
 class MenuItem < ApplicationRecord
-  acts_as_list
+  # The scope validates that it belongs to the current user
+  belongs_to :menu_section, -> {
+    if Current.user.present?
+      joins(menu: :business).merge(Business.where(user: Current.user))
+    end
+  }
 
-  # TODO: test that it fails with a different user's menu
-  # TODO: replace this scope by an authorization library
-  belongs_to :menu, -> { where(business_id: Current.user.business.id) }
+  acts_as_list scope: :menu_section
 end

@@ -1,6 +1,4 @@
 class Private::MenusController < Private::ApplicationController
-  include Private::CreateDemonstrativeMenu
-
   before_action :set_menu, only: %i[ show edit update destroy ]
 
   # GET /menus
@@ -11,8 +9,6 @@ class Private::MenusController < Private::ApplicationController
 
   # GET /menus/1
   def show
-    @menu_items = @menu.menu_items.order(:position)
-    @menu_item = @menu.menu_items.build
   end
 
   # GET /menus/new

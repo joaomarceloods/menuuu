@@ -16,10 +16,18 @@
   <% end %>
 <% end %>
 
-<div id="menu_items" data-controller="sortable">
-  <% @menu_items.each do |menu_item| %>
-    <%= render "private/menu_items/edit_form", menu_item: menu_item %>
+<div id="menu_items" data-controller="sortable" data-sortable-group="menu_section">
+  <% @menu.menu_sections.order(:position).each do |menu_section| %>
+    <div>
+      <h2><%= menu_section.name %></h2>
+
+      <div data-controller="sortable-menu-items" data-sortable-group="menu_item" data-menu-section-id="<%= menu_section.id %>">
+        <% menu_section.menu_items.order(:position).each do |menu_item| %>
+          <%= render "private/menu_items/edit_form", menu_item: menu_item %>
+        <% end %>
+      </div>
+
+      <%#= render "private/menu_items/new_form", menu_item: menu_section.menu_items.build %>
+    </div>
   <% end %>
 </div>
-
-<%= render "private/menu_items/new_form", menu_item: @menu.menu_items.build %>

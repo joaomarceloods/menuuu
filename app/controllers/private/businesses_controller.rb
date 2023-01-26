@@ -1,14 +1,12 @@
 class Private::BusinessesController < Private::ApplicationController
-  include Private::CreateDemonstrativeMenu
-
   def new
     @business = Business.new
   end
 
   def create
-    @business, menu = create_business_and_demonstrative_menu(business_params)
+    @business, menu = CreateBusinessWithMenu.call(business_params)
 
-    if menu.present?
+    if @business.present? && menu.present?
       redirect_to [:private, menu]
     else
       render :new

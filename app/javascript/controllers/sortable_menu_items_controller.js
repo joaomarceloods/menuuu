@@ -4,7 +4,6 @@ import { patch } from "@rails/request.js"
 
 export default class extends Controller {
   connect() {
-    this.#handleDragEnd.bind(this)
     this.#configureSortable()
   }
 
@@ -12,17 +11,19 @@ export default class extends Controller {
     this.sortable = new Sortable.create(this.element, {
       group: "menu_items",
       animation: 150,
-      onEnd: this.#handleDragEnd,
+      onEnd: this.#handleDragEnd.bind(this),
     })
   }
 
   #handleDragEnd(event) {
-    const { to: newList, newIndex, item: { dataset: { sortableUrl }} } = event
-    console.log(newList, newIndex, sortableUrl)
+    const { to: newList, newIndex, item: { dataset: { updateUrl }} } = event
 
-    patch(sortableUrl, {
+    patch(updateUrl, {
       body: JSON.stringify({
-        menu_item: { position: newIndex + 1 }
+        menu_item: {
+          position: newIndex + 1,
+          menu_section_id: newList.dataset.menuSectionId,
+        }
       }),
       responseKind: "json",
     })

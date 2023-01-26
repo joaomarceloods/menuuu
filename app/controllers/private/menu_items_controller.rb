@@ -1,5 +1,5 @@
 class Private::MenuItemsController < Private::ApplicationController
-  before_action :set_menu_item, only: %i[ edit update destroy ]
+  before_action :set_menu_item, only: %i[ update destroy ]
 
   # POST /menu_items
   def create
@@ -50,6 +50,6 @@ class Private::MenuItemsController < Private::ApplicationController
 
     # Only allow a list of trusted parameters through.
     def menu_item_params
-      params.require(:menu_item).permit(:name, :price, :position, :menu_id)
+      params.require(:menu_item).permit(:name, :price, :position, :menu_section_id)
     end
 end
