@@ -1,20 +1,22 @@
-<%= turbo_frame_tag menu_item, data: { update_url: private_menu_item_path(menu_item) } do %>
-  <%= form_with \
-        model: menu_item,
-        url: [:private, menu_item],
-        data: {
-          controller: 'menu-item-edit-form',
-          action: 'input->menu-item-edit-form#input keypress.enter->menu-item-edit-form#keypressEnter:prevent',
-          just_created: menu_item.previously_new_record?,
-        } do |form| %>
+<div data-update-url="<%= private_menu_item_path(menu_item) %>">
+  <%= turbo_frame_tag menu_item do %>
+    <%= form_with \
+          model: menu_item,
+          url: [:private, menu_item],
+          data: {
+            controller: 'menu-item-edit-form',
+            action: 'input->menu-item-edit-form#input keypress.enter->menu-item-edit-form#keypressEnter:prevent',
+            just_created: menu_item.previously_new_record?,
+          } do |form| %>
 
-    <%= render "private/menu_items/form_fields", form: form %>
+      <%= render "private/menu_items/form_fields", form: form %>
+    <% end %>
+
+    <% if menu_item.persisted? %>
+      <%= link_to 'Remove', [:private, menu_item], data: { turbo_method: :delete } %>
+    <% end %>
+
+    <br/>
+    <br/>
   <% end %>
-
-  <% if menu_item.persisted? %>
-    <%= link_to 'Remove', [:private, menu_item], data: { turbo_method: :delete } %>
-  <% end %>
-
-  <br/>
-  <br/>
-<% end %>
+</div>
