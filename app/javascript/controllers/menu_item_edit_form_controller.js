@@ -9,14 +9,14 @@ export default class extends Controller {
     this.#focusIfJustCreated()
   }
 
-  // input->menu-item-new-form#input
+  // input->menu-item-edit-form#input
   input() {
     // Turbo Drive requires usage of requestSubmit() instead of submit().
     // https://turbo.hotwired.dev/handbook/drive#form-submissions
     this.element.requestSubmit()
   }
 
-  // keypress:enter->menu-item-new-form#keypressEnter
+  // keypress:enter->menu-item-edit-form#keypressEnter
   keypressEnter() {
     this.#focusOnNextInput()
   }

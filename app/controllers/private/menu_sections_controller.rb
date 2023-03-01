@@ -16,7 +16,7 @@ class Private::MenuSectionsController < Private::ApplicationController
     @menu_section.update(menu_section_params)
 
     respond_to do |format|
-      # format.turbo_stream
+      format.turbo_stream
       format.json { head :ok }
       format.html { redirect_back(root_path) }
     end
@@ -27,7 +27,7 @@ class Private::MenuSectionsController < Private::ApplicationController
     @menu_section.destroy
 
     respond_to do |format|
-      # format.turbo_stream
+      format.turbo_stream
       format.html { redirect_back(root_path) }
     end
   end

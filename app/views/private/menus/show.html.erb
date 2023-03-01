@@ -19,7 +19,7 @@
 <div id="menu_items" data-controller="sortable-menu-sections" data-sortable-group="menu_section">
   <% @menu.menu_sections.order(:position).each do |menu_section| %>
     <div data-update-url="<%= private_menu_section_path(menu_section) %>">
-      <h2><%= menu_section.name %></h2>
+      <%= render "private/menu_sections/edit_form", menu_section: menu_section %>
 
       <div data-controller="sortable-menu-items" data-sortable-group="menu_item" data-menu-section-id="<%= menu_section.id %>">
         <% menu_section.menu_items.order(:position).each do |menu_item| %>

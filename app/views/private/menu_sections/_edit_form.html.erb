@@ -1,0 +1,28 @@
+<%= turbo_frame_tag menu_section do %>
+  <%= form_with \
+        model: menu_section,
+        url: [:private, menu_section],
+        data: {
+          controller: 'menu-item-edit-form',
+          action: 'input->menu-item-edit-form#input keypress.enter->menu-item-edit-form#keypressEnter:prevent',
+          just_created: menu_section.previously_new_record?,
+        } do |form| %>
+
+    <%= form.text_field \
+          :name,
+          autofocus: menu_section.previously_new_record?,
+          autocomplete: :off,
+          placeholder: :name,
+          enterkeyhint: :next,
+          class: class_names(error: form.object.errors.has_key?(:name)),
+          style: "font-size: 1.5em",
+          data: { menu_section_edit_form_target: 'nameInput' } %>
+  <% end %>
+
+  <% if menu_section.persisted? %>
+    <%= link_to 'Remove', [:private, menu_section], data: { turbo_method: :delete, turbo_confirm: "Remove the \"#{menu_section.name}\" section and ALL its items? This is irreversible." } %>
+  <% end %>
+
+  <br/>
+  <br/>
+<% end %>
