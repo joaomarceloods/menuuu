@@ -7,7 +7,7 @@ class Private::MenuItemsController < Private::ApplicationController
 
     respond_to do |format|
       format.turbo_stream
-      format.html { redirect_back(root_path) }
+      format.html { redirect_back(fallback_location: root_path) }
     end
   end
 
@@ -18,7 +18,7 @@ class Private::MenuItemsController < Private::ApplicationController
     respond_to do |format|
       format.turbo_stream
       format.json { head :ok }
-      format.html { redirect_back(root_path) }
+      format.html { redirect_back(fallback_location: root_path) }
     end
   end
 
@@ -28,7 +28,7 @@ class Private::MenuItemsController < Private::ApplicationController
 
     respond_to do |format|
       format.turbo_stream
-      format.html { redirect_back(root_path) }
+      format.html { redirect_back(fallback_location: root_path) }
     end
   end
 
