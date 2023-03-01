@@ -6,7 +6,8 @@ class Private::MenuItemsController < Private::ApplicationController
     @menu_item = MenuItem.create(menu_item_params)
 
     respond_to do |format|
-      format.html { redirect_back(fallback_location: root_path) }
+      # TODO: what if we just render instead of redirect?
+      format.html { redirect_to private_menu_path(@menu_item.menu_section.menu_id, just_created: @menu_item.id) }
     end
   end
 

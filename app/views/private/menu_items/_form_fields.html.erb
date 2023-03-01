@@ -1,7 +1,7 @@
 <div>
   <%= form.text_field \
         :name,
-        autofocus: form.object.previously_new_record?,
+        autofocus: autofocus,
         autocomplete: :off,
         placeholder: :name,
         enterkeyhint: :next,

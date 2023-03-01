@@ -1,5 +1,0 @@
-<% if @menu_item.persisted? %>
-  <%= turbo_stream.append :menu_items, partial: "private/menu_items/edit_form", locals: { menu_item: @menu_item } %>
-<% else %>
-  <%= turbo_stream.replace :new_menu_item, partial: "private/menu_items/new_form", locals: { menu_item: @menu_item } %>
-<% end %>

@@ -9,6 +9,7 @@ class Private::MenusController < Private::ApplicationController
 
   # GET /menus/1
   def show
+    @just_created_menu_item_id = params[:just_created]
   end
 
   # GET /menus/new
