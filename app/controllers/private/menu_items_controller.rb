@@ -6,7 +6,6 @@ class Private::MenuItemsController < Private::ApplicationController
     @menu_item = MenuItem.create(menu_item_params)
 
     respond_to do |format|
-      format.turbo_stream
       format.html { redirect_back(fallback_location: root_path) }
     end
   end
