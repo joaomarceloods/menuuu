@@ -16,9 +16,9 @@ export default class extends Controller {
   }
 
   #handleDragEnd(event) {
-    const { newIndex, item: { dataset: { updateUrl }} } = event
+    const { newIndex, item: { dataset: { sortableMenuSectionsUpdateUrl }} } = event
 
-    patch(updateUrl, {
+    patch(sortableMenuSectionsUpdateUrl, {
       body: JSON.stringify({
         menu_section: {
           position: newIndex + 1,

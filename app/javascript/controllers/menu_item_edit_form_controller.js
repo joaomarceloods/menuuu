@@ -4,6 +4,10 @@ import debounce from "lodash.debounce"
 export default class extends Controller {
   static targets = ["nameInput"]
 
+  static values = {
+    isJustCreated: Boolean
+  }
+
   connect() {
     this.input = debounce(this.input, 300).bind(this)
     this.#focusIfJustCreated()
@@ -22,7 +26,7 @@ export default class extends Controller {
   }
 
   #focusIfJustCreated() {
-    if (this.element.dataset.justCreated === 'true') {
+    if (this.isJustCreatedValue) {
       this.nameInputTarget.focus()
     }
   }

@@ -16,13 +16,13 @@ export default class extends Controller {
   }
 
   #handleDragEnd(event) {
-    const { to: newList, newIndex, item: { dataset: { updateUrl }} } = event
+    const { to: newList, newIndex, item: { dataset: { sortableMenuItemsUpdateUrl }} } = event
 
-    patch(updateUrl, {
+    patch(sortableMenuItemsUpdateUrl, {
       body: JSON.stringify({
         menu_item: {
           position: newIndex + 1,
-          menu_section_id: newList.dataset.menuSectionId,
+          menu_section_id: newList.dataset.sortableMenuItemsMenuSectionId,
         }
       }),
       responseKind: "json",
