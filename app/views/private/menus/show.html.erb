@@ -20,7 +20,7 @@
   <%= button_to "Add section", private_menu_sections_path(menu_section: { menu_id: @menu.id, position: 1 }), data: { turbo_frame: :list } %>
 
   <% @menu.menu_sections.order(:position).each do |menu_section| %>
-    <%= tag.div data: { sortable_menu_sections_update_url: private_menu_section_path(menu_section) } do %>
+    <%= turbo_frame_tag menu_section, data: { sortable_menu_sections_update_url: private_menu_section_path(menu_section) } do %>
       <%= render "private/menu_sections/form", menu_section: menu_section %>
 
       <%= tag.div data: { controller: "sortable-menu-items", sortable_menu_items_menu_section_id: menu_section.id } do %>
