@@ -1,4 +1,6 @@
 <%= turbo_frame_tag menu_section do %>
+  <div class="sortable-handle" title="Drag menu section">↕</div>
+
   <%= form_with \
         model: menu_section,
         url: [:private, menu_section],

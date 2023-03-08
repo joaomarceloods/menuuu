@@ -1,4 +1,6 @@
 <%= turbo_frame_tag menu_item, data: { sortable_menu_items_update_url: private_menu_item_path(menu_item) } do %>
+  <div class="sortable-handle" title="Drag menu item">↕</div>
+
   <%= form_with \
         model: menu_item,
         url: [:private, menu_item],
