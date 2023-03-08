@@ -3,8 +3,8 @@
         model: menu_section,
         url: [:private, menu_section],
         data: {
-          controller: 'menu-item-edit-form',
-          action: 'input->menu-item-edit-form#input keypress.enter->menu-item-edit-form#keypressEnter:prevent',
+          controller: 'menu-item-form',
+          action: 'input->menu-item-form#input keypress.enter->menu-item-form#keypressEnter:prevent',
         } do |form| %>
 
     <%= form.text_field \
@@ -13,8 +13,7 @@
           placeholder: :name,
           enterkeyhint: :next,
           class: class_names(error: form.object.errors.has_key?(:name)),
-          style: "font-size: 1.5em",
-          data: { menu_section_edit_form_target: 'nameInput' } %>
+          style: "font-size: 1.5em" %>
   <% end %>
 
   <% if menu_section.persisted? %>

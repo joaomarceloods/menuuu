@@ -19,11 +19,11 @@
 <%= turbo_frame_tag :list, data: { controller: "sortable-menu-sections" } do %>
   <% @menu.menu_sections.order(:position).each do |menu_section| %>
     <%= tag.div data: { sortable_menu_sections_update_url: private_menu_section_path(menu_section) } do %>
-      <%= render "private/menu_sections/edit_form", menu_section: menu_section %>
+      <%= render "private/menu_sections/form", menu_section: menu_section %>
 
       <%= tag.div data: { controller: "sortable-menu-items", sortable_menu_items_menu_section_id: menu_section.id } do %>
         <% menu_section.menu_items.order(:position).each do |menu_item| %>
-          <%= render "private/menu_items/edit_form", menu_item: menu_item %>
+          <%= render "private/menu_items/form", menu_item: menu_item %>
         <% end %>
       <% end %>
     <% end %>

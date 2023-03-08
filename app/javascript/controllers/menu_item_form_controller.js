@@ -2,20 +2,18 @@ import { Controller } from "@hotwired/stimulus"
 import debounce from "lodash.debounce"
 
 export default class extends Controller {
-  static targets = ["nameInput"]
-
   connect() {
     this.input = debounce(this.input, 300).bind(this)
   }
 
-  // input->menu-item-edit-form#input
+  // input->menu-item-form#input
   input() {
     // Turbo Drive requires usage of requestSubmit() instead of submit().
     // https://turbo.hotwired.dev/handbook/drive#form-submissions
     this.element.requestSubmit()
   }
 
-  // keypress:enter->menu-item-edit-form#keypressEnter
+  // keypress:enter->menu-item-form#keypressEnter
   keypressEnter() {
     this.#focusOnNextInput()
   }
