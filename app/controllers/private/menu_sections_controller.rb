@@ -3,11 +3,10 @@ class Private::MenuSectionsController < Private::ApplicationController
 
   # POST /menu_sections
   def create
-    @menu_section = MenuSection.create(menu_section_params)
+    @menu_section = MenuSection.create!(menu_section_params)
 
     respond_to do |format|
-      # format.turbo_stream
-      format.html { redirect_back(fallback_location: root_path) }
+      format.html { redirect_to private_menu_path(@menu_section.menu_id) }
     end
   end
 
