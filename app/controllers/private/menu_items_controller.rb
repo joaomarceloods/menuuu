@@ -3,17 +3,18 @@ class Private::MenuItemsController < Private::ApplicationController
 
   # POST /menu_items
   def create
-    @menu_item = MenuItem.create(menu_item_params)
+    # TODO: handle error
+    @menu_item = MenuItem.create!(menu_item_params)
 
     respond_to do |format|
-      # TODO: what if we just render instead of redirect?
-      format.html { redirect_to private_menu_path(@menu_item.menu_section.menu_id, just_created: @menu_item.id) }
+      format.html { redirect_to private_menu_path(@menu_item.menu_section.menu_id) }
     end
   end
 
   # PATCH/PUT /menu_items/1
   def update
-    @menu_item.update(menu_item_params)
+    # TODO: handle error
+    @menu_item.update!(menu_item_params)
 
     respond_to do |format|
       format.turbo_stream
@@ -24,7 +25,8 @@ class Private::MenuItemsController < Private::ApplicationController
 
   # DELETE /menu_items/1
   def destroy
-    @menu_item.destroy
+    # TODO: handle error
+    @menu_item.destroy!
 
     respond_to do |format|
       format.turbo_stream

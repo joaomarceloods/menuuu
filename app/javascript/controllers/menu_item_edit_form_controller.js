@@ -4,13 +4,8 @@ import debounce from "lodash.debounce"
 export default class extends Controller {
   static targets = ["nameInput"]
 
-  static values = {
-    isJustCreated: Boolean
-  }
-
   connect() {
     this.input = debounce(this.input, 300).bind(this)
-    this.#focusIfJustCreated()
   }
 
   // input->menu-item-edit-form#input
@@ -23,12 +18,6 @@ export default class extends Controller {
   // keypress:enter->menu-item-edit-form#keypressEnter
   keypressEnter() {
     this.#focusOnNextInput()
-  }
-
-  #focusIfJustCreated() {
-    if (this.isJustCreatedValue) {
-      this.nameInputTarget.focus()
-    }
   }
 
   // Source: https://stackoverflow.com/a/35173443/4668975

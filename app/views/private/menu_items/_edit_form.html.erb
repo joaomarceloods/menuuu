@@ -1,5 +1,3 @@
-<% just_created = menu_item.id.to_s == @just_created_menu_item_id %>
-
 <%= turbo_frame_tag menu_item, data: { sortable_menu_items_update_url: private_menu_item_path(menu_item) } do %>
   <%= form_with \
         model: menu_item,
@@ -7,10 +5,9 @@
         data: {
           controller: 'menu-item-edit-form',
           action: 'input->menu-item-edit-form#input keypress.enter->menu-item-edit-form#keypressEnter:prevent',
-          menu_item_edit_form_is_just_created_value: just_created,
         } do |form| %>
 
-    <%= render "private/menu_items/form_fields", form: form, autofocus: just_created %>
+    <%= render "private/menu_items/form_fields", form: form %>
   <% end %>
 
   <% if menu_item.persisted? %>

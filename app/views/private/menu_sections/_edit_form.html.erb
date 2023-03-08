@@ -5,12 +5,10 @@
         data: {
           controller: 'menu-item-edit-form',
           action: 'input->menu-item-edit-form#input keypress.enter->menu-item-edit-form#keypressEnter:prevent',
-          just_created: menu_section.previously_new_record?,
         } do |form| %>
 
     <%= form.text_field \
           :name,
-          autofocus: menu_section.previously_new_record?,
           autocomplete: :off,
           placeholder: :name,
           enterkeyhint: :next,
