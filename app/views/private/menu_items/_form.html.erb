@@ -32,7 +32,7 @@
   <% end %>
 
   <% if menu_item.persisted? %>
-    <%= link_to 'Remove', [:private, menu_item], data: { turbo_method: :delete } %>
+    <%= button_to 'Remove', private_menu_item_path(menu_item), method: :delete %>
     <%= button_to "Add item", private_menu_items_path(menu_item: { menu_section_id: menu_item.menu_section_id, position: menu_item.position + 1 }), data: { turbo_frame: :list } %>
   <% end %>
 

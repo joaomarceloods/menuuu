@@ -19,7 +19,7 @@
   <% end %>
 
   <% if menu_section.persisted? %>
-    <%= link_to 'Remove', [:private, menu_section], data: { turbo_method: :delete, turbo_confirm: "Remove the \"#{menu_section.name}\" section and ALL its items? This is irreversible." } %>
+    <%= button_to 'Remove', private_menu_section_path(menu_section), method: :delete, data: { turbo_confirm: "Remove the \"#{menu_section.name}\" section and ALL its items? This is irreversible." } %>
     <%= button_to "Add item", private_menu_items_path(menu_item: { menu_section_id: menu_section.id, position: 1 }), data: { turbo_frame: :list } %>
   <% end %>
 
