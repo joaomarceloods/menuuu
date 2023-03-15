@@ -36,7 +36,7 @@
   <% end %>
 
   <% if menu_item.persisted? %>
-    <%= button_to 'Remove', private_menu_item_path(menu_item), method: :delete %>
+    <%= button_to 'Remove', private_menu_item_path(menu_item), method: :delete, data: { turbo_frame: :list } %>
 
     <%= form_with \
           model: MenuItem.new,

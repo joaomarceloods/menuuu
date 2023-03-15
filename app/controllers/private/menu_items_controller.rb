@@ -5,10 +5,7 @@ class Private::MenuItemsController < Private::ApplicationController
   def create
     # TODO: handle error
     @menu_item = MenuItem.create!(menu_item_params)
-
-    respond_to do |format|
-      format.html { redirect_to private_menu_path(@menu_item.menu_section.menu_id) }
-    end
+    redirect_to private_menu_path(@menu_item.menu_section.menu_id)
   end
 
   # PATCH/PUT /menu_items/1
@@ -26,11 +23,7 @@ class Private::MenuItemsController < Private::ApplicationController
   def destroy
     # TODO: handle error
     @menu_item.destroy!
-
-    respond_to do |format|
-      format.turbo_stream
-      format.html { redirect_back(fallback_location: root_path) }
-    end
+    redirect_to private_menu_path(@menu_item.menu_section.menu_id)
   end
 
   private
