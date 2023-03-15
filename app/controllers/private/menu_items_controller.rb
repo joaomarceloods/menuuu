@@ -18,8 +18,7 @@ class Private::MenuItemsController < Private::ApplicationController
 
     respond_to do |format|
       format.turbo_stream
-      format.json { head :ok }
-      format.html { redirect_back(fallback_location: root_path) }
+      format.html { redirect_to private_menu_path(@menu_item.menu_section.menu_id) }
     end
   end
 

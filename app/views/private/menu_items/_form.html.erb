@@ -7,7 +7,11 @@
         data: {
           controller: 'menu-item-form',
           action: 'input->menu-item-form#input keypress.enter->menu-item-form#keypressEnter:prevent',
+          edit_form: true,
         } do |form| %>
+
+    <%= form.hidden_field :menu_section_id %>
+    <%= form.hidden_field :position %>
 
     <div>
       <%= form.text_field \
@@ -33,7 +37,18 @@
 
   <% if menu_item.persisted? %>
     <%= button_to 'Remove', private_menu_item_path(menu_item), method: :delete %>
-    <%= button_to "Add item", private_menu_items_path(menu_item: { menu_section_id: menu_item.menu_section_id, position: menu_item.position + 1 }), data: { turbo_frame: :list } %>
+
+    <%= form_with \
+          model: MenuItem.new,
+          url: private_menu_items_path,
+          data: {
+            turbo_frame: :list,
+            new_form: true,
+          } do |form| %>
+      <%= form.hidden_field :menu_section_id, value: menu_item.menu_section_id %>
+      <%= form.hidden_field :position, value: menu_item.position + 1 %>
+      <%= form.submit "Add item" %>
+    <% end %>
   <% end %>
 
   <br/>
