@@ -17,14 +17,9 @@ export default class extends Controller {
 
   #handleDragEnd(event) {
     const { to: newList, newIndex, item } = event
-
-    const newForm = item.querySelector('[data-new-form]')
-    newForm.menu_item_menu_section_id.value = newList.dataset.sortableMenuItemsMenuSectionId
-    newForm.menu_item_position.value = newIndex + 2
-
-    const editForm = item.querySelector('[data-edit-form]')
-    editForm.elements.menu_item_menu_section_id.value = newList.dataset.sortableMenuItemsMenuSectionId
-    editForm.elements.menu_item_position.value = newIndex + 1
-    editForm.requestSubmit()
+    const form = item.querySelector('[data-sortable-menu-items-form]')
+    form.elements.menu_item_menu_section_id.value = newList.dataset.sortableMenuItemsMenuSectionId
+    form.elements.menu_item_position.value = newIndex + 1
+    form.requestSubmit()
   }
 }

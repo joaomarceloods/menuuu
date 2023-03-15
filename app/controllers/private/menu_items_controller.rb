@@ -13,9 +13,10 @@ class Private::MenuItemsController < Private::ApplicationController
     # TODO: handle error
     @menu_item.update!(menu_item_params)
 
-    respond_to do |format|
-      format.turbo_stream
-      format.html { redirect_to private_menu_path(@menu_item.menu_section.menu_id) }
+    if @menu_item.saved_change_to_position? || @menu_item.saved_change_to_menu_section_id?
+      redirect_to private_menu_path(@menu_item.menu_section.menu_id)
+    else
+      head :no_content
     end
   end
 
