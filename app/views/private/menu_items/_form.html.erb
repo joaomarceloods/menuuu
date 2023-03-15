@@ -19,8 +19,7 @@
             :name,
             autocomplete: :off,
             placeholder: :name,
-            enterkeyhint: :next,
-            class: class_names(error: form.object.errors.has_key?(:name)) %>
+            enterkeyhint: :next %>
     </div>
 
     <div>
@@ -30,8 +29,7 @@
             placeholder: :price,
             enterkeyhint: :next,
             inputmode: :decimal,
-            value: number_to_currency(form.object.price, unit: ''),
-            class: class_names(error: form.object.errors.has_key?(:price)) %>
+            value: number_to_currency(form.object.price, unit: '') %>
     </div>
 
   <% end %>
