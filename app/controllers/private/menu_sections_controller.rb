@@ -3,32 +3,28 @@ class Private::MenuSectionsController < Private::ApplicationController
 
   # POST /menu_sections
   def create
+    # TODO: handle error
     @menu_section = MenuSection.create!(menu_section_params)
-
-    respond_to do |format|
-      format.html { redirect_to private_menu_path(@menu_section.menu_id) }
-    end
+    redirect_to private_menu_path(@menu_section.menu_id)
   end
 
   # PATCH/PUT /menu_sections/1
   def update
-    @menu_section.update(menu_section_params)
+    # TODO: handle error
+    @menu_section.update!(menu_section_params)
 
-    respond_to do |format|
-      format.turbo_stream
-      format.json { head :ok }
-      format.html { redirect_back(fallback_location: root_path) }
+    if @menu_section.saved_change_to_position?
+      redirect_to private_menu_path(@menu_section.menu_id)
+    else
+      head :no_content
     end
   end
 
   # DELETE /menu_sections/1
   def destroy
-    @menu_section.destroy
-
-    respond_to do |format|
-      format.turbo_stream
-      format.html { redirect_back(fallback_location: root_path) }
-    end
+    # TODO: handle error
+    @menu_section.destroy!
+    redirect_to private_menu_path(@menu_section.menu_id)
   end
 
   private

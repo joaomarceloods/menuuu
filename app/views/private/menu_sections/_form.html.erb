@@ -3,11 +3,15 @@
 
   <%= form_with \
         model: menu_section,
-        url: [:private, menu_section],
+        url: private_menu_section_path(menu_section),
         data: {
           controller: 'menu-item-form',
           action: 'input->menu-item-form#input keypress.enter->menu-item-form#keypressEnter:prevent',
+          turbo_frame: :list,
+          sortable_menu_sections_form: true,
         } do |form| %>
+
+    <%= form.hidden_field :position %>
 
     <%= form.text_field \
           :name,
@@ -18,8 +22,17 @@
   <% end %>
 
   <% if menu_section.persisted? %>
-    <%= button_to 'Remove', private_menu_section_path(menu_section), method: :delete, data: { turbo_confirm: "Remove the \"#{menu_section.name}\" section and ALL its items? This is irreversible." } %>
-    <%= button_to "Add item", private_menu_items_path(menu_item: { menu_section_id: menu_section.id, position: 1 }), data: { turbo_frame: :list } %>
+    <%= button_to \
+          'Remove',
+          private_menu_section_path(menu_section),
+          method: :delete,
+          data: { turbo_confirm: "Remove the \"#{menu_section.name}\" section and ALL its items? This is irreversible." } %>
+
+    <%= button_to \
+          'Add item',
+          private_menu_items_path,
+          data: { turbo_frame: :list },
+          params: { menu_item: { menu_section_id: menu_section.id, position: 1 } } %>
   <% end %>
 
   <br/>

@@ -16,9 +16,15 @@
   <% end %>
 <% end %>
 
-<%= turbo_frame_tag :list, data: { controller: "sortable-menu-sections" } do %>
-  <%= button_to "Add section", private_menu_sections_path(menu_section: { menu_id: @menu.id, position: 1 }), data: { turbo_frame: :list } %>
+<%= button_to \
+      "Add section",
+      private_menu_sections_path,
+      data: { turbo_frame: :list },
+      params: { menu_section: { menu_id: @menu.id, position: 1 } } %>
+<br/>
+<br/>
 
+<%= turbo_frame_tag :list, data: { controller: "sortable-menu-sections" } do %>
   <% @menu.menu_sections.order(:position).each do |menu_section| %>
     <%= turbo_frame_tag menu_section, data: { sortable_menu_sections_update_url: private_menu_section_path(menu_section) } do %>
       <%= render "private/menu_sections/form", menu_section: menu_section %>
@@ -29,8 +35,13 @@
         <% end %>
       <% end %>
 
-      <%# TODO: update the position param after dragging the section to a new position %>
-      <%= button_to "Add section", private_menu_sections_path(menu_section: { menu_id: @menu.id, position: menu_section.position + 1 }), data: { turbo_frame: :list } %>
+      <%= button_to \
+            "Add section",
+            private_menu_sections_path,
+            data: { turbo_frame: :list },
+            params: { menu_section: { menu_id: @menu.id, position: menu_section.position + 1 } } %>
+      <br/>
+      <br/>
     <% end %>
   <% end %>
 <% end %>

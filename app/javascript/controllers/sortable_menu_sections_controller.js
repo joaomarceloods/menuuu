@@ -1,6 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
 import Sortable from "sortablejs"
-import { patch } from "@rails/request.js"
 
 export default class extends Controller {
   connect() {
@@ -17,15 +16,9 @@ export default class extends Controller {
   }
 
   #handleDragEnd(event) {
-    const { newIndex, item: { dataset: { sortableMenuSectionsUpdateUrl }} } = event
-
-    patch(sortableMenuSectionsUpdateUrl, {
-      body: JSON.stringify({
-        menu_section: {
-          position: newIndex + 1,
-        }
-      }),
-      responseKind: "json",
-    })
+    const { newIndex, item } = event
+    const form = item.querySelector('[data-sortable-menu-sections-form]')
+    form.elements.menu_section_position.value = newIndex + 1
+    form.requestSubmit()
   }
 }
