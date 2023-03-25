@@ -1,6 +1,4 @@
-<div>
-  <div class="sortable-handle" title="Drag menu section">↕</div>
-
+<div class="action-bar-owner">
   <%= form_with \
         model: menu_section,
         url: private_menu_section_path(menu_section),
@@ -16,25 +14,27 @@
     <%= form.text_field \
           :name,
           autocomplete: :off,
-          placeholder: :name,
+          placeholder: :section,
           enterkeyhint: :next,
-          style: "font-size: 1.5em" %>
+          class: "menu-section__name disguised-form-field" %>
   <% end %>
 
-  <% if menu_section.persisted? %>
+  <div class="action-bar">
     <%= button_to \
-          'Remove',
-          private_menu_section_path(menu_section),
-          method: :delete,
-          data: { turbo_confirm: "Remove the \"#{menu_section.name}\" section and ALL its items? This is irreversible." } %>
-
-    <%= button_to \
-          'Add item',
+          '➕',
           private_menu_items_path,
+          title: "Add item",
+          class: "action-bar__button",
           data: { turbo_frame: :list },
           params: { menu_item: { menu_section_id: menu_section.id, position: 1 } } %>
-  <% end %>
 
-  <br/>
-  <br/>
+    <%= button_to \
+          '❌',
+          private_menu_section_path(menu_section),
+          method: :delete,
+          title: "Delete",
+          class: "action-bar__button",
+          data: { turbo_frame: :list, turbo_confirm: "Remove the #{menu_section.name || "empty"} section permanently? Any nested items will be lost." } %>
+  </div>
+
 </div>

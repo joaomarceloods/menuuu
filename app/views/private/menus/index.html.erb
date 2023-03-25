@@ -6,7 +6,7 @@
 
 <%= turbo_frame_tag @business do %>
   <%= form_for @business, url: [:private, :business], html: { oninput: "this.requestSubmit()" } do |f| %>
-    <%= f.text_field :name, placeholder: "Business Name", autocomplete: :off, style: "font-size: 2em; margin-bottom: 1em;" %>
+    <%= f.text_field :name, placeholder: "Business Name", autocomplete: :off %>
   <% end %>
 <% end %>
 
