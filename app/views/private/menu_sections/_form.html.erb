@@ -19,6 +19,7 @@
           autocomplete: :off,
           placeholder: :section,
           enterkeyhint: :enter,
+          autofocus: menu_section.created_at > 1.second.ago,
           class: "menu-section-name indistinct-input" %>
   <% end %>
 
