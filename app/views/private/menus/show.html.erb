@@ -1,32 +1,35 @@
-<div class="menu">
-  <div><%= link_to "Back to menus", [:private, :menus] %></div>
-  <div><%= link_to "Delete menu", [:private, @menu], data: { turbo_method: :delete, turbo_confirm: "Delete #{@menu.name}?" } %></div>
+<div><%= link_to "Back to menus", [:private, :menus] %></div>
+<div><%= link_to "Delete menu", [:private, @menu], data: { turbo_method: :delete, turbo_confirm: "Delete #{@menu.name}?" } %></div>
 
-  <br/>
+<br/>
 
-  <%= turbo_frame_tag :publish do %>
+<%= turbo_frame_tag :publish do %>
+  <%= form_for @menu, url: [:private, @menu], html: { oninput: "this.requestSubmit()" } do |f| %>
+    <%= f.check_box :published %>
+    <%= f.label :published %>
+  <% end %>
+<% end %>
+
+<div class="menu chalkboard">
+
+  <%= turbo_frame_tag :edit, class: "menu-content" do %>
     <%= form_for @menu, url: [:private, @menu], html: { oninput: "this.requestSubmit()" } do |f| %>
-      <%= f.check_box :published %>
-      <%= f.label :published %>
+      <%= f.text_field :name, placeholder: "Menu Name", autocomplete: :off, class: "menu-name indistinct-input" %>
     <% end %>
   <% end %>
 
-  <%= turbo_frame_tag :edit do %>
-    <%= form_for @menu, url: [:private, @menu], html: { oninput: "this.requestSubmit()" } do |f| %>
-      <%= f.text_field :name, placeholder: "Menu Name", autocomplete: :off, class: "menu__name disguised-form-field" %>
-    <% end %>
+  <%= tag.div class: "menu-content" do %>
+    <%= button_to \
+          "Add section",
+          private_menu_sections_path,
+          class: "add-section",
+          data: { turbo_frame: :list },
+          params: { menu_section: { menu_id: @menu.id, position: 1 } } %>
   <% end %>
-
-  <%= button_to \
-        "Add section",
-        private_menu_sections_path,
-        data: { turbo_frame: :list },
-        params: { menu_section: { menu_id: @menu.id, position: 1 } } %>
-  <br/>
 
   <%= turbo_frame_tag :list, data: { controller: "sortable-menu-sections" } do %>
     <% @menu.menu_sections.order(:position).each do |menu_section| %>
-      <%= turbo_frame_tag menu_section, data: { sortable_menu_sections_update_url: private_menu_section_path(menu_section) } do %>
+      <%= turbo_frame_tag menu_section, class: "menu-content", data: { sortable_menu_sections_update_url: private_menu_section_path(menu_section) } do %>
         <%= render "private/menu_sections/form", menu_section: menu_section %>
 
         <%= tag.div data: { controller: "sortable-menu-items", sortable_menu_items_menu_section_id: menu_section.id } do %>
@@ -38,10 +41,12 @@
         <%= button_to \
               "Add section",
               private_menu_sections_path,
+              class: "add-section",
               data: { turbo_frame: :list },
               params: { menu_section: { menu_id: @menu.id, position: menu_section.position + 1 } } %>
         <br/>
       <% end %>
     <% end %>
   <% end %>
+
 </div>

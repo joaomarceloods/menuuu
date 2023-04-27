@@ -3,7 +3,7 @@
   <%= form_with \
         model: menu_item,
         url: private_menu_item_path(menu_item),
-        class: "menu-item__form",
+        class: "menu-item-form",
         data: {
           controller: 'menu-item-form',
           action: 'input->menu-item-form#input keypress.enter->menu-item-form#keypressEnter:prevent',
@@ -20,7 +20,7 @@
             autocomplete: :off,
             placeholder: :product,
             enterkeyhint: :next,
-            class: "menu-item__name disguised-form-field" %>
+            class: "menu-item-name indistinct-input" %>
     </div>
 
     <div>
@@ -32,7 +32,7 @@
             placeholder: '0',
             enterkeyhint: :next,
             inputmode: :decimal,
-            class: "menu-item__price disguised-form-field",
+            class: "menu-item-price indistinct-input",
             value: number_to_currency(form.object.price, unit: '') %>
     </div>
 

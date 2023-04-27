@@ -16,7 +16,8 @@ export default class extends Controller {
   }
 
   #formatPrice() {
-    const priceInput = this.element.querySelector(".menu-item__price")
+    const priceInput = this.element.querySelector(".menu-item-price")
+    if (!priceInput) return
     priceInput.value = parseFloat(priceInput.value).toFixed(2)
   }
 

@@ -1,0 +1,41 @@
+.menu.colorful
+
+  *
+    font-family: 'Comic Sans MS', serif
+
+  .menu-name
+    font-size: 2em
+    width: 100%
+    color: cornflowerblue
+
+  .menu-section-name
+    font-size: 1.5em
+    width: 100%
+    color: olive
+
+  .menu-item
+    &:nth-child(4n+1) *
+      color: burlywood
+    &:nth-child(4n+2) *
+      color: cadetblue
+    &:nth-child(4n+3) *
+      color: chocolate
+    &:nth-child(4n+4) *
+      color: crimson
+
+  .menu-item-form
+    display: grid
+    grid-template-columns: auto 1fr
+    line-height: 2em
+
+  .menu-item-name
+    font-size: 1em
+    width: 100%
+
+  .menu-item-price
+    font-size: 1em
+    text-align: right
+    width: 100%
+
+  .indistinct-input::placeholder
+    opacity: 30%
