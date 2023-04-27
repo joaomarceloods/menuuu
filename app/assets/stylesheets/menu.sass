@@ -5,55 +5,38 @@
     margin: 0 auto
     padding: 0 1em
 
-.action-bar
-  display: flex
-  justify-content: space-between
-
-  &__button
-    width: 2em
-    height: 2em
-    cursor: pointer
-    background: none
-    border: none
-    font-size: 1em
-
 .action-bar-owner
   position: relative
   margin: -0em -0.5em
   padding: 0em 0.5em
 
+  &:focus-within
+    .action-bar
+      visibility: visible
+
   .action-bar
-    display: none
+    display: flex
+    visibility: hidden
     position: absolute
     right: 0
     z-index: 1
-    background-color: white
     border-radius: 2px
+    top: 0
+    right: -2em
+    justify-content: space-between
+    // iPhone fix:
+    // If we change the visibility immediately, it won't register clicks on action bar buttons.
+    // I'm assuming that's because the button will be hidden before the touch event is processed.
+    // To workaround that issue, delay the visibility change in 1ms.
+    transition: visibility 1ms
 
-    @media screen and ( min-width: 475px )
-      &
-        top: 0
-        right: -4em
-        background-color: transparent
-
-  @mixin action-bar-owner-interaction
-    .action-bar
-      display: flex
-      pointer-events: auto
-
-  // Non-iPhone only
-  // On desktop, show the .action-bar on hover or focus within .menu-item
-  @supports not (-webkit-touch-callout: none)
-    &:focus-within, &:hover
-      @include action-bar-owner-interaction
-
-  // iPhone only
-  // On iPhone, don't rely on hover, because, once you move a .menu-item to a new position,
-  // the "hover point" stays on the old position, and the .action-bar would appear there instead.
-  // The workaround is to show the .action-bar when the focus is within the .menu-item
-  @supports (-webkit-touch-callout: none)
-    &:focus-within
-      @include action-bar-owner-interaction
+    &__button
+      width: 2em
+      height: 2em
+      cursor: pointer
+      background: none
+      border: none
+      font-size: 1em
 
 .indistinct-input
   background: none

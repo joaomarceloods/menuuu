@@ -1,10 +1,13 @@
-<div class="action-bar-owner">
+<%= tag.div \
+      class: "action-bar-owner",
+      data: { controller: "menu-item-form" } do %>
+
   <%= form_with \
         model: menu_section,
         url: private_menu_section_path(menu_section),
         data: {
-          controller: 'menu-item-form',
-          action: 'input->menu-item-form#input keypress.enter->menu-item-form#keypressEnter:prevent',
+          menu_item_form_target: "editForm",
+          action: "input->menu-item-form#input keypress.enter->menu-item-form#keypressEnter:prevent keypress.shift+enter->menu-item-form#keypressEnter:prevent",
           turbo_frame: :list,
           sortable_menu_sections_form: true,
         } do |form| %>
@@ -15,19 +18,13 @@
           :name,
           autocomplete: :off,
           placeholder: :section,
-          enterkeyhint: :next,
+          enterkeyhint: :enter,
           class: "menu-section-name indistinct-input" %>
   <% end %>
 
-  <div class="action-bar">
-    <%= button_to \
-          '➕',
-          private_menu_items_path,
-          title: "Add item",
-          class: "action-bar__button",
-          data: { turbo_frame: :list },
-          params: { menu_item: { menu_section_id: menu_section.id, position: 1 } } %>
+  <%= render "private/menu_items/new", menu_section_id: menu_section.id, position: 1 %>
 
+  <div class="action-bar">
     <%= button_to \
           '❌',
           private_menu_section_path(menu_section),
@@ -37,4 +34,4 @@
           data: { turbo_frame: :list, turbo_confirm: "Remove the #{menu_section.name || "empty"} section permanently? Any nested items will be lost." } %>
   </div>
 
-</div>
+<% end %>

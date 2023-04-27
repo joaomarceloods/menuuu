@@ -1,0 +1,12 @@
+<%= form_with \
+      model: MenuItem.new(menu_section_id: menu_section_id, position: position),
+      url: private_menu_items_path,
+      class: "",
+      data: {
+        turbo_frame: :list,
+        menu_item_form_target: "newForm",
+      } do |form| %>
+
+  <%= form.hidden_field :menu_section_id %>
+  <%= form.hidden_field :position %>
+<% end %>
