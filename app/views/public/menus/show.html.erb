@@ -1,15 +1,39 @@
-<div>
-  <%= link_to @business.name, [:public, @business] %>
-</div>
+<div class="menu minimalist">
 
-<h1>
-  <%= @menu.name %>
-</h1>
+  <div class="menu-content">
+    <div class="menu-section">
+      <%= link_to @business.name, [:public, @business] %>
+    </div>
+  </div>
 
-<ul>
-  <% @menu.publicly_visible_menu_items.each do |menu_item| %>
-    <li>
-      <%= menu_item.name %> - <%= number_to_currency(menu_item.price) %>
-    </li>
+  <div class="menu-content">
+    <div class="menu-section">
+      <div class="menu-name">
+        <%= @menu.name %>
+      </div>
+    </div>
+  </div>
+
+  <% @menu.publicly_visible_menu_sections.order(:position).each do |menu_section| %>
+    <div class="menu-content">
+      <div class="menu-section">
+
+        <div class="menu-section-name">
+          <%= menu_section.name %>
+        </div>
+
+        <% menu_section.publicly_visible_menu_items.order(:position).each do |menu_item| %>
+          <div class="menu-item-form">
+            <div class="menu-item-name">
+              <%= menu_item.name %>
+            </div>
+            <div class="menu-item-price">
+              <%= number_to_currency(menu_item.price) %>
+            </div>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
