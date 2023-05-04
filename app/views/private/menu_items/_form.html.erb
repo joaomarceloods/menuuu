@@ -50,15 +50,16 @@
   <div class="action-bar">
 
     <%= button_to \
-          '❌',
           private_menu_item_path(menu_item),
           method: :delete,
           title: "Delete #{menu_item.name}",
-          class: "action-bar__button",
+          class: "action-bar-button",
           data: {
             turbo_frame: :list,
             turbo_confirm: "Remove the #{menu_item.name || "empty"} item permanently?"
-          } %>
+          } do %>
+      <span class="material-symbols-sharp">close</span>
+    <% end %>
 
   </div>
 

@@ -1,5 +1,6 @@
 <div><%= link_to "Back to menus", [:private, :menus] %></div>
 <div><%= link_to "Delete menu", [:private, @menu], data: { turbo_method: :delete, turbo_confirm: "Delete #{@menu.name}?" } %></div>
+<div><%= link_to "View as a customer", public_menu_path(@menu) %></div>
 
 <%= turbo_frame_tag :publish do %>
   <%= form_for @menu, url: [:private, @menu], html: { oninput: "this.requestSubmit()" } do |f| %>
