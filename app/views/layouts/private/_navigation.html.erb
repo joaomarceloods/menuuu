@@ -1,0 +1,15 @@
+<div class="navigation" data-controller="navigation">
+  <div class="navigation-bar">
+    <%= yield :navigation_bar %>
+
+    <button data-navigation-target="dropdownMenuButton" data-action="click->navigation#handleDropdownMenuButtonClick">
+      <span class="material-symbols-sharp">menu</span>
+    </button>
+  </div>
+
+  <%# set to be initially closed with max-height: 0 %>
+  <div class="navigation-menu" data-navigation-target="dropdownMenu" style="max-height: 0px">
+    <%= yield :navigation_menu %>
+    <%= button_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
+  </div>
+</div>

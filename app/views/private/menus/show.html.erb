@@ -1,15 +1,38 @@
-<%= content_for :navigation do %>
-  <div><%= link_to "Menus", [:private, :menus] %></div>
-  <div><%= link_to "Delete menu", [:private, @menu], data: { turbo_method: :delete, turbo_confirm: "Delete #{@menu.name}?" } %></div>
-  <div><%= link_to "View as a customer", public_menu_path(@menu) %></div>
+<%= content_for :navigation_bar do %>
+  <%= link_to private_menus_path do %>
+    <span class="material-symbols-sharp">arrow_back_ios</span>
+    Menus
+  <% end %>
 
-  <%= turbo_frame_tag :publish do %>
-    <% if @menu.published? %>
-      <%= button_to "Unpublish", private_menu_path(@menu), method: :put, params: { menu: { published: 0 } } %>
-    <% else %>
-      <%= button_to "Publish", private_menu_path(@menu), method: :put, params: { menu: { published: 1 } } %>
+<% end %>
+
+<%= content_for :navigation_menu do %>
+  <% if @menu.published? %>
+    <%= link_to public_menu_path(@menu), target: :_blank do %>
+      <span class="material-symbols-sharp">open_in_new</span>
+      &nbsp;
+       View as customer
     <% end %>
   <% end %>
+
+  <% if @menu.published? %>
+    <%= button_to "Unpublish",
+          private_menu_path(@menu),
+          method: :put,
+          params: { menu: { published: 0 } },
+          data: { turbo_confirm: "Unpublish this menu? Customers won't be able to view it anymore." } %>
+  <% else %>
+    <%= button_to "Publish",
+          private_menu_path(@menu),
+          method: :put,
+          params: { menu: { published: 1 } },
+          data: { turbo_confirm: "Publish this menu? It will become visible to customers." } %>
+  <% end %>
+
+  <%= button_to "Delete",
+        private_menu_path(@menu),
+        method: :delete,
+        data: { turbo_confirm: "Delete this menu? Once deleted, it can't be restored. If you just want to hide it from customers, you can unpublish instead." } %>
 
 <% end %>
 
