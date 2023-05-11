@@ -1,3 +1,7 @@
+<%= content_for :navigation do %>
+  <%= button_to "Create new menu", private_menus_path %>
+<% end %>
+
 <% if @menus.any? %>
   <div>
     <%= render "public/qrcodes/image_link", destination_url: public_business_url(@business) %>
@@ -9,8 +13,6 @@
     <%= f.text_field :name, placeholder: "Business Name", autocomplete: :off %>
   <% end %>
 <% end %>
-
-<%= button_to "Create new menu", [:private, :menus] %>
 
 <ul id="menus">
   <% @menus.each do |menu| %>

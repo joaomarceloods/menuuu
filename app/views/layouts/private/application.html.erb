@@ -19,7 +19,12 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= button_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
+
+    <div class="navigation">
+      <%= button_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
+      <%= yield :navigation %>
+    </div>
+
     <%= yield %>
   </body>
 </html>

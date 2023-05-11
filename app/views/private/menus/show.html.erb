@@ -1,12 +1,16 @@
-<div><%= link_to "Back to menus", [:private, :menus] %></div>
-<div><%= link_to "Delete menu", [:private, @menu], data: { turbo_method: :delete, turbo_confirm: "Delete #{@menu.name}?" } %></div>
-<div><%= link_to "View as a customer", public_menu_path(@menu) %></div>
+<%= content_for :navigation do %>
+  <div><%= link_to "Menus", [:private, :menus] %></div>
+  <div><%= link_to "Delete menu", [:private, @menu], data: { turbo_method: :delete, turbo_confirm: "Delete #{@menu.name}?" } %></div>
+  <div><%= link_to "View as a customer", public_menu_path(@menu) %></div>
 
-<%= turbo_frame_tag :publish do %>
-  <%= form_for @menu, url: [:private, @menu], html: { oninput: "this.requestSubmit()" } do |f| %>
-    <%= f.check_box :published %>
-    <%= f.label :published %>
+  <%= turbo_frame_tag :publish do %>
+    <% if @menu.published? %>
+      <%= button_to "Unpublish", private_menu_path(@menu), method: :put, params: { menu: { published: 0 } } %>
+    <% else %>
+      <%= button_to "Publish", private_menu_path(@menu), method: :put, params: { menu: { published: 1 } } %>
+    <% end %>
   <% end %>
+
 <% end %>
 
 <div class="menu minimalist">

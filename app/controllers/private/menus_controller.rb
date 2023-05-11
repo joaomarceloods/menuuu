@@ -37,9 +37,11 @@ class Private::MenusController < Private::ApplicationController
     @menu.update(menu_params)
 
     respond_to do |format|
-      format.turbo_stream
-      format.html do
-        redirect_to [:private, @menu]
+      if @menu.saved_change_to_name?
+        # To keep focus on the name input, send an empty response
+        format.turbo_stream
+      else
+        format.html { redirect_to private_menu_path(@menu) }
       end
     end
   end
