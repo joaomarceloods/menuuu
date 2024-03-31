@@ -68,6 +68,13 @@
               <%= render "private/menu_items/form", menu_item: menu_item %>
             <% end %>
           <% end %>
+
+          <%= button_to \
+                "Add item",
+                private_menu_items_path,
+                class: "button",
+                data: { turbo_frame: :list },
+                params: { menu_item: { menu_section_id: menu_section.id, position: menu_section.menu_items.count + 1 } } %>
         </div>
 
         <div class="menu-section">
