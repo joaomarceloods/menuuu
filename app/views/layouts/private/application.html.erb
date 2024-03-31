@@ -17,23 +17,8 @@
   </head>
 
   <body>
-    <% if notice.present? || alert.present? %>
-      <div class="notice-bar" data-controller="closable">
-        <div>
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
-        </div>
-        <div
-          aria-role="button"
-          style="cursor: pointer"
-          class="material-symbols-sharp"
-          data-action="click->closable#handleCloseButtonClick"
-        >close</div>
-      </div>
-    <% end %>
-
+    <%= render "layouts/private/notice" %>
     <%= render "layouts/private/navigation" %>
-
     <%= yield %>
   </body>
 </html>

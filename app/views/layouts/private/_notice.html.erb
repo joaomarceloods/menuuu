@@ -1,0 +1,14 @@
+<% if notice.present? || alert.present? %>
+  <div class="notice-bar" data-controller="closable">
+    <div>
+      <p><%= notice&.html_safe %></p>
+      <p><%= alert&.html_safe %></p>
+    </div>
+    <div
+      aria-role="button"
+      style="cursor: pointer"
+      class="material-symbols-sharp"
+      data-action="click->closable#handleCloseButtonClick"
+    >close</div>
+  </div>
+<% end %>
