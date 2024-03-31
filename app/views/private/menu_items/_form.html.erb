@@ -32,17 +32,16 @@
     </div>
 
     <div>
-      <%= form.number_field \
+      <%= form.text_field \
             :price,
-            min: 0.00,
-            step: 0.01,
             autocomplete: :off,
             placeholder: "0",
             title: "Item price",
             enterkeyhint: :enter,
-            inputmode: :decimal,
+            inputmode: :numeric,
             class: "menu-item-price indistinct-input",
-            value: number_to_currency(form.object.price, unit: '') %>
+            value: number_to_currency(form.object.price, unit: ''),
+            data: { controller: "currency-input", action: "input->currency-input#handleChange" } %>
     </div>
 
   <% end %>
