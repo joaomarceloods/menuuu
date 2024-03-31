@@ -1,7 +1,7 @@
 <%= content_for :navigation_bar do %>
-  <%= turbo_frame_tag @business do %>
+  <%= turbo_frame_tag @menu.business, style: "flex: 1" do %>
     <%= form_for @menu.business, url: [:private, :business], html: { oninput: "this.requestSubmit()" } do |f| %>
-      <%= f.text_field :name, placeholder: "Business Name", autocomplete: :off, class: "indistinct-input", style: "color: white; font-size: 1em" %>
+      <%= f.text_field :name, placeholder: "Business Name", autocomplete: :off, class: "indistinct-input", style: "color: white; font-size: 1em; width: 100%" %>
     <% end %>
   <% end %>
 
@@ -51,7 +51,7 @@
   <%= tag.div class: "menu-content" do %>
     <div class="menu-section">
       <%= button_to \
-            "Add section",
+            "Add section…",
             private_menu_sections_path,
             class: "large button",
             data: { turbo_frame: :list },
@@ -81,7 +81,7 @@
 
         <div class="menu-section">
           <%= button_to \
-                "Add section",
+                "Add section…",
                 private_menu_sections_path,
                 class: "large button",
                 data: { turbo_frame: :list },
