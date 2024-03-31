@@ -51,7 +51,7 @@
       <%= button_to \
             "Add section",
             private_menu_sections_path,
-            class: "add-section",
+            class: "large button",
             data: { turbo_frame: :list },
             params: { menu_section: { menu_id: @menu.id, position: 1 } } %>
     </div>
@@ -74,7 +74,7 @@
           <%= button_to \
                 "Add section",
                 private_menu_sections_path,
-                class: "add-section",
+                class: "large button",
                 data: { turbo_frame: :list },
                 params: { menu_section: { menu_id: @menu.id, position: menu_section.position + 1 } } %>
         </div>
