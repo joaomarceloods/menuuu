@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root controller: "private/businesses", action: :create
+  root controller: "private/menus", action: :index
 
   namespace :private do
     resource :business, only: %i[ new create update ]
