@@ -17,10 +17,10 @@
     <%= form.text_field \
           :name,
           autocomplete: :off,
-          placeholder: "Section",
+          placeholder: "Section name",
           enterkeyhint: :enter,
           autofocus: menu_section.created_at > 1.second.ago,
-          class: "menu-section-name indistinct-input" %>
+          class: "menu-section-name lite-input" %>
   <% end %>
 
   <%= render "private/menu_items/new", menu_section_id: menu_section.id, position: 1 %>

@@ -1,60 +1,63 @@
 .menu
 
-  .menu-content
-    max-width: 320px
-    margin: 0 auto
-    padding: 0 1em
+  .menu-name
+    font-size: 3em
+    width: 100%
+
+  .menu-section
+    margin: 1rem 0
+
+  .menu-section-name
+    font-size: 2.25em
+    width: 100%
+
+  .menu-item
     background-color: white
 
-.action-bar-owner
-  position: relative
+  .menu-item-form
+    display: grid
+    grid-template-columns: auto 1fr
 
-  &:focus-within
+  .menu-item-name
+    font-size: 1.5em
+    width: 100%
+
+  .menu-item-price
+    font-size: 1.5em
+    text-align: right
+    width: 100%
+
+  .action-bar-owner
+    position: relative
+
+    &:focus-within
+      .action-bar
+        visibility: visible
+
     .action-bar
-      visibility: visible
+      display: flex
+      visibility: hidden
+      position: absolute
+      right: 0
+      z-index: 1
+      border-radius: 2px
+      top: 0
+      right: -2em
+      justify-content: space-between
+      // iPhone fix:
+      // If we change the visibility immediately, it won't register clicks on action bar buttons.
+      // I'm assuming that's because the button will be hidden before the touch event is processed.
+      // To workaround that issue, delay the visibility change in 1ms.
+      transition: visibility 1ms
 
-  .action-bar
-    display: flex
-    visibility: hidden
-    position: absolute
-    right: 0
-    z-index: 1
-    border-radius: 2px
-    top: 0
-    right: -2em
-    justify-content: space-between
-    // iPhone fix:
-    // If we change the visibility immediately, it won't register clicks on action bar buttons.
-    // I'm assuming that's because the button will be hidden before the touch event is processed.
-    // To workaround that issue, delay the visibility change in 1ms.
-    transition: visibility 1ms
+      &-delete
+        width: 2em
+        height: 2em
+        cursor: pointer
+        background: none
+        border: none
+        font-size: 1em
+        color: red
 
-    &-delete
-      width: 2em
-      height: 2em
-      cursor: pointer
-      background: none
-      border: none
-      font-size: 1em
-      color: red
-
-.indistinct-input
-  background: none
-  border: none
-  margin: 0
-  padding: 0
-  outline: none
-
-  // Remove Arrows/Spinners - https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button
-    -webkit-appearance: none
-    margin: 0
-  &[type=number]
-    -moz-appearance: textfield
-
-.sortable-ghost
-  opacity: 0.1
-
-*
-  font-family: 'Bebas Neue', sans-serif
+  .sortable-ghost
+    opacity: 0.1

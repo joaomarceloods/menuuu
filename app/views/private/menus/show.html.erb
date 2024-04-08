@@ -1,7 +1,7 @@
 <%= content_for :navigation_bar do %>
   <%= link_to [:private, :menus] do %>
     <span class="material-symbols-sharp">arrow_back</span>
-    Back to menus
+    All menus
   <% end %>
 <% end %>
 
@@ -37,15 +37,15 @@
 
 <div class="menu">
 
-  <%= turbo_frame_tag :edit, class: "menu-content" do %>
+  <%= turbo_frame_tag :edit, class: "main-content" do %>
     <div class="menu-section">
       <%= form_for @menu, url: [:private, @menu], html: { oninput: "this.requestSubmit()" } do |f| %>
-        <%= f.text_field :name, placeholder: "Menu Name", autocomplete: :off, class: "menu-name indistinct-input" %>
+        <%= f.text_field :name, placeholder: "Menu Name", autocomplete: :off, class: "menu-name lite-input large-text" %>
       <% end %>
     </div>
   <% end %>
 
-  <%= tag.div class: "menu-content" do %>
+  <%= tag.div class: "main-content" do %>
     <div class="menu-section">
       <%= button_to \
             "Add section…",
@@ -58,7 +58,7 @@
 
   <%= turbo_frame_tag :list, data: { controller: "sortable-menu-sections" } do %>
     <% @menu.menu_sections.order(:position).each do |menu_section| %>
-      <%= turbo_frame_tag menu_section, class: "menu-content", data: { sortable_menu_sections_update_url: private_menu_section_path(menu_section) } do %>
+      <%= turbo_frame_tag menu_section, class: "main-content", data: { sortable_menu_sections_update_url: private_menu_section_path(menu_section) } do %>
         <div class="menu-section">
           <%= render "private/menu_sections/form", menu_section: menu_section %>
 
