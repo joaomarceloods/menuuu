@@ -1,4 +1,4 @@
-class CreateBusinessWithMenu < ApplicationService
+class BusinessServices::CreateBusinessWithMenu < ApplicationService
 
   MENU_ITEMS_EATS = [
     { name: "Cheese Burger", price: "15" },

@@ -4,7 +4,7 @@ class Private::BusinessesController < Private::ApplicationController
   end
 
   def create
-    @business, menu = CreateBusinessWithMenu.call({ name: "Enter your business name", user: Current.user })
+    @business, menu = BusinessServices::CreateBusinessWithMenu.call(business_params.merge(user: Current.user))
 
     if @business.present? && menu.present?
       redirect_to [:private, menu]
