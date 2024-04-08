@@ -1,16 +1,19 @@
 <%= content_for :navigation_bar do %>
-  <%= button_to "Create new menu", private_menus_path %>
-<% end %>
-<% end %>
-
-<%= turbo_frame_tag @business do %>
-  <%= form_for @business, url: [:private, :business], html: { oninput: "this.requestSubmit()" } do |f| %>
-    <%= f.text_field :name, placeholder: "Business Name", autocomplete: :off %>
+  <%= button_to private_menus_path do %>
+    <span class="material-symbols-sharp">add</span>
+    New menu
   <% end %>
 <% end %>
 
-<ul id="menus">
-  <% @menus.each do |menu| %>
-    <li><%= link_to menu.name, [:private, menu] %></li>
+  <%= turbo_frame_tag @business do %>
+    <%# TODO: validate empty %>
+    <%= form_for @business, url: [:private, :business], html: { oninput: "this.requestSubmit()" } do |f| %>
+      <%= f.text_field :name, placeholder: "Business Name", autocomplete: :off %>
+    <% end %>
   <% end %>
-</ul>
+
+  <ul id="menus">
+    <% @menus.each do |menu| %>
+      <li><%= link_to menu.name, [:private, menu] %></li>
+    <% end %>
+  </ul>

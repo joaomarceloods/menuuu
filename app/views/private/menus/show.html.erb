@@ -1,10 +1,8 @@
 <%= content_for :navigation_bar do %>
-  <%= turbo_frame_tag @menu.business, style: "flex: 1" do %>
-    <%= form_for @menu.business, url: [:private, :business], html: { oninput: "this.requestSubmit()" } do |f| %>
-      <%= f.text_field :name, placeholder: "Business Name", autocomplete: :off, class: "indistinct-input", style: "color: white; font-size: 1em; width: 100%" %>
-    <% end %>
+  <%= link_to [:private, :menus] do %>
+    <span class="material-symbols-sharp">arrow_back</span>
+    Back to menus
   <% end %>
-
 <% end %>
 
 <%= content_for :navigation_menu do %>
