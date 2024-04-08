@@ -40,16 +40,17 @@ class Private::MenusController < Private::ApplicationController
       if @menu.saved_change_to_name?
         # To keep focus on the name input, send an empty response
         format.turbo_stream
-      else
-        if @menu.saved_change_to_published?
-          if @menu.published?
-            flash[:notice] = "Menu was published - #{helpers.link_to('View as customer', public_menu_path(@menu), target: :_blank).html_safe}"
-          else
-            flash[:notice] = "Menu was unpublished"
-          end
-        end
-        format.html { redirect_to private_menu_path(@menu) }
       end
+
+      if @menu.saved_change_to_published?
+        if @menu.published?
+          flash[:notice] = "Menu was published - #{helpers.link_to('View as customer', public_menu_path(@menu), target: :_blank).html_safe}"
+        else
+          flash[:notice] = "Menu was unpublished"
+        end
+      end
+
+      format.html { redirect_to private_menu_path(@menu) }
     end
   end
 
