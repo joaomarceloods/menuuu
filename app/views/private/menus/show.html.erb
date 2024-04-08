@@ -22,7 +22,6 @@
           method: :put,
           params: { menu: { published: 0 } },
           data: { turbo_confirm: "Unpublish this menu? Customers won't be able to view it anymore." } %>
-    <%= link_to "Print QR Code", public_qrcode_path((public_menu_url(@menu))), target: :_blank %>
   <% else %>
     <%= button_to "Publish menu",
           private_menu_path(@menu),
