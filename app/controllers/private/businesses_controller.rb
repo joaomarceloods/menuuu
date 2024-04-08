@@ -14,9 +14,6 @@ class Private::BusinessesController < Private::ApplicationController
   end
 
   def update
-    # The RequireBusiness concern ensures the business exists.
-    @business = Current.user.business
-
     if @business.update(business_params)
       head :ok
     else

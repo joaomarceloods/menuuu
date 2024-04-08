@@ -6,18 +6,15 @@ module RequireBusiness
   end
 
   def require_business
-    if is_new_business_page? && user_has_business?
+    @business = Current.user.business
+    if @business.present? && creating_business?
       redirect_to [:private, :menus]
-    elsif !is_new_business_page? && !user_has_business?
+    elsif @business.blank? && !creating_business?
       redirect_to [:new, :private, :business]
     end
   end
 
-  def user_has_business?
-    Current.user.business.present?
-  end
-
-  def is_new_business_page?
+  def creating_business?
     controller_path == "private/businesses" && action_name.in?(%w[ new create ])
   end
 end

@@ -1,4 +1,4 @@
 class Private::ApplicationController < ApplicationController
   include AuthenticateUser
-  # include RequireBusiness
+  include RequireBusiness
 end
