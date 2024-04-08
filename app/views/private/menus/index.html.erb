@@ -1,11 +1,6 @@
 <%= content_for :navigation_bar do %>
   <%= button_to "Create new menu", private_menus_path %>
 <% end %>
-
-<% if @menus.any? %>
-  <div>
-    <%= render "public/qrcodes/image_link", destination_url: public_business_url(@business) %>
-  </div>
 <% end %>
 
 <%= turbo_frame_tag @business do %>
