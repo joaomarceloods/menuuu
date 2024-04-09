@@ -54,6 +54,21 @@ RSpec.feature "Authentication", type: :feature do
       end
 
       it { is_expected.to have_text("Signed in successfully.") }
+      it { is_expected.to have_text("What's your business' name?") }
+
+      describe "onboarding" do
+        before do
+          fill_in "business_name", with: "My Business"
+          click_button "Next"
+        end
+
+        it { is_expected.to have_field("Menu name", with: "Menu") }
+        it { is_expected.to have_field("Section name", with: "Eats") }
+        it { is_expected.to have_field("Item name", with: "Cheese Burger") }
+        it { is_expected.to have_field("Item name", with: "French Fries") }
+        it { is_expected.to have_field("Section name", with: "Drinks") }
+        it { is_expected.to have_field("Item name", with: "Soda") }
+      end
     end
   end
 end

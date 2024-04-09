@@ -40,7 +40,7 @@
   <%= turbo_frame_tag :edit, class: "main-content" do %>
     <div class="menu-section">
       <%= form_for @menu, url: [:private, @menu], html: { oninput: "this.requestSubmit()" } do |f| %>
-        <%= f.text_field :name, placeholder: "Menu Name", autocomplete: :off, class: "menu-name lite-input large-text" %>
+        <%= f.text_field :name, placeholder: "Menu name", autocomplete: :off, class: "menu-name lite-input large-text" %>
       <% end %>
     </div>
   <% end %>
