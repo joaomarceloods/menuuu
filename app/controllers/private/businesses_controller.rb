@@ -4,10 +4,10 @@ class Private::BusinessesController < Private::ApplicationController
   end
 
   def create
-    @business, menu = BusinessServices::CreateBusinessWithMenu.call(business_params.merge(user: Current.user))
+    @business = BusinessServices::CreateBusinessWithMenu.call(business_params.merge(user_id: Current.user.id))
 
-    if @business.present? && menu.present?
-      redirect_to [:private, menu]
+    if @business.persisted?
+      redirect_to [:private, @business.menus.first]
     else
       render :new
     end

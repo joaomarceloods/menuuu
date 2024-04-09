@@ -9,13 +9,11 @@ class BusinessServices::CreateBusinessWithMenu < ApplicationService
     { name: "Soda", price: "5" },
   ]
 
-  def initialize(business_params)
-    @business_params = business_params
-  end
+  def call(business_params)
+    business = Business.new(business_params)
 
-  def call
     ActiveRecord::Base.transaction do
-      business = Business.create!(@business_params)
+      business.save!
       menu = business.menus.create!(name: "Menu")
 
       menu.menu_sections.create!(name: "Eats").tap do |menu_section|
@@ -25,8 +23,10 @@ class BusinessServices::CreateBusinessWithMenu < ApplicationService
       menu.menu_sections.create!(name: "Drinks").tap do |menu_section|
         menu_section.menu_items.create!(MENU_ITEMS_DRINKS)
       end
-
-      [business, menu]
+    rescue ActiveRecord::RecordInvalid => e
+      Rails.logger.debug e
     end
+
+    return business
   end
 end

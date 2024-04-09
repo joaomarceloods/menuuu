@@ -10,7 +10,9 @@
   <%# set to be initially closed with max-height: 0 %>
   <div class="navigation-menu" data-navigation-target="dropdownMenu" style="max-height: 0px">
     <%= yield :navigation_menu %>
-    <%= link_to "Print QR Code", public_qrcode_path((public_business_url(@business))), target: :_blank %>
+    <% if @business.persisted? %>
+      <%= link_to "Print QR Code", public_qrcode_path((public_business_url(@business))), target: :_blank %>
+    <% end %>
     <%= button_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
   </div>
 </div>
