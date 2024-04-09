@@ -17,6 +17,7 @@ class Private::BusinessesController < Private::ApplicationController
     if @business.update(business_params)
       head :ok
     else
+      # TODO: show error message
       redirect_to [:private, :menus]
     end
   end

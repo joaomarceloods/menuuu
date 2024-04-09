@@ -40,7 +40,7 @@ RSpec.describe "Private::BusinessesControllers", type: :request do
       context "without params" do
         before { post "/private/business", params: { business: { name: '' } } }
         it { is_expected.to have_http_status(:success) }
-        # TODO: assert renders template :new
+        pending { is_expected.to render_template(:new) }
       end
 
       context "with params" do
@@ -67,7 +67,6 @@ RSpec.describe "Private::BusinessesControllers", type: :request do
       context "with business" do
         before { business }
 
-        # TODO: validate presence of name
         context "with empty name" do
           before { patch "/private/business", params: { business: { name: '' } } }
           it { is_expected.to redirect_to("/private/menus") }
