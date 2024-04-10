@@ -128,6 +128,19 @@ RSpec.feature "Private::MenusControllers", type: :feature do
                   expect(page).to have_field("menu_item_price", with: "10.00")
                 end
               end
+
+              describe "deleting item", js: true do
+                before do
+                  find_field("menu_item_name").click
+                  within ".menu-item .action-bar" do
+                    accept_confirm "Remove the empty item permanently?" do
+                      click_button "close"
+                    end
+                  end
+                end
+                it { is_expected.to have_no_field("menu_item_name") }
+                it { is_expected.to have_no_field("menu_item_price") }
+              end
             end
           end
         end
