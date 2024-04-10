@@ -8,8 +8,8 @@
 
 if Rails.env.development?
   ActiveRecord::Base.transaction do
-    user = User.create!(email: "jon@doe", password: "123123")
+    user = User.create!(email: "user@example.com", password: "password")
 
-    CreateBusinessWithMenu.call(user: user, name: "Doe's")
+    BusinessServices::CreateBusinessWithMenu.call(user: user, name: "My Restaurant")
   end
 end

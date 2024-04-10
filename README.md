@@ -1,24 +1,16 @@
-# README
+# Menuuu
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+QR code menu for restaurants.
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+```
+bin/setup
+rails s
+```
 
-* System dependencies
+## Testing
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+rspec
+```
