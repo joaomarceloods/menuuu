@@ -56,6 +56,15 @@ RSpec.describe "Private::MenusControllers", type: :request do
           before { get "/private/menus/#{menu.id}" }
           it { is_expected.to have_http_status(:success) }
         end
+
+        context "with another user's menu" do
+          let!(:another_user) { User.create!(email: "another@example.com", password: "password") }
+          let!(:another_business) { Business.create!(name: "Another Business", user: another_user) }
+          let!(:another_menu) { Menu.create!(name: "Another Menu", business: another_business) }
+          it "raises" do
+            expect { get "/private/menus/#{another_menu.id}" }.to raise_error(ActiveRecord::RecordNotFound)
+          end
+        end
       end
     end
   end
