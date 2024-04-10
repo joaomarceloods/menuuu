@@ -70,7 +70,7 @@ RSpec.feature "Private::MenusControllers", type: :feature do
 
         context "with menu" do
           before { menu }
-          before { visit "/private/menus/#{business.menus.first.id}" }
+          before { visit "/private/menus/#{menu.id}" }
 
           describe "content" do
             it { is_expected.to have_field("Menu name", with: "My Menu") }
@@ -143,8 +143,36 @@ RSpec.feature "Private::MenusControllers", type: :feature do
               end
             end
           end
+
+          context "with section" do
+            let(:section) { MenuSection.create!(name: "My Section", menu: menu) }
+
+            context "with one item" do
+              let(:item) { MenuItem.create!(name: "My Item", price: 10.00, menu_section: section) }
+
+            context "with two items" do
+              let!(:item_1) { MenuItem.create!(name: "Item 1", price: 10.00, menu_section: section) }
+              let!(:item_2) { MenuItem.create!(name: "Item 2", price: 20.00, menu_section: section) }
+
+              describe "item order" do
+                let(:dom_id_1) { "#menu_item_#{item_1.id}" }
+                let(:dom_id_2) { "#menu_item_#{item_2.id}" }
+                before { visit "/private/menus/#{menu.id}" }
+                it { is_expected.to have_selector("#{dom_id_1} + #{dom_id_2}") }
+
+                describe "dragging item 1 before item 2", js: true do
+                  let(:row_1) { find(dom_id_1) }
+                  let(:row_2) { find(dom_id_2) }
+                  before { row_1.drag_to(row_2) }
+                  before { refresh }
+                  it { is_expected.to have_selector("#{dom_id_2} + #{dom_id_1}") }
+                end
+              end
+            end
+          end
         end
       end
     end
   end
+end
 end
