@@ -200,7 +200,10 @@ GEM
     rake (13.2.1)
     rdoc (6.6.3.1)
       psych (>= 4.0.0)
-    redis (4.8.1)
+    redis (5.1.0)
+      redis-client (>= 0.17.0)
+    redis-client (0.21.1)
+      connection_pool
     regexp_parser (2.6.1)
     reline (0.5.1)
       io-console (~> 0.5)
@@ -290,7 +293,7 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.0)
-  redis (~> 4.0)
+  redis (>= 4.0.1)
   rqrcode (~> 2.1)
   rspec-rails (~> 6.1.0)
   sassc-rails
