@@ -46,9 +46,8 @@ RSpec.describe "Private::MenusControllers", type: :request do
         before { business }
 
         context "without menu" do
-          it "raises" do
-            expect { get "/private/menus/1" }.to raise_error(ActiveRecord::RecordNotFound)
-          end
+          before { get "/private/menus/1" }
+          it { is_expected.to have_http_status(:not_found) }
         end
 
         context "with menu" do
@@ -61,9 +60,8 @@ RSpec.describe "Private::MenusControllers", type: :request do
           let!(:another_user) { User.create!(email: "another@example.com", password: "password") }
           let!(:another_business) { Business.create!(name: "Another Business", user: another_user) }
           let!(:another_menu) { Menu.create!(name: "Another Menu", business: another_business) }
-          it "raises" do
-            expect { get "/private/menus/#{another_menu.id}" }.to raise_error(ActiveRecord::RecordNotFound)
-          end
+          before { get "/private/menus/#{another_menu.id}" }
+          it { is_expected.to have_http_status(:not_found) }
         end
       end
     end
@@ -117,18 +115,16 @@ RSpec.describe "Private::MenusControllers", type: :request do
         before { business }
 
         context "without menu" do
-          it "raises" do
-            expect { patch "/private/menus/1" }.to raise_error(ActiveRecord::RecordNotFound)
-          end
+          before { patch "/private/menus/1" }
+          it { is_expected.to have_http_status(:not_found) }
         end
 
         context "with menu" do
           before { menu }
 
           context "without params" do
-            it "raises" do
-              expect { patch "/private/menus/#{menu.id}" }.to raise_error(ActionController::ParameterMissing)
-            end
+            before { patch "/private/menus/#{menu.id}" }
+            it { is_expected.to have_http_status(:bad_request) }
           end
 
           context "with params" do

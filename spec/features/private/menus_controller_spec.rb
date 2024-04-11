@@ -76,9 +76,8 @@ RSpec.feature "Private::MenusControllers", type: :feature do
 
         context "without menu" do
           describe "content" do
-            it "raises" do
-              expect { visit "/private/menus/1" }.to raise_error(ActiveRecord::RecordNotFound)
-            end
+            before { visit "/private/menus/1" }
+            it { is_expected.to have_http_status(:not_found) }
           end
         end
 
