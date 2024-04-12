@@ -35,3 +35,6 @@
 /config/master.key
 
 .tool-versions
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
