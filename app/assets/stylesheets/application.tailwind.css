@@ -2,12 +2,99 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
+@layer base {
+  * {
+    font-family: 'Bebas Neue', sans-serif
+  }
 
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+  turbo-frame {
+    @apply block
+  }
+
+  .main-content {
+    @apply max-w-80 mx-auto px-4 bg-white
+  }
+
+  .hack-mobile-safari-focus {
+    @apply fixed opacity-0 h-0 text-base
+  }
+
+  .material-symbols-sharp {
+    font-size: inherit;
+    vertical-align: middle;
+  }
+
+  a, button {
+    @apply transition-opacity hover:opacity-80
   }
 }
 
-*/
+@layer components {
+  .navigation {
+    @apply sticky top-0 z-10 bg-black text-white px-4 py-2 mb-4;
+  }
+
+  .navigation__bar {
+    @apply flex justify-between items-center
+  }
+
+  .navigation__menu {
+    @apply flex flex-col items-end transition-all overflow-hidden gap-2 max-h-0;
+  }
+
+  .navigation__menu--expanded {
+    @apply max-h-40 py-4
+  }
+
+  .notices {
+    @apply flex justify-between items-center bg-yellow-500 px-4 py-2 gap-4;
+  }
+
+  .actions-container {
+    position: relative
+  }
+
+  .actions-container:focus-within .actions {
+    visibility: visible
+  }
+
+  .actions {
+    visibility: hidden;
+    position: absolute;
+    display: flex;
+    right: 0;
+    z-index: 1;
+    top: 0;
+    right: -2em;
+    justify-content: space-between;
+    /*
+    iPhone fix:
+    If we change the visibility immediately, it won't register clicks on action bar buttons.
+    I'm assuming that's because the button will be hidden before the touch event is processed.
+    To workaround that issue, delay the visibility change in 1ms.
+    */
+    transition: visibility 1ms
+  }
+
+  .actions .material-symbols-sharp {
+    @apply text-xl;
+  }
+
+  .add-button {
+    @apply block mr-0 ml-auto text-xl transition-opacity opacity-20 hover:opacity-100 focus:opacity-100 focus:outline-none;
+  }
+
+  .lite-input {
+    @apply bg-none border-0 m-0 p-0 focus:ring-0 placeholder:text-black placeholder:opacity-20 ;
+  }
+  .lite-input::-webkit-outer-spin-button,
+  .lite-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+  .lite-input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+}

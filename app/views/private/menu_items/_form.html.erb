@@ -1,6 +1,6 @@
 <%= turbo_frame_tag \
       menu_item,
-      class: "menu-item action-bar-owner",
+      class: "actions-container",
       data: {
         controller: "menu-item-form",
         sortable_menu_items_update_url: private_menu_item_path(menu_item)
@@ -9,7 +9,7 @@
   <%= form_with \
         model: menu_item,
         url: private_menu_item_path(menu_item),
-        class: "menu-item-form",
+        class: "flex",
         data: {
           menu_item_form_target: "editForm",
           action: "input->menu-item-form#input keypress.enter->menu-item-form#keypressEnter:prevent keypress.shift+enter->menu-item-form#keypressEnter:prevent",
@@ -20,41 +20,37 @@
     <%= form.hidden_field :menu_section_id %>
     <%= form.hidden_field :position %>
 
-    <div>
-      <%= form.text_field \
-            :name,
-            autocomplete: :off,
-            placeholder: "Item name",
-            title: "Item name",
-            enterkeyhint: :enter,
-            autofocus: menu_item.created_at > 1.second.ago,
-            class: "menu-item-name lite-input" %>
-    </div>
+    <%= form.text_field \
+          :name,
+          autocomplete: :off,
+          placeholder: "Enter item name...",
+          title: "Item name",
+          enterkeyhint: :enter,
+          autofocus: menu_item.created_at > 1.second.ago,
+          class: "lite-input text-xl flex-1" %>
 
-    <div>
-      <%= form.text_field \
-            :price,
-            autocomplete: :off,
-            placeholder: "0",
-            title: "Item price",
-            enterkeyhint: :enter,
-            inputmode: :numeric,
-            class: "menu-item-price lite-input",
-            value: number_to_currency(form.object.price, unit: ''),
-            data: { controller: "currency-input", action: "input->currency-input#handleChange" } %>
-    </div>
+    <%= form.text_field \
+          :price,
+          autocomplete: :off,
+          placeholder: "0",
+          title: "Item price",
+          enterkeyhint: :enter,
+          inputmode: :numeric,
+          class: "lite-input text-xl text-right w-20",
+          value: number_to_currency(form.object.price, unit: ''),
+          data: { controller: "currency-input", action: "input->currency-input#handleChange" } %>
 
   <% end %>
 
   <%= render "private/menu_items/new", menu_section_id: menu_item.menu_section_id, position: menu_item.position + 1 %>
 
-  <div class="action-bar">
+  <div class="actions">
 
     <%= button_to \
           private_menu_item_path(menu_item),
           method: :delete,
           title: "Delete #{menu_item.name}",
-          class: "action-bar-delete",
+          class: "text-red-500",
           data: {
             turbo_frame: :list,
             turbo_confirm: "Remove the #{menu_item.name || "empty"} item permanently?"

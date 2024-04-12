@@ -1,5 +1,5 @@
 <div class="navigation" data-controller="navigation">
-  <div class="navigation-bar">
+  <div class="navigation__bar">
     <%= yield :navigation_bar %>
 
     <button data-navigation-target="dropdownMenuButton" data-action="click->navigation#handleDropdownMenuButtonClick">
@@ -7,8 +7,7 @@
     </button>
   </div>
 
-  <%# set to be initially closed with max-height: 0 %>
-  <div class="navigation-menu" data-navigation-target="dropdownMenu" style="max-height: 0px">
+  <div class="navigation__menu" data-navigation-target="dropdownMenu">
     <%= yield :navigation_menu %>
     <% if @business.persisted? %>
       <%= link_to "Print QR Code", public_qrcode_path((public_business_url(@business))), target: :_blank %>

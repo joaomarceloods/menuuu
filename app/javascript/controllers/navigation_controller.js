@@ -7,14 +7,11 @@ export default class extends Controller {
   ]
 
   handleDropdownMenuButtonClick() {
-    if (this.dropdownMenuTarget.style.maxHeight == "0px") {
-      // open
-      this.dropdownMenuTarget.style.maxHeight = "200px"
-      this.dropdownMenuButtonTarget.children[0].innerText = "close"
-    } else {
-      // close
-      this.dropdownMenuTarget.style.maxHeight = "0px"
-      this.dropdownMenuButtonTarget.children[0].innerText = "menu"
-    }
+    const expandedClass = "navigation__menu--expanded"
+    this.dropdownMenuTarget.classList.toggle(expandedClass)
+    this.dropdownMenuButtonTarget.children[0].innerText =
+      this.dropdownMenuTarget.classList.contains(expandedClass)
+        ? "close"
+        : "menu"
   }
 }

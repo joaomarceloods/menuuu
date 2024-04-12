@@ -1,10 +1,11 @@
 <%= tag.div \
-      class: "action-bar-owner",
+      class: "actions-container",
       data: { controller: "menu-item-form" } do %>
 
   <%= form_with \
         model: menu_section,
         url: private_menu_section_path(menu_section),
+        class: "flex",
         data: {
           menu_item_form_target: "editForm",
           action: "input->menu-item-form#input keypress.enter->menu-item-form#keypressEnter:prevent keypress.shift+enter->menu-item-form#keypressEnter:prevent",
@@ -17,20 +18,20 @@
     <%= form.text_field \
           :name,
           autocomplete: :off,
-          placeholder: "Section name",
+          placeholder: "Enter section name...",
           enterkeyhint: :enter,
           autofocus: menu_section.created_at > 1.second.ago,
-          class: "menu-section-name lite-input" %>
+          class: "lite-input text-3xl flex-1" %>
   <% end %>
 
   <%= render "private/menu_items/new", menu_section_id: menu_section.id, position: 1 %>
 
-  <div class="action-bar">
+  <div class="actions">
     <%= button_to \
           private_menu_section_path(menu_section),
           method: :delete,
           title: "Delete",
-          class: "action-bar-delete",
+          class: "text-red-500",
           data: {
             turbo_frame: :list,
             turbo_confirm: "Remove the #{menu_section.name || "empty"} section permanently? Items under this section will also be removed."

@@ -9,17 +9,18 @@
   <%= turbo_frame_tag @business do %>
     <%# TODO: validate empty %>
     <%= form_for @business, url: [:private, :business], html: { oninput: "this.requestSubmit()" } do |f| %>
-      <%= f.text_field :name, placeholder: "Business Name", autocomplete: :off, class: "lite-input large-text" %>
+      <%= f.text_field :name, placeholder: "Business Name", autocomplete: :off, class: "lite-input text-5xl w-full" %>
     <% end %>
   <% end %>
 
-  <ul id="menus">
+  <ul class="pb-4">
     <% @menus.each do |menu| %>
-      <li class="small-text"><%= link_to menu.name, [:private, menu] %></li>
+      <li class="text-2xl"><%= link_to menu.name, [:private, menu] %></li>
     <% end %>
     <li>
-      <%= button_to private_menus_path, class: "button" do %>
-        New menu…
+      <%= button_to private_menus_path, class: "text-2xl add-button" do %>
+        <span class="material-symbols-sharp">add</span>
+        New menu
       <% end %>
     </li>
   </ul>
