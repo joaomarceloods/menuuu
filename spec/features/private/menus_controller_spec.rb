@@ -32,10 +32,10 @@ RSpec.feature "Private::MenusControllers", type: :feature do
         end
 
         describe "add menu" do
-          before { click_button "New menu…" }
+          before { click_button "New menu", match: :first }
           it { is_expected.to have_text("Menu was successfully created.") }
           it { is_expected.to have_field("Menu name", with: "Menu") }
-          it { is_expected.to have_button("Add section…") }
+          it { is_expected.to have_button("New section") }
         end
 
         describe "print qr code" do
@@ -88,8 +88,8 @@ RSpec.feature "Private::MenusControllers", type: :feature do
             describe "content" do
               before { visit path }
               it { is_expected.to have_field("Menu name", with: "My Menu") }
-              it { is_expected.to have_no_field("Section name") }
-              it { is_expected.to have_no_button("Add item…") }
+              it { is_expected.to have_no_field("Enter section name…") }
+              it { is_expected.to have_no_button("New item…") }
             end
 
             describe "renaming menu", js: true do
@@ -101,9 +101,9 @@ RSpec.feature "Private::MenusControllers", type: :feature do
 
             describe "adding section" do
               before { visit path }
-              before { click_button "Add section…" }
-              it { is_expected.to have_field("Section name", count: 1) }
-              it { is_expected.to have_button("Add item", count: 1) }
+              before { click_button "New section" }
+              it { is_expected.to have_field("Enter section name…", count: 1) }
+              it { is_expected.to have_button("New item", count: 1) }
             end
           end
 
@@ -112,16 +112,16 @@ RSpec.feature "Private::MenusControllers", type: :feature do
 
             describe "updating section", js: true do
               before { visit path }
-              before { fill_in "Section name", with: "New section name" }
+              before { fill_in "Enter section name…", with: "New section name" }
               before { sleep 0.5 }
               before { refresh }
-              it { is_expected.to have_field("Section name", with: "New section name") }
+              it { is_expected.to have_field("Enter section name…", with: "New section name") }
             end
 
             describe "adding another section" do
               before { visit path }
-              before { click_button "Add section…", match: :first }
-              it { is_expected.to have_field("Section name", count: 2) }
+              before { click_button "New section", match: :first }
+              it { is_expected.to have_field("Enter section name…", count: 2) }
             end
 
             context "without item" do
@@ -132,7 +132,7 @@ RSpec.feature "Private::MenusControllers", type: :feature do
               end
 
               describe "adding item", js: true do
-                before { click_button "Add item" }
+                before { click_button "New item" }
                 it { is_expected.to have_field("menu_item_name", count: 1) }
               end
             end
@@ -156,7 +156,7 @@ RSpec.feature "Private::MenusControllers", type: :feature do
               describe "deleting item", js: true do
                 before do
                   find_field("menu_item_name").click
-                  within ".menu-item .action-bar" do
+                  within ".actions" do
                     accept_confirm "Remove the My Item item permanently?" do
                       click_button "close"
                     end

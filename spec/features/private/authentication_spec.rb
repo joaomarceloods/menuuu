@@ -62,12 +62,13 @@ RSpec.feature "Authentication", type: :feature do
           click_button "Next"
         end
 
-        it { is_expected.to have_field("Menu name", with: "Menu") }
-        it { is_expected.to have_field("Section name", with: "Eats") }
-        it { is_expected.to have_field("Item name", with: "Cheese Burger") }
-        it { is_expected.to have_field("Item name", with: "French Fries") }
-        it { is_expected.to have_field("Section name", with: "Drinks") }
-        it { is_expected.to have_field("Item name", with: "Soda") }
+        it { is_expected.to have_field("Menu name", with: "My First Menu") }
+        it { is_expected.to have_field("Enter section name…", with: "Some Tips For You (edit me)") }
+        it { is_expected.to have_field("Enter item name…", with: "Rename this item") }
+        it { is_expected.to have_field("Enter item name…", with: "Change price --->") }
+        it { is_expected.to have_field("Enter item name…", with: "Rename the menu") }
+        it { is_expected.to have_field("Enter item name…", with: "Rename the section above") }
+        it { is_expected.to have_field("Enter item name…", with: "Drag items & sections around") }
       end
     end
   end
