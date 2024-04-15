@@ -51,27 +51,20 @@
   }
 
   .actions-container {
-    position: relative
+    @apply relative
   }
 
   .actions-container:focus-within .actions {
-    visibility: visible
+    @apply invisible
   }
 
   .actions {
-    visibility: hidden;
-    position: absolute;
-    display: flex;
-    right: 0;
-    z-index: 1;
-    top: 0;
-    right: -2em;
-    justify-content: space-between;
+    @apply invisible absolute flex z-10 top-0 -right-8 justify-between;
     /*
     iPhone fix:
-    If we change the visibility immediately, it won't register clicks on action bar buttons.
-    I'm assuming that's because the button will be hidden before the touch event is processed.
-    To workaround that issue, delay the visibility change in 1ms.
+    If the action bar changes visibility immediately, it won't register clicks on action bar buttons.
+    I think that's because the button hides before the touch event is detected.
+    To workaround that issue, delay hiding by 1ms.
     */
     transition: visibility 1ms
   }
@@ -85,16 +78,13 @@
   }
 
   .lite-input {
-    @apply bg-none border-0 m-0 p-0 focus:ring-0 placeholder:text-black placeholder:opacity-20 ;
+    @apply bg-none border-0 m-0 p-0 focus:ring-0 placeholder:text-black placeholder:opacity-20;
   }
   .lite-input::-webkit-outer-spin-button,
   .lite-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    appearance: none;
-    margin: 0;
+    @apply appearance-none m-0;
   }
   .lite-input[type=number] {
-    -moz-appearance: textfield;
-    appearance: textfield;
+    @apply appearance-textfield;
   }
 }
