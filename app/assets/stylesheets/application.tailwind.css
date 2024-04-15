@@ -15,6 +15,7 @@
     @apply max-w-80 mx-auto px-4 bg-white
   }
 
+  /* See app/javascript/controllers/menu_item_form_controller.js */
   .hack-mobile-safari-focus {
     @apply fixed opacity-0 h-0 text-base
   }
