@@ -21,8 +21,7 @@
   }
 
   .material-symbols-sharp {
-    font-size: inherit;
-    vertical-align: middle;
+    @apply text-inherit align-middle
   }
 
   a, button {
