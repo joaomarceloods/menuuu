@@ -62,7 +62,7 @@ RSpec.feature "Authentication", type: :feature do
           click_button "Next"
         end
 
-        it { is_expected.to have_field("Menu name", with: "My First Menu") }
+        it { is_expected.to have_field("Menu name", with: "My Menu (edit me)") }
         it { is_expected.to have_field("Enter section name…", with: "Some Tips For You (edit me)") }
         it { is_expected.to have_field("Enter item name…", with: "Rename this item") }
         it { is_expected.to have_field("Enter item name…", with: "Change price --->") }

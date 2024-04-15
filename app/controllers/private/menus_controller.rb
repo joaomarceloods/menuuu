@@ -22,7 +22,7 @@ class Private::MenusController < Private::ApplicationController
 
   # POST /menus
   def create
-    @menu = Current.user.menus.build(name: "Menu")
+    @menu = Menu::BuildDefault.call(business: Current.user.business)
 
     if @menu.save
       redirect_to [:private, @menu], notice: "Menu was successfully created."
