@@ -25,7 +25,7 @@ class Private::MenusController < Private::ApplicationController
     @menu = Menu::BuildDefault.call(business: Current.user.business)
 
     if @menu.save
-      redirect_to [:private, @menu], notice: "Menu was successfully created."
+      redirect_to [:private, @menu]
     else
       redirect_to [:private, :menus], notice: "Failed to create a new menu. Try again later."
     end
