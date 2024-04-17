@@ -12,7 +12,7 @@
   }
 
   .main-content {
-    @apply max-w-80 mx-auto px-4 bg-white
+    @apply max-w-80 mx-auto px-4
   }
 
   /* See app/javascript/controllers/menu_item_form_controller.js */
