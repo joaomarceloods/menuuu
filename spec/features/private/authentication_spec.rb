@@ -67,10 +67,11 @@ RSpec.feature "Authentication", type: :feature do
           expect(subject).to have_field("Enter section name…", with: "This is a section")
           expect(page.all('input#menu_item_name').map(&:value)).to eq([
             "Rename this item",
-            "Set item's price →",
-            "Change the section title",
-            "Rename the menu",
+            "Rename the section",
+            "Rename the menu at the top",
             "Drag items & sections around",
+            "You can delete sections",
+            "Set price on the right",
           ])
         end
       end
