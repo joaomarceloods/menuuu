@@ -6,14 +6,14 @@
 
   <% @menu.publicly_visible_menu_sections.order(:position).each do |menu_section| %>
     <section>
-      <h2 class="text-3xl mb-2">
+      <h2 class="text-3xl">
         <%= menu_section.name %>
       </h2>
 
       <ul class="mb-6">
         <% menu_section.publicly_visible_menu_items.order(:position).each do |menu_item| %>
           <li class="flex justify-between">
-            <div class="text-lg">
+            <div class="text-xl">
               <%= menu_item.name %>
             </div>
 
