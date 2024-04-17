@@ -11,7 +11,7 @@
   <div class="navigation__menu" data-navigation-target="dropdownMenu">
     <%= yield :navigation_menu %>
     <% if @business.persisted? %>
-      <%= link_to "Print QR Code", public_qrcode_path((public_business_url(@business))), target: :_blank %>
+      <%= link_to "Print QR Code", public_qrcode_path((public_business_url(@business))) %>
     <% end %>
     <%= button_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
   </div>
