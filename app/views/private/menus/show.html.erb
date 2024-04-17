@@ -6,29 +6,7 @@
 <% end %>
 
 <%= content_for :navigation_menu do %>
-  <% if @menu.published? %>
-    <%= link_to public_menu_path(@menu), target: :_blank do %>
-      <span class="material-symbols-sharp">open_in_new</span>
-      &nbsp;
-       View as customer
-    <% end %>
-  <% end %>
-
-  <% if @menu.published? %>
-    <%= button_to "Unpublish menu",
-          private_menu_path(@menu),
-          method: :put,
-          params: { menu: { published: 0 } },
-          data: { turbo_confirm: "Unpublish this menu? Customers won't be able to view it anymore." } %>
-  <% else %>
-    <%= button_to "Publish menu",
-          private_menu_path(@menu),
-          method: :put,
-          params: { menu: { published: 1 } },
-          data: { turbo_confirm: "Publish this menu? It will become visible to customers." } %>
-  <% end %>
-
-  <%#= button_to "Delete menu",
+  <%= button_to "Delete menu",
         private_menu_path(@menu),
         method: :delete,
         data: { turbo_confirm: "Delete this menu? Once deleted, it can't be restored. If you just want to hide it from customers, you can unpublish instead." } %>
