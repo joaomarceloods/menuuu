@@ -33,7 +33,7 @@ RSpec.feature "Private::MenusControllers", type: :feature do
 
         describe "add menu" do
           before { click_button "New menu", match: :first }
-          it { is_expected.to have_field("Menu name", with: "New Menu (rename)") }
+          it { is_expected.to have_field("Menu name", with: "New Menu (edit)") }
           it { is_expected.to have_button("New section") }
         end
 

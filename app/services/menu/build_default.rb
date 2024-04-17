@@ -1,6 +1,6 @@
 class Menu::BuildDefault < ApplicationService
   def call(menu_params)
-    Menu.new(menu_params.merge(name: "New Menu (rename)")).tap do |menu|
+    Menu.new(menu_params.merge(name: "New Menu (edit)")).tap do |menu|
       menu.menu_sections.build(menu:, name: "This is a section").tap do |menu_section|
         menu_section.menu_items.build([
           { menu_section:, name: "Rename this item" },
