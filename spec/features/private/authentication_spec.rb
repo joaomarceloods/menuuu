@@ -63,11 +63,11 @@ RSpec.feature "Authentication", type: :feature do
         end
 
         it "has fields" do
-          expect(subject).to have_field("Menu name", with: "My Menu")
-          expect(subject).to have_field("Enter section name…", with: "Tips Section")
+          expect(subject).to have_field("Menu name", with: "New Menu (rename)")
+          expect(subject).to have_field("Enter section name…", with: "This is a section")
           expect(page.all('input#menu_item_name').map(&:value)).to eq([
             "Rename this item",
-            "Change price --->",
+            "Set item's price →",
             "Change the section title",
             "Rename the menu",
             "Drag items & sections around",
