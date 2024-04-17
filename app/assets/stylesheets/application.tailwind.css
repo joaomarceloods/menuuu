@@ -85,6 +85,6 @@
     @apply appearance-none m-0;
   }
   .lite-input[type=number] {
-    @apply appearance-textfield;
+    appearance: textfield;
   }
 }

@@ -9,9 +9,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      appearence: {
-        textfield: 'textfield',
-      },
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
