@@ -1,9 +1,14 @@
-<h1>Welcome!</h1>
+<div class="main-content">
+  <h1 class="text-5xl py-4">Welcome!</h1>
 
-<p>What's your business' name?</p>
 
-<%= form_for @business, url: [:private, :business] do |f| %>
-  <%= f.text_field :name, placeholder: "My Business" %>
+  <%= form_for @business, url: [:private, :business] do |f| %>
+    <%= f.label :name, "What's your business' name?", class: "text-2xl" %>
+    <%= f.text_field :name, placeholder: "My Business", class: "w-full text-2xl" %>
 
-  <%= f.submit "Next" %>
-<% end %>
+    <%= button_tag class: "float-right text-2xl" do %>
+      Next
+      <span class="material-symbols-sharp">arrow_right_alt</span>
+    <% end %>
+  <% end %>
+</div>
