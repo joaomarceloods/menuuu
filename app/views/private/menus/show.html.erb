@@ -35,61 +35,57 @@
 
 <% end %>
 
-<div class="menu">
+<%= turbo_frame_tag :edit, class: "main-content" do %>
+  <div class="mb-4">
+    <%= form_for @menu, url: [:private, @menu], html: { oninput: "this.requestSubmit()" } do |f| %>
+      <%= f.text_field :name, placeholder: "Menu name", autocomplete: :off, class: "menu-name lite-input text-5xl" %>
+    <% end %>
+  </div>
+<% end %>
 
-  <%= turbo_frame_tag :edit, class: "main-content" do %>
-    <div class="mb-4">
-      <%= form_for @menu, url: [:private, @menu], html: { oninput: "this.requestSubmit()" } do |f| %>
-        <%= f.text_field :name, placeholder: "Menu name", autocomplete: :off, class: "menu-name lite-input text-5xl" %>
-      <% end %>
-    </div>
-  <% end %>
+<%= tag.div class: "main-content" do %>
+  <div class="mb-4">
+    <%= button_to \
+          private_menu_sections_path,
+          class: "add-button",
+          data: { turbo_frame: :list },
+          params: { menu_section: { menu_id: @menu.id, position: 1 } } do %>
+      <span class="material-symbols-sharp">add</span>
+      New section
+    <% end %>
+  </div>
+<% end %>
 
-  <%= tag.div class: "main-content" do %>
-    <div class="mb-4">
-      <%= button_to \
-            private_menu_sections_path,
-            class: "add-button",
-            data: { turbo_frame: :list },
-            params: { menu_section: { menu_id: @menu.id, position: 1 } } do %>
-        <span class="material-symbols-sharp">add</span>
-        New section
-      <% end %>
-    </div>
-  <% end %>
+<%= turbo_frame_tag :list, data: { controller: "sortable-menu-sections" } do %>
+  <% @menu.menu_sections.order(:position).each do |menu_section| %>
+    <%= turbo_frame_tag menu_section, class: "main-content", data: { sortable_menu_sections_update_url: private_menu_section_path(menu_section) } do %>
+      <div class="mb-4">
+        <%= render "private/menu_sections/form", menu_section: menu_section %>
 
-  <%= turbo_frame_tag :list, data: { controller: "sortable-menu-sections" } do %>
-    <% @menu.menu_sections.order(:position).each do |menu_section| %>
-      <%= turbo_frame_tag menu_section, class: "main-content", data: { sortable_menu_sections_update_url: private_menu_section_path(menu_section) } do %>
-        <div class="mb-4">
-          <%= render "private/menu_sections/form", menu_section: menu_section %>
-
-          <%= tag.div data: { controller: "sortable-menu-items", sortable_menu_items_menu_section_id: menu_section.id } do %>
-            <% menu_section.menu_items.order(:position).each do |menu_item| %>
-              <%= render "private/menu_items/form", menu_item: menu_item %>
-            <% end %>
+        <%= tag.div data: { controller: "sortable-menu-items", sortable_menu_items_menu_section_id: menu_section.id } do %>
+          <% menu_section.menu_items.order(:position).each do |menu_item| %>
+            <%= render "private/menu_items/form", menu_item: menu_item %>
           <% end %>
+        <% end %>
 
-          <%= button_to \
-                private_menu_items_path,
-                class: "add-button",
-                data: { turbo_frame: :list },
-                params: { menu_item: { menu_section_id: menu_section.id, position: menu_section.menu_items.count + 1 } } do %>
-              <span class="material-symbols-sharp">add</span>
-              New item
-          <% end %>
-
-          <%= button_to \
-                private_menu_sections_path,
-                class: "add-button",
-                data: { turbo_frame: :list },
-                params: { menu_section: { menu_id: @menu.id, position: menu_section.position + 1 } } do %>
+        <%= button_to \
+              private_menu_items_path,
+              class: "add-button",
+              data: { turbo_frame: :list },
+              params: { menu_item: { menu_section_id: menu_section.id, position: menu_section.menu_items.count + 1 } } do %>
             <span class="material-symbols-sharp">add</span>
-            New section
-          <% end %>
-        </div>
-      <% end %>
+            New item
+        <% end %>
+
+        <%= button_to \
+              private_menu_sections_path,
+              class: "add-button",
+              data: { turbo_frame: :list },
+              params: { menu_section: { menu_id: @menu.id, position: menu_section.position + 1 } } do %>
+          <span class="material-symbols-sharp">add</span>
+          New section
+        <% end %>
+      </div>
     <% end %>
   <% end %>
-
-</div>
+<% end %>
