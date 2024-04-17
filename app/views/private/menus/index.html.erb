@@ -9,13 +9,22 @@
   <%= turbo_frame_tag @business do %>
     <%# TODO: validate empty %>
     <%= form_for @business, url: [:private, :business], html: { oninput: "this.requestSubmit()" } do |f| %>
-      <%= f.text_field :name, placeholder: "Business Name", autocomplete: :off, class: "lite-input text-5xl w-full" %>
+      <%= f.text_field :name, placeholder: "Business Name", autocomplete: :off, class: "lite-input text-5xl w-full mb-4" %>
     <% end %>
   <% end %>
 
   <ul class="pb-4">
     <% @menus.each do |menu| %>
-      <li class="text-2xl"><%= link_to menu.name, [:private, menu] %></li>
+      <li class="text-2xl flex justify-between">
+        <%= link_to menu.name, [:private, menu] %>
+        <%= link_to [:private, menu] do %>
+          <% if menu.published? %>
+            <span class="material-symbols-sharp text-green-600" title="Published">visibility</span>
+          <% else %>
+            <span class="material-symbols-sharp text-yellow-600" title="Not published">visibility_off</span>
+          <% end %>
+        <% end %>
+      </li>
     <% end %>
     <li>
       <%= button_to private_menus_path, class: "text-2xl add-button" do %>

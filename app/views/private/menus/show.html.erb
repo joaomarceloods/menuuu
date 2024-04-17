@@ -52,7 +52,7 @@
 
 <% if @menu.published? %>
     <div class="main-content text-green-600 text-center my-4">
-      <%= link_to public_qrcode_path((public_business_url(@menu.business))), title: "Print QR Code" do %>
+      <%= link_to public_qrcode_path((public_business_url(@menu.business))) do %>
         <span class="material-symbols-sharp">qr_code</span>
         &nbsp;
         Print QR Code and display in your restaurant
