@@ -9,7 +9,7 @@ class MenuSection < ApplicationRecord
   has_many :menu_items, dependent: :destroy
 
   has_many :publicly_visible_menu_items,
-            -> { where.not(price: nil).where.not("TRIM(name) = ''") },
+            -> { where.not("TRIM(name) = ''") },
             class_name: "MenuItem"
 
   acts_as_list scope: :menu

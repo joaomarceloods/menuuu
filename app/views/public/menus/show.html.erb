@@ -1,33 +1,28 @@
-<div class="menu">
+<main class="main-content">
 
-  <div class="main-content">
-    <div class="menu-section">
-      <div class="menu-name">
-        <%= @menu.name %>
-      </div>
-    </div>
-  </div>
+  <h1 class="text-5xl my-8">
+    <%= @menu.name %>
+  </h1>
 
   <% @menu.publicly_visible_menu_sections.order(:position).each do |menu_section| %>
-    <div class="main-content">
-      <div class="menu-section">
+    <section>
+      <h2 class="text-3xl mb-2">
+        <%= menu_section.name %>
+      </h2>
 
-        <div class="menu-section-name">
-          <%= menu_section.name %>
-        </div>
-
+      <ul class="mb-6">
         <% menu_section.publicly_visible_menu_items.order(:position).each do |menu_item| %>
-          <div class="menu-item-form">
-            <div class="menu-item-name">
+          <li class="flex justify-between">
+            <div class="text-lg">
               <%= menu_item.name %>
             </div>
-            <div class="menu-item-price">
-              <%= number_to_currency(menu_item.price) %>
-            </div>
-          </div>
-        <% end %>
 
-      </div>
-    </div>
+            <% if menu_item.price.present? %>
+              <%= number_to_currency(menu_item.price) %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </section>
   <% end %>
 </div>
