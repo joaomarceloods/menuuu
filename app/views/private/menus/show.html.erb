@@ -83,11 +83,11 @@
 
 <%= turbo_frame_tag :list, data: { controller: "sortable-menu-sections" } do %>
   <% @menu.menu_sections.order(:position).each do |menu_section| %>
-    <%= turbo_frame_tag menu_section, class: "main-content", data: { sortable_menu_sections_update_url: private_menu_section_path(menu_section) } do %>
-      <div class="mb-4">
+    <%= turbo_frame_tag menu_section, class: "main-content py-2", data: { sortable_menu_sections_update_url: private_menu_section_path(menu_section) } do %>
+      <div>
         <%= render "private/menu_sections/form", menu_section: menu_section %>
 
-        <%= tag.div data: { controller: "sortable-menu-items", sortable_menu_items_menu_section_id: menu_section.id } do %>
+        <%= tag.div class: "mb-4", data: { controller: "sortable-menu-items", sortable_menu_items_menu_section_id: menu_section.id } do %>
           <% menu_section.menu_items.order(:position).each do |menu_item| %>
             <%= render "private/menu_items/form", menu_item: menu_item %>
           <% end %>
