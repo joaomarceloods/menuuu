@@ -42,14 +42,6 @@ class Private::MenusController < Private::ApplicationController
         format.turbo_stream
       end
 
-      if @menu.saved_change_to_published?
-        if @menu.published?
-          flash[:notice] = "Menu was published - #{helpers.link_to('View as customer', public_menu_path(@menu), target: :_blank).html_safe}"
-        else
-          flash[:notice] = "Menu was unpublished"
-        end
-      end
-
       format.html { redirect_to private_menu_path(@menu) }
     end
   end

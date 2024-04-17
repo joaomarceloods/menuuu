@@ -35,6 +35,53 @@
 
 <% end %>
 
+<% if @menu.published? %>
+  <div class="main-content bg-green-100 p-4 my-4">
+    <div class="flex justify-between">
+      <div title="Visible to customers">
+        <span class="material-symbols-sharp">visibility</span>
+        &nbsp;
+        Published
+      </div>
+      <div class="flex gap-4 text-green-600">
+        <%= link_to "View", public_menu_path(@menu) %>
+        <%= button_to "Unpublish",
+            private_menu_path(@menu),
+            method: :put,
+            params: { menu: { published: 0 } },
+            data: { turbo_confirm: "Unpublish this menu? Customers won't be able to view it anymore." } %>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="main-content bg-yellow-100 p-4 my-4">
+    <div class="flex justify-between">
+      <div title="Customers can't access this menu">
+        <span class="material-symbols-sharp">visibility_off</span>
+        &nbsp;
+        Unpublished
+      </div>
+      <div class="flex gap-4 text-yellow-600">
+        <%= button_to "Publish menu",
+            private_menu_path(@menu),
+            method: :put,
+            params: { menu: { published: 1 } },
+            data: { turbo_confirm: "Publish this menu? It will become visible to customers." } %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% if @menu.published? %>
+    <div class="main-content text-green-600 text-center my-4">
+      <%= link_to public_qrcode_path((public_business_url(@menu.business))), title: "Print QR Code" do %>
+        <span class="material-symbols-sharp">qr_code</span>
+        &nbsp;
+        Print QR Code and display in your restaurant
+      <% end %>
+    </div>
+<% end %>
+
 <%= turbo_frame_tag :edit, class: "main-content" do %>
   <div class="mb-4">
     <%= form_for @menu, url: [:private, @menu], html: { oninput: "this.requestSubmit()" } do |f| %>
