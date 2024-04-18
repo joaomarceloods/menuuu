@@ -1,14 +1,25 @@
 <main class="main-content">
 
-  <h1 class="text-5xl my-8">
+  <h1 class="text-5xl mt-8">
     <%= @menu.name %>
   </h1>
 
+  <nav class="sticky top-0 bg-white">
+    <ul class="flex items-center gap-2 overflow-x-auto py-2 mb-6">
+      <% @menu.publicly_visible_menu_sections.order(:position).each_with_index do |menu_section, index| %>
+        <li>
+          <%= link_to "##{dom_id(menu_section)}", class: "text-nowrap whitespace-nowrap" do %>
+            <%= tag.span "·", class: "mr-2" if index > 0 %>
+            <%= menu_section.name %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+
   <% @menu.publicly_visible_menu_sections.order(:position).each do |menu_section| %>
-    <section>
-      <h2 class="text-3xl">
-        <%= menu_section.name %>
-      </h2>
+    <%= tag.section id: dom_id(menu_section), class: "scroll-mt-12" do %>
+      <%= tag.h2 menu_section.name, class: "text-3xl" %>
 
       <ul class="mb-6">
         <% menu_section.publicly_visible_menu_items.order(:position).each do |menu_item| %>
@@ -23,6 +34,6 @@
           </li>
         <% end %>
       </ul>
-    </section>
+    <% end %>
   <% end %>
 </div>
