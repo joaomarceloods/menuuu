@@ -4,7 +4,7 @@ class MenuSection < ApplicationRecord
     if Current.user.present?
       joins(:business).merge(Business.where(user: Current.user))
     end
-  }
+  }, touch: true
 
   has_many :menu_items, dependent: :destroy
 
