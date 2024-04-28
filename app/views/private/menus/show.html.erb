@@ -93,23 +93,25 @@
           <% end %>
         <% end %>
 
-        <%= button_to \
-              private_menu_items_path,
-              class: "add-button",
-              data: { turbo_frame: :list },
-              params: { menu_item: { menu_section_id: menu_section.id, position: menu_section.menu_items.count + 1 } } do %>
-            <span class="material-symbols-sharp">add</span>
-            New item
-        <% end %>
+        <div class="flex justify-between gap-4">
+          <%= button_to \
+                private_menu_items_path,
+                class: "add-button",
+                data: { turbo_frame: :list },
+                params: { menu_item: { menu_section_id: menu_section.id, position: menu_section.menu_items.count + 1 } } do %>
+              <span class="material-symbols-sharp">add</span>
+              New item
+          <% end %>
 
-        <%= button_to \
-              private_menu_sections_path,
-              class: "add-button",
-              data: { turbo_frame: :list },
-              params: { menu_section: { menu_id: @menu.id, position: menu_section.position + 1 } } do %>
-          <span class="material-symbols-sharp">add</span>
-          New section
-        <% end %>
+          <%= button_to \
+                private_menu_sections_path,
+                class: "add-button",
+                data: { turbo_frame: :list },
+                params: { menu_section: { menu_id: @menu.id, position: menu_section.position + 1 } } do %>
+            <span class="material-symbols-sharp">add</span>
+            New section
+          <% end %>
+        </div>
       </div>
     <% end %>
   <% end %>
