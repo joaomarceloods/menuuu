@@ -83,4 +83,12 @@
   .lite-input[type=number] {
     appearance: textfield;
   }
+
+  .saving-indicator {
+    @apply absolute bottom-4 right-4 text-green-500 text-3xl rounded-full bg-white hidden;
+  }
+
+  [aria-busy] .saving-indicator {
+    @apply block;
+  }
 }
