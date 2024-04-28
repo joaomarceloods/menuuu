@@ -1,18 +1,20 @@
 <div class="navigation" data-controller="navigation">
-  <div class="navigation__bar">
-    <%= yield :navigation_bar %>
-    <div><%# Empty div to push the menu icon to the right in case `yield :navigation_bar` is nil %></div>
+  <div class="main-content">
+    <div class="navigation__bar">
+      <%= yield :navigation_bar %>
+      <div><%# Empty div to push the menu icon to the right in case `yield :navigation_bar` is nil %></div>
 
-    <button data-navigation-target="dropdownMenuButton" data-action="click->navigation#handleDropdownMenuButtonClick">
-      <span class="material-symbols-sharp">menu</span>
-    </button>
-  </div>
+      <button data-navigation-target="dropdownMenuButton" data-action="click->navigation#handleDropdownMenuButtonClick">
+        <span class="material-symbols-sharp">menu</span>
+      </button>
+    </div>
 
-  <div class="navigation__menu" data-navigation-target="dropdownMenu">
-    <%= yield :navigation_menu %>
-    <% if @business.persisted? %>
-      <%= link_to "Print QR Code", public_qrcode_path((public_business_url(@business))) %>
-    <% end %>
-    <%= button_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
+    <div class="navigation__menu" data-navigation-target="dropdownMenu">
+      <%= yield :navigation_menu %>
+      <% if @business.persisted? %>
+        <%= link_to "Print QR Code", public_qrcode_path((public_business_url(@business))) %>
+      <% end %>
+      <%= button_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
+    </div>
   </div>
 </div>
