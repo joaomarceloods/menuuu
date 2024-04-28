@@ -9,9 +9,8 @@ export default class extends Controller {
   #configureSortable() {
     this.sortable = new Sortable.create(this.element, {
       group: "menu_items",
+      handle: ".actions__item--handle",
       animation: 150,
-      delay: 500,
-      delayOnTouchOnly: true,
       onEnd: this.#handleDragEnd.bind(this),
     })
   }

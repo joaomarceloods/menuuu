@@ -51,11 +51,11 @@
   }
 
   .group\/actions {
-    @apply relative
+    @apply relative -mx-12 px-12
   }
 
   .actions {
-    @apply invisible group-focus-within/actions:visible absolute top-0 flex justify-end items-center h-full w-[calc(100%+6rem)] -mx-12 z-10;
+    @apply invisible group-focus-within/actions:visible absolute top-0 flex justify-between items-center h-full w-full -mx-12 z-10;
     /*
     iPhone fix:
     If the action bar changes visibility immediately, it won't register clicks on action bar buttons.
@@ -65,8 +65,20 @@
     transition: visibility 1ms
   }
 
-  .actions button {
-    @apply text-xl w-12;
+  .sortable-chosen .actions {
+    @apply visible
+  }
+
+  .actions__item {
+    @apply text-xl w-12 text-center;
+  }
+
+  .actions__item--handle {
+    @apply cursor-grab
+  }
+
+  .sortable-chosen .actions__item--handle {
+    @apply cursor-grabbing
   }
 
   .add-button {

@@ -14,6 +14,9 @@ module.exports = {
       },
       fontSize: {
         inherit: 'inherit',
+      },
+      margin: {
+        '120': '30rem',
       }
     },
   },
