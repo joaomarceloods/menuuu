@@ -27,7 +27,7 @@
           title: "Item name",
           enterkeyhint: :enter,
           autofocus: menu_item.created_at > 1.second.ago,
-          class: "lite-input text-xl flex-1" %>
+          class: "lite-input text-xl min-w-0 flex-auto" %>
 
     <%= form.text_field \
           :price,
@@ -36,7 +36,7 @@
           title: "Item price",
           enterkeyhint: :enter,
           inputmode: :numeric,
-          class: "lite-input text-xl text-right w-20",
+          class: "lite-input text-xl text-right w-16",
           value: number_to_currency(form.object.price, unit: ''),
           data: { controller: "currency-input", action: "input->currency-input#handleChange" } %>
 

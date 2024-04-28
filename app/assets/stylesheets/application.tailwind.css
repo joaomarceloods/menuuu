@@ -12,7 +12,7 @@
   }
 
   .main-content {
-    @apply max-w-80 mx-auto px-4
+    @apply w-[calc(100%-6rem)] max-w-96 mx-auto
   }
 
   /* See app/javascript/controllers/menu_item_form_controller.js */
@@ -31,7 +31,7 @@
 
 @layer components {
   .navigation {
-    @apply sticky top-0 z-10 bg-black text-white px-4 py-2 mb-4;
+    @apply sticky top-0 z-10 bg-black text-white px-12 py-2 mb-4;
   }
 
   .navigation__bar {
@@ -55,7 +55,7 @@
   }
 
   .actions {
-    @apply invisible group-focus-within/actions:visible absolute flex z-10 top-0 -right-8 justify-between;
+    @apply invisible group-focus-within/actions:visible absolute top-0 flex justify-end items-center h-full w-[calc(100%+6rem)] -mx-12 z-10;
     /*
     iPhone fix:
     If the action bar changes visibility immediately, it won't register clicks on action bar buttons.
@@ -65,8 +65,8 @@
     transition: visibility 1ms
   }
 
-  .actions .material-symbols-sharp {
-    @apply text-xl;
+  .actions button {
+    @apply text-xl w-12;
   }
 
   .add-button {
