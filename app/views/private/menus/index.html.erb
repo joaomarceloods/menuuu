@@ -16,7 +16,7 @@
 
   <ul class="pb-4">
     <% @menus.each do |menu| %>
-      <li class="text-3xl flex justify-between">
+      <li class="text-xl flex justify-between leading-normal">
         <%= link_to menu.name, [:private, menu] %>
         <%= link_to [:private, menu] do %>
           <% if menu.published? %>
@@ -28,7 +28,7 @@
       </li>
     <% end %>
     <li>
-      <%= button_to private_menus_path, class: "text-3xl add-button" do %>
+      <%= button_to private_menus_path, class: "text-xl add-button" do %>
         <span class="material-symbols-sharp">add</span>
         &nbsp;
         New menu
