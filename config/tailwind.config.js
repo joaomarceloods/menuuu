@@ -17,7 +17,10 @@ module.exports = {
       },
       margin: {
         '120': '30rem',
-      }
+      },
+      transitionProperty: {
+        visibility: 'visibility',
+      },
     },
   },
   plugins: [
