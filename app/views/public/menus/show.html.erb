@@ -1,6 +1,6 @@
 <main class="main-content">
 
-  <h1 class="text-5xl mt-8">
+  <h1 class="text-5xl mt-12">
     <%= @menu.name %>
   </h1>
 
@@ -21,18 +21,20 @@
 
   <% @menu_sections.each do |menu_section| %>
     <%= tag.section id: dom_id(menu_section), class: "scroll-mt-12" do %>
-      <%= tag.h2 menu_section.name, class: "text-3xl" %>
+      <%= tag.h2 menu_section.name, class: "text-3xl mb-2" %>
 
       <ul class="mb-6">
         <% menu_section.publicly_visible_menu_items.order(:position).each do |menu_item| %>
-          <li class="flex justify-between">
-            <div class="text-xl">
+          <li class="flex justify-between gap-4 text-xl leading-none mb-2">
+            <div class="flex-1">
               <%= menu_item.name %>
             </div>
 
-            <% if menu_item.price.present? %>
-              <%= number_to_currency(menu_item.price) %>
-            <% end %>
+            <div class="w-16 text-right">
+              <% if menu_item.price.present? %>
+                <%= number_to_currency(menu_item.price) %>
+              <% end %>
+            </div>
           </li>
         <% end %>
       </ul>
