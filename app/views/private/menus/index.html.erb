@@ -1,6 +1,7 @@
 <%= content_for :navigation_bar do %>
   <%= button_to private_menus_path do %>
     <span class="material-symbols-sharp">add</span>
+    &nbsp;
     New menu
   <% end %>
 <% end %>
@@ -15,7 +16,7 @@
 
   <ul class="pb-4">
     <% @menus.each do |menu| %>
-      <li class="text-2xl flex justify-between">
+      <li class="text-3xl flex justify-between">
         <%= link_to menu.name, [:private, menu] %>
         <%= link_to [:private, menu] do %>
           <% if menu.published? %>
@@ -27,8 +28,9 @@
       </li>
     <% end %>
     <li>
-      <%= button_to private_menus_path, class: "text-2xl add-button" do %>
+      <%= button_to private_menus_path, class: "text-3xl add-button" do %>
         <span class="material-symbols-sharp">add</span>
+        &nbsp;
         New menu
       <% end %>
     </li>
