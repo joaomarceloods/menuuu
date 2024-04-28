@@ -6,10 +6,13 @@
         sortable_menu_items_update_url: private_menu_item_path(menu_item)
       } do %>
 
+  <%= render "private/menu_items/actions", menu_item: %>
+
+  <%# Form position must be "relative" in order to overlay the actions element %>
   <%= form_with \
         model: menu_item,
         url: private_menu_item_path(menu_item),
-        class: "flex",
+        class: "flex relative",
         data: {
           menu_item_form_target: "editForm",
           action: "input->menu-item-form#input keypress.enter->menu-item-form#keypressEnter:prevent keypress.shift+enter->menu-item-form#keypressEnter:prevent",
@@ -43,24 +46,4 @@
   <% end %>
 
   <%= render "private/menu_items/new", menu_section_id: menu_item.menu_section_id, position: menu_item.position + 1 %>
-
-  <div class="actions">
-    <div class="actions__item actions__item--handle">
-      <span class="material-symbols-sharp">menu</span>
-    </div>
-
-    <%= button_to \
-          private_menu_item_path(menu_item),
-          method: :delete,
-          title: "Delete #{menu_item.name}",
-          class: "actions__item text-red-500",
-          data: {
-            turbo_frame: :list,
-            turbo_confirm: "Remove the #{menu_item.name || "empty"} item permanently?"
-          } do %>
-      <span class="material-symbols-sharp">close</span>
-    <% end %>
-
-  </div>
-
 <% end %>

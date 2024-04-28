@@ -55,7 +55,7 @@
   }
 
   .actions {
-    @apply invisible group-focus-within/actions:visible absolute top-0 flex justify-between items-center h-full w-full -mx-12 z-10;
+    @apply invisible group-focus-within/actions:visible absolute top-0 flex justify-between items-center h-full w-full -mx-12;
     /*
     iPhone fix:
     If the action bar changes visibility immediately, it won't register clicks on action bar buttons.
