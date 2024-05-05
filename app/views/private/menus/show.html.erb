@@ -14,7 +14,7 @@
 
 <% end %>
 
-<%= tag.div class: "relative -top-4 py-4 #{@menu.published? ? "bg-green-100" : "bg-yellow-100"}" do %>
+<%= tag.div class: class_names("py-4", @menu.published? ? "bg-green-100" : "bg-yellow-100") do %>
   <div class="main-content">
     <div class="flex justify-between gap-4">
       <% if @menu.published? %>
@@ -56,8 +56,10 @@
   </div>
 <% end %>
 
+<%= render "subscription", menu: @menu %>
+
 <%= turbo_frame_tag :edit, class: "main-content" do %>
-  <div class="mb-4">
+  <div class="mt-4 mb-4">
     <%= form_for @menu, url: [:private, @menu], html: { oninput: "this.requestSubmit()" } do |f| %>
       <%= f.text_field :name, placeholder: "Menu name", autocomplete: :off, class: "menu-name lite-input text-5xl" %>
     <% end %>

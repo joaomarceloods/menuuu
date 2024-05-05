@@ -12,11 +12,20 @@ Rails.application.routes.draw do
     resources :menus, only: %i[ index new show create update destroy ]
     resources :menu_sections, only: %i[ create update destroy ]
     resources :menu_items, only: %i[ create update destroy ]
+
+    resource :stripe_checkout_session, only: %i[ show ]
+    resource :stripe_checkout_success, only: %i[ show ]
+    resource :stripe_checkout_cancel, only: %i[ show ]
+    resource :stripe_portal_session, only: %i[ show ]
   end
 
   namespace :public, path: nil do
     resources :businesses, only: %i[ show ], path: :b
     resources :menus, only: %i[ show ]
     resources :qrcodes, only: %i[ show ], param: :url
+  end
+
+  namespace :stripe do
+    resource :webhook, only: %i[ create ], defaults: { format: :json }
   end
 end

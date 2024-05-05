@@ -70,3 +70,9 @@ RSpec.configure do |config|
   config.include Devise::Test::IntegrationHelpers, type: :feature
   config.include Devise::Test::IntegrationHelpers, type: :request
 end
+
+VCR.configure do |config|
+  config.cassette_library_dir = "spec/vcr"
+  config.hook_into :webmock
+  config.ignore_localhost = true
+end

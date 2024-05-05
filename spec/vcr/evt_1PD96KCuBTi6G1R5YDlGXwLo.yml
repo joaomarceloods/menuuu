@@ -1,0 +1,196 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.stripe.com/v1/events/evt_1PD96KCuBTi6G1R5YDlGXwLo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Stripe/v1 RubyBindings/11.2.0
+      Authorization:
+      - Bearer rk_test_51EQFIRCuBTi6G1R5qN2MA3kTvAgDDdcv9gltDN8YwvrtlI7sg1KOCCK3YyZSPiEtcEiv7QBt7KK79UOtag4YRFOs00WysXq084
+      Content-Type:
+      - application/x-www-form-urlencoded
+      X-Stripe-Client-Telemetry:
+      - '{"last_request_metrics":{"request_id":"req_bmAy9EHNGpRXwo","request_duration_ms":471}}'
+      Stripe-Version:
+      - '2024-04-10'
+      X-Stripe-Client-User-Agent:
+      - '{"bindings_version":"11.2.0","lang":"ruby","lang_version":"3.1.4 p223 (2023-03-30)","platform":"arm64-darwin23","engine":"ruby","publisher":"stripe","uname":"Darwin
+        Joaos-MacBook-Pro.local 23.4.0 Darwin Kernel Version 23.4.0: Fri Mar 15 00:12:41
+        PDT 2024; root:xnu-10063.101.17~1/RELEASE_ARM64_T8103 arm64","hostname":"Joaos-MacBook-Pro.local"}'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sun, 05 May 2024 17:57:11 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2993'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET,HEAD,PUT,PATCH,POST,DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Request-Id, Stripe-Manage-Version, Stripe-Should-Retry, X-Stripe-External-Auth-Required,
+        X-Stripe-Privileged-Session-Required
+      Access-Control-Max-Age:
+      - '300'
+      Cache-Control:
+      - no-cache, no-store
+      Content-Security-Policy:
+      - report-uri /csp-report?p=%2Fv1%2Fevents%2F%3Aid;block-all-mixed-content;default-src
+        'none' 'report-sample';base-uri 'none';form-action 'none';style-src 'unsafe-inline';frame-ancestors
+        'self';connect-src 'self';img-src 'self' https://b.stripecdn.com
+      Cross-Origin-Opener-Policy-Report-Only:
+      - same-origin; report-to="coop"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Report-To:
+      - '{"group":"coop","max_age":8640,"endpoints":[{"url":"https://q.stripe.com/coop-report"}],"include_subdomains":true}'
+      Reporting-Endpoints:
+      - coop="https://q.stripe.com/coop-report"
+      Request-Id:
+      - req_7zITbgV5FpunDn
+      Stripe-Version:
+      - '2024-04-10'
+      Vary:
+      - Origin
+      X-Content-Type-Options:
+      - nosniff
+      X-Stripe-Routing-Context-Priority-Tier:
+      - api-testmode
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "id": "evt_1PD96KCuBTi6G1R5YDlGXwLo",
+          "object": "event",
+          "api_version": "2019-03-14",
+          "created": 1714931032,
+          "data": {
+            "object": {
+              "id": "cs_test_a1D0G8mQMHybRONDbHrDADZwSs0WCXbfY4yqmYgFvOvKvdMVXvi1zCATrZ",
+              "object": "checkout.session",
+              "after_expiration": null,
+              "allow_promotion_codes": null,
+              "amount_subtotal": 9990,
+              "amount_total": 9990,
+              "automatic_tax": {
+                "enabled": false,
+                "liability": null,
+                "status": null
+              },
+              "billing_address_collection": null,
+              "cancel_url": "http://localhost:3000/private/stripe_checkout_cancel",
+              "client_reference_id": "1",
+              "client_secret": null,
+              "consent": null,
+              "consent_collection": null,
+              "created": 1714931014,
+              "currency": "brl",
+              "currency_conversion": null,
+              "custom_fields": [],
+              "custom_text": {
+                "after_submit": null,
+                "shipping_address": null,
+                "submit": null,
+                "terms_of_service_acceptance": null
+              },
+              "customer": "cus_Q3Fbdb5Xd7V7c8",
+              "customer_creation": "always",
+              "customer_details": {
+                "address": {
+                  "city": null,
+                  "country": "BR",
+                  "line1": null,
+                  "line2": null,
+                  "postal_code": null,
+                  "state": null
+                },
+                "email": "joaomarcelo9393@gmail.com",
+                "name": "John Smith",
+                "phone": null,
+                "tax_exempt": "none",
+                "tax_ids": []
+              },
+              "customer_email": null,
+              "expires_at": 1715017414,
+              "invoice": "in_1PD96FCuBTi6G1R5fhi7Jhul",
+              "invoice_creation": null,
+              "livemode": false,
+              "locale": null,
+              "metadata": {},
+              "mode": "subscription",
+              "payment_intent": null,
+              "payment_link": null,
+              "payment_method_collection": "always",
+              "payment_method_configuration_details": null,
+              "payment_method_options": {
+                "card": {
+                  "request_three_d_secure": "automatic"
+                }
+              },
+              "payment_method_types": [
+                "card"
+              ],
+              "payment_status": "paid",
+              "phone_number_collection": {
+                "enabled": false
+              },
+              "recovered_from": null,
+              "saved_payment_method_options": {
+                "allow_redisplay_filters": [
+                  "always"
+                ],
+                "payment_method_save": null
+              },
+              "setup_intent": null,
+              "shipping": null,
+              "shipping_address_collection": null,
+              "shipping_options": [],
+              "shipping_rate": null,
+              "status": "complete",
+              "submit_type": null,
+              "subscription": "sub_1PD96FCuBTi6G1R5PPed5zm0",
+              "success_url": "http://localhost:3000/private/stripe_checkout_success",
+              "total_details": {
+                "amount_discount": 0,
+                "amount_shipping": 0,
+                "amount_tax": 0
+              },
+              "ui_mode": "hosted",
+              "url": null
+            }
+          },
+          "livemode": false,
+          "pending_webhooks": 1,
+          "request": {
+            "id": null,
+            "idempotency_key": null
+          },
+          "type": "checkout.session.completed"
+        }
+  recorded_at: Sun, 05 May 2024 17:57:11 GMT
+recorded_with: VCR 6.2.0

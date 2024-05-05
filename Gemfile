@@ -53,6 +53,8 @@ gem "acts_as_list", "~> 1.0"
 
 gem "tailwindcss-rails", "~> 2.4"
 
+gem "stripe", "~> 11.2.0"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -75,4 +77,8 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+
+  # VCR and WebMock for mocking HTTP requests
+  gem "vcr", "~> 6.2.0"
+  gem "webmock", "~> 3.23.0"
 end

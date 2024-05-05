@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2022_12_30_005631) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_28_192221) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,6 +49,18 @@ ActiveRecord::Schema[7.1].define(version: 2022_12_30_005631) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["business_id"], name: "index_menus_on_business_id"
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "business_id"
+    t.string "stripe_subscription_id", null: false
+    t.string "stripe_checkout_session_id"
+    t.datetime "expired_at", precision: nil, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["business_id"], name: "index_subscriptions_on_business_id"
+    t.index ["stripe_checkout_session_id"], name: "index_subscriptions_on_stripe_checkout_session_id", unique: true
+    t.index ["stripe_subscription_id"], name: "index_subscriptions_on_stripe_subscription_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|

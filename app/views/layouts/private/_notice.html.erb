@@ -1,11 +1,14 @@
 <% if notice.present? || alert.present? %>
-  <div class="notices" data-controller="closable">
-    <div>
-      <%= tag.p notice.html_safe if notice.present? %>
-      <%= tag.p alert.html_safe if alert.present? %>
+  <div class="bg-yellow-500">
+    <div class="main-content notices" data-controller="closable">
+      <p><span class="material-symbols-sharp">warning</span></p>
+      <div class="flex-1">
+        <%= tag.p notice.html_safe if notice.present? %>
+        <%= tag.p alert.html_safe if alert.present? %>
+      </div>
+      <button data-action="click->closable#handleCloseButtonClick">
+        <span class="material-symbols-sharp">close</div>
+      </button>
     </div>
-    <button data-action="click->closable#handleCloseButtonClick">
-      <span class="material-symbols-sharp">close</div>
-    </button>
   </div>
 <% end %>

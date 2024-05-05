@@ -185,6 +185,43 @@ RSpec.feature "Private::MenusControllers", type: :feature do
                 end
               end
             end
+
+            context "with ten items" do
+              before do
+                MenuItem.create!(
+                  10.times.map { { name: "Item", menu_section: section } }
+                )
+              end
+
+              context "with subscription" do
+                let!(:subscription) { Subscription.create!(business:, stripe_subscription_id: "sub_123", expired_at: 1.year.from_now) }
+                before { visit path }
+
+                describe "content" do
+                  it { is_expected.not_to have_content("You've reached the free tier's limit. Unlock 1,000 items and 10 menus.") }
+                  it { is_expected.not_to have_link("Subscribe", href: "/private/stripe_checkout_session?lookup_key=standard_yearly") }
+                end
+
+                describe "navigation" do
+                  before { click_button "menu" }
+                  it { is_expected.to have_link("Manage subscription", href: "/private/stripe_portal_session") }
+                end
+              end
+
+              context "without subscription" do
+                before { visit path }
+
+                describe "content" do
+                  it { is_expected.to have_content("You've reached the free tier's limit. Unlock 1,000 items and 10 menus.") }
+                  it { is_expected.to have_link("Subscribe", href: "/private/stripe_checkout_session?lookup_key=standard_yearly") }
+                end
+
+                describe "navigation" do
+                  before { click_button "menu" }
+                  it { is_expected.not_to have_link("Manage subscription", href: "/private/stripe_portal_session") }
+                end
+              end
+            end
           end
         end
       end

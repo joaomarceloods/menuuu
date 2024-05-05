@@ -14,6 +14,12 @@
       <% if @business.persisted? %>
         <%= link_to "Print QR Code", public_qrcode_path((public_business_url(@business))) %>
       <% end %>
+      <% if @business.subscribed? %>
+        <%= link_to "Manage subscription",
+                    private_stripe_portal_session_path,
+                    target: :_blank,
+                    data: { turbo: false } %>
+      <% end %>
       <%= button_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
     </div>
   </div>
