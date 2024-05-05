@@ -43,11 +43,11 @@ ActiveRecord::Schema[7.1].define(version: 2022_12_30_005631) do
   end
 
   create_table "menus", force: :cascade do |t|
+    t.bigint "business_id", null: false
     t.string "name", null: false
+    t.boolean "published", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "published", default: false, null: false
-    t.bigint "business_id", null: false
     t.index ["business_id"], name: "index_menus_on_business_id"
   end
 
@@ -67,4 +67,5 @@ ActiveRecord::Schema[7.1].define(version: 2022_12_30_005631) do
   add_foreign_key "menu_items", "menu_sections"
   add_foreign_key "menu_sections", "menus"
   add_foreign_key "menus", "businesses"
+  add_foreign_key "subscriptions", "businesses"
 end
