@@ -1,7 +1,7 @@
 class Private::StripeCheckoutSessionsController < Private::ApplicationController
   def show
     prices = Stripe::Price.list(
-      lookup_keys: [params[:lookup_key]],
+      lookup_keys: ['standard_yearly'],
       expand: ['data.product']
     )
 
