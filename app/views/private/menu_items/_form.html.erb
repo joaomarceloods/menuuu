@@ -1,4 +1,4 @@
-<%= turbo_frame_tag \
+<%= tag.div \
       menu_item,
       class: "group/actions",
       data: {
@@ -16,7 +16,6 @@
         data: {
           menu_item_form_target: "editForm",
           action: "input->menu-item-form#input keypress.enter->menu-item-form#keypressEnter:prevent keypress.shift+enter->menu-item-form#keypressEnter:prevent",
-          turbo_frame: :list,
           sortable_menu_items_form: true,
         } do |form| %>
 

@@ -1,0 +1,26 @@
+<% if Can.create_menu_item?(menu) %>
+  <%= button_to private_menu_items_path,
+                class: "add-button",
+                params: { menu_item: { menu_section_id: menu_section.id, position: position } } do %>
+    <span class="material-symbols-sharp">add</span>
+    New item
+  <% end %>
+<% else %>
+  <%= tag.div class: "inline-block",
+              data: {
+                controller: :tippy,
+                tippy_allow_html_value: true,
+                tippy_interactive_value: true,
+                tippy_placement_value: :bottom,
+                tippy_content_value: link_to("Upgrade to create more items",
+                                             private_stripe_checkout_session_path,
+                                             data: { turbo_frame: :_top }),
+              } do %>
+    <%= button_to private_menu_items_path,
+                  class: "add-button",
+                  disabled: true do %>
+      <span class="material-symbols-sharp">add</span>
+      New item
+    <% end %>
+  <% end %>
+<% end %>

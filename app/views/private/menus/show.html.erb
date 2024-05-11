@@ -66,26 +66,17 @@
   </div>
 <% end %>
 
-<%= tag.div class: "main-content" do %>
-  <div class="mb-4">
-    <%= button_to \
-          private_menu_sections_path,
-          class: "add-button",
-          data: { turbo_frame: :list },
-          params: { menu_section: { menu_id: @menu.id, position: 1 } } do %>
-      <span class="material-symbols-sharp">add</span>
-      New section
-    <% end %>
-  </div>
-<% end %>
-
 <%# mb-120 keeps the scroll position when dragging around the last items in mobile devices: %>
-<%# 1. Open this page in mobile and add enough items to fill the screen %>
+<%# 1. Open this page in mobile and add enough items to fill the screen past the bottom %>
 <%# 2. Select the last item - the keyboard should slide up %>
-<%# 3. Drag the item around - the keyboard should slide down and the page should NOT shift %>
-<%= turbo_frame_tag :list, class: "mb-120", data: { controller: "sortable-menu-sections" } do %>
+<%# 3. Drag the item around - the keyboard should slide down automatically but the page must NOT move %>
+<%= turbo_frame_tag :menu, class: "main-content mb-120", data: { controller: "sortable-menu-sections" } do %>
+  <div class="mb-4 text-right">
+    <%= render 'new_menu_section', menu: @menu, position: 1 %>
+  </div>
+
   <% @menu.menu_sections.order(:position).each do |menu_section| %>
-    <%= turbo_frame_tag menu_section, class: "main-content py-2", data: { sortable_menu_sections_update_url: private_menu_section_path(menu_section) } do %>
+    <%= tag.div menu_section, class: "py-2", data: { sortable_menu_sections_update_url: private_menu_section_path(menu_section) } do %>
       <div>
         <%= render "private/menu_sections/form", menu_section: menu_section %>
 
@@ -96,23 +87,8 @@
         <% end %>
 
         <div class="flex justify-between gap-4">
-          <%= button_to \
-                private_menu_items_path,
-                class: "add-button",
-                data: { turbo_frame: :list },
-                params: { menu_item: { menu_section_id: menu_section.id, position: menu_section.menu_items.count + 1 } } do %>
-              <span class="material-symbols-sharp">add</span>
-              New item
-          <% end %>
-
-          <%= button_to \
-                private_menu_sections_path,
-                class: "add-button",
-                data: { turbo_frame: :list },
-                params: { menu_section: { menu_id: @menu.id, position: menu_section.position + 1 } } do %>
-            <span class="material-symbols-sharp">add</span>
-            New section
-          <% end %>
+          <%= render 'new_menu_item', menu: @menu, menu_section: menu_section, position: menu_section.menu_items.count + 1 %>
+          <%= render 'new_menu_section', menu: @menu, position: menu_section.position + 1 %>
         </div>
       </div>
     <% end %>
