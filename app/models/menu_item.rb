@@ -4,5 +4,8 @@ class MenuItem < ApplicationRecord
              -> { joins(menu: :business).where(business: { user_id: Current.user.id }) },
              touch: true
 
+  delegate :menu, to: :menu_section
+  delegate :business, to: :menu
+
   acts_as_list scope: :menu_section
 end

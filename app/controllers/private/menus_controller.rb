@@ -17,10 +17,10 @@ class Private::MenusController < Private::ApplicationController
   end
 
   def create
-    @menu = Menu::BuildDefault.call(business: Current.user.business)
+    menu = Menu::BuildDefault.call(business: Current.user.business)
 
-    if @menu.save
-      redirect_to [:private, @menu]
+    if Can.create_menu?(menu) && menu.save!
+      redirect_to [:private, menu]
     else
       redirect_to [:private, :menus], notice: "Failed to create a new menu. Try again later."
     end

@@ -10,5 +10,7 @@ class MenuSection < ApplicationRecord
             -> { where.not("TRIM(name) = ''") },
             class_name: MenuItem.name
 
+  delegate :business, to: :menu
+
   acts_as_list scope: :menu
 end

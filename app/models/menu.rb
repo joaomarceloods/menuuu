@@ -9,6 +9,4 @@ class Menu < ApplicationRecord
             class_name: MenuSection.name
 
   validates :name, presence: true
-
-  delegate :subscribed?, to: :business, allow_nil: true
 end
