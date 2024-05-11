@@ -6,7 +6,7 @@ class Menu < ApplicationRecord
 
   has_many :publicly_visible_menu_sections,
             -> { where.not("TRIM(name) = ''") },
-            class_name: "MenuSection"
+            class_name: MenuSection.name
 
   validates :name, presence: true
 
