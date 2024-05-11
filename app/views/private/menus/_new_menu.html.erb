@@ -1,0 +1,24 @@
+<% if Can.create_menu?(business) %>
+  <%= button_to private_menus_path, class: local_assigns[:button_class] do %>
+    <span class="material-symbols-sharp">add</span>
+    &nbsp;
+    New menu
+  <% end %>
+<% else %>
+  <%= tag.div class: 'inline-block',
+              data: {
+                controller: :tippy,
+                tippy_allow_html_value: true,
+                tippy_interactive_value: true,
+                tippy_placement_value: :bottom,
+                tippy_content_value: link_to("You reached the free tier limit. Upgrade to create more menus.", private_stripe_checkout_session_path),
+              } do %>
+    <%= button_to private_menus_path,
+                  class: local_assigns[:button_class],
+                  disabled: true do %>
+      <span class="material-symbols-sharp">add</span>
+      &nbsp;
+      New menu
+    <% end %>
+  <% end %>
+<% end %>

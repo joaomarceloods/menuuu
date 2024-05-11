@@ -1,9 +1,5 @@
 <%= content_for :navigation_bar do %>
-  <%= button_to private_menus_path do %>
-    <span class="material-symbols-sharp">add</span>
-    &nbsp;
-    New menu
-  <% end %>
+  <%= render 'new_menu', business: @business %>
 <% end %>
 
 <div class="main-content">
@@ -27,12 +23,8 @@
         <% end %>
       </li>
     <% end %>
-    <li>
-      <%= button_to private_menus_path, class: "text-xl add-button" do %>
-        <span class="material-symbols-sharp">add</span>
-        &nbsp;
-        New menu
-      <% end %>
+    <li class="text-right">
+      <%= render 'new_menu', business: @business, button_class: "text-xl add-button" %>
     </li>
   </ul>
 </div>

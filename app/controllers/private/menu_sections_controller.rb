@@ -3,7 +3,7 @@ class Private::MenuSectionsController < Private::ApplicationController
 
   def create
     menu_section = MenuSection.build(menu_section_params)
-    menu_section.save! if Can.create_menu_section!(menu_section)
+    menu_section.save! if Can.create_menu_section!(menu_section.menu)
     redirect_to private_menu_path(menu_section.menu_id)
   end
 
