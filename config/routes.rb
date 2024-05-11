@@ -13,10 +13,10 @@ Rails.application.routes.draw do
     resources :menu_sections, only: %i[ create update destroy ]
     resources :menu_items, only: %i[ create update destroy ]
 
-    resource :stripe_checkout_session, only: %i[ show ]
-    resource :stripe_checkout_success, only: %i[ show ]
-    resource :stripe_checkout_cancel, only: %i[ show ]
-    resource :stripe_portal_session, only: %i[ show ]
+    resource :stripe_checkout_session, only: %i[ show ], path: :upgrade
+    resource :stripe_checkout_success, only: %i[ show ], path: :upgrade_success
+    resource :stripe_checkout_cancel, only: %i[ show ], path: :upgrade_cancel
+    resource :stripe_portal_session, only: %i[ show ], path: :billing
   end
 
   namespace :public, path: nil do
