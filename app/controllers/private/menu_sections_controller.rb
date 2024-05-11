@@ -2,8 +2,8 @@ class Private::MenuSectionsController < Private::ApplicationController
   before_action :set_menu_section, only: %i[ update destroy ]
 
   def create
-    menu_section = MenuSection.new(menu_section_params)
-    menu_section.save! if Can.create_menu_section?(menu_section)
+    menu_section = MenuSection.build(menu_section_params)
+    menu_section.save! if Can.create_menu_section!(menu_section)
     redirect_to private_menu_path(menu_section.menu_id)
   end
 

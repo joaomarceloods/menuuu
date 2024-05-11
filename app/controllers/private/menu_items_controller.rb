@@ -2,8 +2,8 @@ class Private::MenuItemsController < Private::ApplicationController
   before_action :set_menu_item, only: %i[ update destroy ]
 
   def create
-    menu_item = MenuItem.new(menu_item_params)
-    menu_item.save! if Can.create_menu_item?(menu_item)
+    menu_item = MenuItem.build(menu_item_params)
+    menu_item.save! if Can.create_menu_item!(menu_item.menu)
     redirect_to private_menu_path(menu_item.menu.id)
   end
 

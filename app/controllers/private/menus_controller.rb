@@ -2,8 +2,7 @@ class Private::MenusController < Private::ApplicationController
   before_action :set_menu, only: %i[ show edit update destroy ]
 
   def index
-    @business = current_user.business
-    @menus = @business.menus.order(:created_at)
+    @menus = Current.user.business.menus.order(:created_at)
   end
 
   def show
@@ -18,12 +17,8 @@ class Private::MenusController < Private::ApplicationController
 
   def create
     menu = Menu::BuildDefault.call(business: Current.user.business)
-
-    if Can.create_menu?(menu) && menu.save!
-      redirect_to [:private, menu]
-    else
-      redirect_to [:private, :menus], notice: "Failed to create a new menu. Try again later."
-    end
+    menu.save! if Can.create_menu!(menu.business)
+    redirect_to [:private, menu]
   end
 
   def update
