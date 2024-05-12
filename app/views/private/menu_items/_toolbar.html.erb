@@ -1,5 +1,5 @@
-<div class="actions">
-  <div class="actions__item actions__item--handle">
+<div class="toolbar">
+  <div class="toolbar__item toolbar__item--handle">
     <span class="material-symbols-sharp">menu</span>
   </div>
 
@@ -7,7 +7,7 @@
         private_menu_item_path(menu_item),
         method: :delete,
         title: "Delete #{menu_item.name}",
-        class: "actions__item text-red-500",
+        class: "toolbar__item text-red-500",
         data: {
           turbo_confirm: "Remove the #{menu_item.name || "empty"} item permanently?"
         } do %>

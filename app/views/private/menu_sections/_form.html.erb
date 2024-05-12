@@ -1,10 +1,10 @@
 <%= tag.div \
-      class: "group/actions",
+      class: "group/toolbar",
       data: { controller: "menu-item-form" } do %>
 
-  <%= render "private/menu_sections/actions", menu_section: %>
+  <%= render "private/menu_sections/toolbar", menu_section: %>
 
-  <%# Form position must be "relative" in order to overlay the actions element %>
+  <%# Form position must be "relative" in order to overlay the toolbar element %>
   <%= form_with \
         model: menu_section,
         url: private_menu_section_path(menu_section),

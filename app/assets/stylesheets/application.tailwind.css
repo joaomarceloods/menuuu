@@ -75,12 +75,12 @@
     @apply flex justify-between items-start py-2 gap-2;
   }
 
-  .group\/actions {
+  .group\/toolbar {
     @apply relative -mx-12 px-12
   }
 
-  .actions {
-    @apply invisible group-focus-within/actions:visible absolute top-0 flex justify-between items-center h-full w-full -mx-12;
+  .toolbar {
+    @apply invisible group-focus-within/toolbar:visible absolute top-0 flex justify-between items-center h-full w-full -mx-12;
     /*
     iPhone fix:
     If the action bar changes visibility immediately, it won't register clicks on action bar buttons.
@@ -90,19 +90,19 @@
     transition: visibility 1ms
   }
 
-  .sortable-chosen .actions {
+  .sortable-chosen .toolbar {
     @apply visible
   }
 
-  .actions__item {
+  .toolbar__item {
     @apply text-xl w-12 text-center;
   }
 
-  .actions__item--handle {
+  .toolbar__item--handle {
     @apply cursor-grab
   }
 
-  .sortable-chosen .actions__item--handle {
+  .sortable-chosen .toolbar__item--handle {
     @apply cursor-grabbing
   }
 

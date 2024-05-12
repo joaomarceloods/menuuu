@@ -155,7 +155,7 @@ RSpec.feature "Private::MenusControllers", type: :feature do
               describe "deleting item", js: true do
                 before do
                   find_field("menu_item_name").click
-                  within ".actions" do
+                  within ".toolbar" do
                     accept_confirm "Remove the My Item item permanently?" do
                       click_button "close"
                     end

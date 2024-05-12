@@ -1,14 +1,14 @@
 <%= tag.div \
       menu_item,
-      class: "group/actions",
+      class: "group/toolbar",
       data: {
         controller: "menu-item-form",
         sortable_menu_items_update_url: private_menu_item_path(menu_item)
       } do %>
 
-  <%= render "private/menu_items/actions", menu_item: %>
+  <%= render "private/menu_items/toolbar", menu_item: %>
 
-  <%# Form position must be "relative" in order to overlay the actions element %>
+  <%# Form position must be "relative" in order to overlay the toolbar element %>
   <%= form_with \
         model: menu_item,
         url: private_menu_item_path(menu_item),
