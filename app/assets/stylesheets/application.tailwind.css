@@ -27,6 +27,31 @@
   a, button {
     @apply transition-opacity hover:opacity-80 disabled:opacity-100 disabled:cursor-not-allowed
   }
+
+  body.devise h1 {
+    @apply text-5xl
+  }
+
+  body.devise h2 {
+    @apply text-3xl
+  }
+
+  body.devise a {
+    @apply text-xl leading-loose
+  }
+
+  body.devise form {
+    @apply my-8
+  }
+
+  body.devise form .field {
+    @apply my-4
+  }
+
+  body.devise input[type=email],
+  body.devise input[type=password] {
+    @apply w-full
+  }
 }
 
 @layer components {

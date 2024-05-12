@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menuuu</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= render "layouts/google_fonts" %>
+  </head>
+
+  <body class="devise">
+    <%= render "layouts/notice" %>
+    <div class="main-content py-12">
+      <h1>Menuuu</h1>
+      <%= yield %>
+    </div>
+  </body>
+</html>
