@@ -37,15 +37,31 @@
   }
 
   body.devise a {
-    @apply text-xl leading-loose
+    @apply leading-loose
   }
 
   body.devise form {
     @apply my-8
   }
 
+  body.devise #error_explanation {
+    @apply bg-red-100 p-4
+  }
+
+  body.devise .field_with_errors {
+    @apply inline
+  }
+
+  body.devise #error_explanation h2 {
+    @apply text-base font-bold
+  }
+
   body.devise form .field {
     @apply my-4
+  }
+
+  body.devise form .actions {
+    @apply leading-loose
   }
 
   body.devise input[type=email],
