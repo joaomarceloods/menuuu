@@ -16,8 +16,6 @@
 
 <%= render "publish", menu: @menu %>
 
-<%= render "subscription", menu: @menu %>
-
 <%= turbo_frame_tag :edit, class: "main-content" do %>
   <div class="mt-4 mb-4">
     <%= form_for @menu, url: [:private, @menu], html: { oninput: "this.requestSubmit()" } do |f| %>
@@ -57,4 +55,6 @@
   <div class="saving">
     <span class="material-symbols-sharp">backup</span>
   </div>
+
+  <%= render "subscription" unless Can.create_menu_section?(@menu) && Can.create_menu_item?(@menu) %>
 <% end %>

@@ -1,12 +1,10 @@
-<% if !menu.business.subscribed? && menu.menu_items.count > 9 %>
-  <%= render "banner",
-             title: "Free limit reached. Unlock 10 menus and 1,000 items.",
-             icon: "warning",
-             container_class: "bg-red-100 sticky top-navigation z-10",
-             button_class: "text-red-600" do %>
-    <%= link_to "Subscribe",
-                private_stripe_checkout_session_path,
-                class: "button text-red-900",
-                data: { turbo: false } %>
-  <% end %>
+<%= render "banner",
+            title: "Free tier maxed out. Subscribe to unlock 10 menus and 1,000 items.".html_safe,
+            icon: "warning",
+            container_class: "bg-red-100 fixed left-0 bottom-0 z-10 w-full",
+            button_class: "text-red-600" do %>
+  <%= link_to "Subscribe",
+              private_stripe_checkout_session_path,
+              class: "button text-red-900",
+              data: { turbo: false } %>
 <% end %>
