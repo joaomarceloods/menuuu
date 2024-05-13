@@ -176,11 +176,17 @@ RSpec.feature "Private::MenusControllers", type: :feature do
                 let(:dom_id_2) { "#menu_item_#{item_2.id}" }
                 it { is_expected.to have_selector("#{dom_id_1} + #{dom_id_2}") }
 
-                describe "dragging item 1 before item 2", js: true do
-                  let(:row_1) { find(dom_id_1) }
+                describe "dragging item 1 after item 2", js: true do
+                  let(:row_1_input) { find("#{dom_id_1} #menu_item_name") }
+                  let(:row_1_handle) { find("#{dom_id_1} .toolbar__item--handle") }
                   let(:row_2) { find(dom_id_2) }
-                  before { row_1.drag_to(row_2) }
-                  before { refresh }
+
+                  before do
+                    row_1_input.click
+                    row_1_handle.drag_to(row_2)
+                    refresh
+                  end
+
                   it { is_expected.to have_selector("#{dom_id_2} + #{dom_id_1}") }
                 end
               end
@@ -198,13 +204,13 @@ RSpec.feature "Private::MenusControllers", type: :feature do
                 before { visit path }
 
                 describe "content" do
-                  it { is_expected.not_to have_content("You've reached the free tier's limit. Unlock 1,000 items and 10 menus.") }
-                  it { is_expected.not_to have_link("Subscribe", href: "/private/stripe_checkout_session?lookup_key=standard_yearly") }
+                  it { is_expected.not_to have_content("Free tier: 1 menu and 10 items. Unlock 10 menus and 1,000 items.") }
+                  it { is_expected.not_to have_link("Subscribe", href: "/private/stripe_checkout_session") }
                 end
 
                 describe "navigation" do
                   before { click_button "menu" }
-                  it { is_expected.to have_link("Manage subscription", href: "/private/stripe_portal_session") }
+                  it { is_expected.to have_link("Billing", href: "/private/stripe_portal_session") }
                 end
               end
 
@@ -212,13 +218,13 @@ RSpec.feature "Private::MenusControllers", type: :feature do
                 before { visit path }
 
                 describe "content" do
-                  it { is_expected.to have_content("You've reached the free tier's limit. Unlock 1,000 items and 10 menus.") }
-                  it { is_expected.to have_link("Subscribe", href: "/private/stripe_checkout_session?lookup_key=standard_yearly") }
+                  it { is_expected.to have_content("Free tier: 1 menu and 10 items. Unlock 10 menus and 1,000 items.") }
+                  it { is_expected.to have_link("Subscribe", href: "/private/stripe_checkout_session") }
                 end
 
                 describe "navigation" do
                   before { click_button "menu" }
-                  it { is_expected.not_to have_link("Manage subscription", href: "/private/stripe_portal_session") }
+                  it { is_expected.not_to have_link("Billing", href: "/private/stripe_portal_session") }
                 end
               end
             end

@@ -12,10 +12,10 @@
     <div class="navigation__menu" data-navigation-target="dropdownMenu">
       <%= yield :navigation_menu %>
       <% if @business.persisted? %>
-        <%= link_to "Print QR Code", public_qrcode_path((public_business_url(@business))) %>
+        <%= link_to "Print QR Code", public_qrcode_path(@business) %>
       <% end %>
       <% if @business.subscribed? %>
-        <%= link_to "Manage subscription",
+        <%= link_to "Billing",
                     private_stripe_portal_session_path,
                     target: :_blank,
                     data: { turbo: false } %>

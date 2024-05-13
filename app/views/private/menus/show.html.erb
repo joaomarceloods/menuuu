@@ -34,7 +34,7 @@
   </div>
 
   <% @menu.menu_sections.order(:position).each do |menu_section| %>
-    <%= tag.div menu_section, class: "py-2", data: { sortable_menu_sections_update_url: private_menu_section_path(menu_section) } do %>
+    <%= tag.div menu_section, class: "py-2" do %>
       <div>
         <%= render "private/menu_sections/form", menu_section: menu_section %>
 

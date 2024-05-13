@@ -1,10 +1,8 @@
 <%= tag.div \
       menu_item,
+      id: dom_id(menu_item),
       class: "group/toolbar",
-      data: {
-        controller: "menu-item-form",
-        sortable_menu_items_update_url: private_menu_item_path(menu_item)
-      } do %>
+      data: { controller: "menu-item-form" } do %>
 
   <%= render "private/menu_items/toolbar", menu_item: %>
 
