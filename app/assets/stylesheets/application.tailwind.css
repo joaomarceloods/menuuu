@@ -72,11 +72,11 @@
 
 @layer components {
   .navigation {
-    @apply sticky top-0 z-10 bg-black text-white py-2 text-xl h-navigation;
+    @apply sticky top-0 z-20 bg-black text-white text-xl;
   }
 
   .navigation__bar {
-    @apply flex justify-between items-center
+    @apply flex justify-between items-center py-2 h-navigation;
   }
 
   .navigation__menu {
@@ -84,7 +84,7 @@
   }
 
   .navigation__menu--expanded {
-    @apply max-h-40 py-4
+    @apply max-h-40 pb-4
   }
 
   .notices {
