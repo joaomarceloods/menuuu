@@ -72,7 +72,7 @@
 
 @layer components {
   .navigation {
-    @apply sticky top-0 z-10 bg-black text-white py-2 text-xl;
+    @apply sticky top-0 z-10 bg-black text-white py-2 text-xl h-navigation;
   }
 
   .navigation__bar {

@@ -1,0 +1,33 @@
+<% if menu.published? %>
+  <%= render "banner",
+              title: "Published",
+              tooltip: "Visible to customers",
+              icon: "visibility",
+              container_class: "bg-green-100",
+              button_class: "text-green-600" do %>
+    <%= link_to public_qrcode_path((public_business_url(menu.business))),
+                title: "Print QR Code and display in your restaurant",
+                class: "relative" do %>
+      <span class="relative material-symbols-sharp z-100">qr_code</span>
+    <% end %>
+    <%= link_to "View", public_menu_path(menu) %>
+    <%= button_to "Unpublish",
+        private_menu_path(menu),
+        method: :put,
+        params: { menu: { published: 0 } },
+        data: { turbo_confirm: "Unpublish this menu? Customers won't be able to view it anymore." } %>
+  <% end %>
+<% else %>
+  <%= render "banner",
+              title: "Unpublished",
+              tooltip: "Customers can't access this menu",
+              icon: "visibility_off",
+              container_class: "bg-yellow-100",
+              button_class: "text-yellow-600" do %>
+    <%= button_to "Publish menu",
+                  private_menu_path(menu),
+                  method: :put,
+                  params: { menu: { published: 1 } },
+                  data: { turbo_confirm: "Publish this menu? It will become visible to customers." } %>
+  <% end %>
+<% end %>

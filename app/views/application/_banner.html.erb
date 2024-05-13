@@ -1,0 +1,17 @@
+<%= tag.div class: class_names("py-4", local_assigns.fetch(:container_class) { "bg-yellow-100" }) do %>
+  <div class="main-content">
+    <div class="flex justify-between gap-4">
+      <p>
+        <span class="material-symbols-sharp">
+          <%= icon %>
+        </span>
+      </p>
+      <%= tag.p class: "text-balance flex-1", title: local_assigns[:tooltip] do %>
+        <%= title %>
+      <% end %>
+      <%= tag.div class: class_names("flex gap-4", local_assigns.fetch(:button_class) { "text-yellow-600" }) do %>
+        <%= yield %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

@@ -15,6 +15,9 @@ module.exports = {
       fontSize: {
         inherit: 'inherit',
       },
+      spacing: {
+        navigation: '2.75rem',
+      },
       margin: {
         '120': '30rem',
       },

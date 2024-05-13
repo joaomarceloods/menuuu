@@ -14,47 +14,7 @@
 
 <% end %>
 
-<%= tag.div class: class_names("py-4", @menu.published? ? "bg-green-100" : "bg-yellow-100") do %>
-  <div class="main-content">
-    <div class="flex justify-between gap-4">
-      <% if @menu.published? %>
-        <div title="Visible to customers">
-          <span class="material-symbols-sharp">visibility</span>
-          &nbsp;
-          Published
-        </div>
-        <div class="flex gap-4 text-green-600">
-          <%= link_to public_qrcode_path((public_business_url(@menu.business))), title: "Print QR Code and display in your restaurant", class: "relative" do %>
-              <% if @menu.updated_at > 5.seconds.ago %>
-                <span class="absolute left-0 top-0 inline-block w-4 h-4 bg-green-300 rounded-full animate-ping"></span>
-              <% end %>
-              <span class="relative material-symbols-sharp z-100">qr_code</span>
-          <% end %>
-          <%= link_to "View", public_menu_path(@menu) %>
-          <%= button_to "Unpublish",
-              private_menu_path(@menu),
-              method: :put,
-              params: { menu: { published: 0 } },
-              data: { turbo_confirm: "Unpublish this menu? Customers won't be able to view it anymore." } %>
-        </div>
-      </div>
-      <% else %>
-        <div title="Customers can't access this menu">
-          <span class="material-symbols-sharp">visibility_off</span>
-          &nbsp;
-          Unpublished
-        </div>
-        <div class="flex gap-4 text-yellow-600">
-          <%= button_to "Publish menu",
-              private_menu_path(@menu),
-              method: :put,
-              params: { menu: { published: 1 } },
-              data: { turbo_confirm: "Publish this menu? It will become visible to customers." } %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-<% end %>
+<%= render "publish", menu: @menu %>
 
 <%= render "subscription", menu: @menu %>
 
