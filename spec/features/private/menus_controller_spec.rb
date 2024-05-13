@@ -39,14 +39,14 @@ RSpec.feature "Private::MenusControllers", type: :feature do
 
         describe "print qr code" do
           before do
-            within ".navigation-bar" do
+            within ".navigation__bar" do
               click_button "menu"
             end
-            within ".navigation-menu" do
+            within ".navigation__menu" do
               click_link "Print QR Code"
             end
           end
-          pending { is_expected.to have_selector("svg[height=363]") }
+          it { is_expected.to have_selector("svg[height=275][width=275]") }
         end
       end
     end
