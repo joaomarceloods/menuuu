@@ -130,7 +130,7 @@ RSpec.feature "Private::MenusControllers", type: :feature do
                 it { is_expected.to have_no_field("menu_item_name") }
               end
 
-              describe "adding item", js: true do
+              describe "adding item" do
                 before { click_button "New item" }
                 it { is_expected.to have_field("menu_item_name", count: 1) }
               end
@@ -155,7 +155,7 @@ RSpec.feature "Private::MenusControllers", type: :feature do
               describe "deleting item", js: true do
                 before do
                   find_field("menu_item_name").click
-                  within ".toolbar" do
+                  within "#menu_item_#{item.id} .toolbar" do
                     accept_confirm "Remove the My Item item permanently?" do
                       click_button "close"
                     end
