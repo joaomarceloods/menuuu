@@ -40,7 +40,11 @@ RSpec.describe "Private::BusinessesControllers", type: :request do
       context "without params" do
         before { post "/private/business", params: { business: { name: '' } } }
         it { is_expected.to have_http_status(:success) }
-        pending { is_expected.to render_template(:new) }
+
+        describe "body" do
+          subject { response.body }
+          it { is_expected.to include("What&#39;s your business&#39; name?") }
+        end
       end
 
       context "with params" do
