@@ -1,0 +1,13 @@
+<div class="phone-box scale-[90%]">
+  <div class="bg-black rounded-[50px] p-1 pr-6 pb-6 -skew-y-6 shadow-2xl">
+    <div class="bg-white rounded-[50px] h-[852px] w-[393px] py-3 flex flex-col gap-3 items-center justify-between">
+      <div class="bg-black rounded-full w-24 h-8"></div>
+      <div class="flex-1 w-full overflow-auto scrollbar-none">
+        <%= yield %>
+        <%# For a strange reason, the rendering engine will move this div from here...  %>
+        <div class="bg-black rounded-full w-32 h-2"></div>
+      </div>
+      <%# ...to here, where it should actually be %>
+    </div>
+  </div>
+</div>

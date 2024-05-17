@@ -1,0 +1,45 @@
+<% menu_sections = menu.publicly_visible_menu_sections.order(:position) %>
+
+<main class="main-content">
+
+  <h1 class="text-5xl mt-12">
+    <%= menu.name %>
+  </h1>
+
+  <nav class="sticky top-0 bg-white">
+    <ul class="flex items-center gap-2 overflow-x-auto scrollbar-none py-2 mb-6">
+      <% if menu_sections.length > 1 %>
+        <% menu_sections.each_with_index do |menu_section, index| %>
+          <li>
+            <%= link_to "##{dom_id(menu_section)}", class: "text-nowrap whitespace-nowrap" do %>
+              <%= tag.span "·", class: "mr-2" if index > 0 %>
+              <%= menu_section.name %>
+            <% end %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </nav>
+
+  <% menu_sections.each do |menu_section| %>
+    <%= tag.section id: dom_id(menu_section), class: "scroll-mt-12" do %>
+      <%= tag.h2 menu_section.name, class: "text-3xl mb-2" %>
+
+      <ul class="mb-6">
+        <% menu_section.publicly_visible_menu_items.order(:position).each do |menu_item| %>
+          <li class="flex justify-between gap-4 text-xl leading-none mb-2">
+            <div class="flex-1">
+              <%= menu_item.name %>
+            </div>
+
+            <div class="w-16 text-right">
+              <% if menu_item.price.present? %>
+                <%= number_to_currency(menu_item.price) %>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
+</div>

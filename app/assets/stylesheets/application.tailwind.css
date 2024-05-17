@@ -68,6 +68,15 @@
   body.devise input[type=password] {
     @apply w-full
   }
+
+  .scrollbar-none::-webkit-scrollbar {
+    @apply hidden
+  }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
 }
 
 @layer components {
