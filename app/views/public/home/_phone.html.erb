@@ -4,10 +4,8 @@
       <div class="bg-black rounded-full w-24 h-8"></div>
       <div class="flex-1 w-full overflow-auto scrollbar-none">
         <%= yield %>
-        <%# For a strange reason, the rendering engine will move this div from here...  %>
-        <div class="bg-black rounded-full w-32 h-2"></div>
       </div>
-      <%# ...to here, where it should actually be %>
+      <div class="bg-black rounded-full w-32 h-2"></div>
     </div>
   </div>
 </div>
