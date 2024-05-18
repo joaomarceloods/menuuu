@@ -3,7 +3,7 @@
 <% if @menu.id == 1 %>
   <div class="fixed bottom-0 w-full">
     <%= render "banner", title: "This is a sample menu", icon: :warning, container_class: "bg-green-100", button_class: "text-green-600" do %>
-      <%= link_to "Create your own menu", user_session_path %>
+      <%= link_to "Create your own menu", new_user_registration_path %>
     <% end %>
   </div>
 <% end %>
