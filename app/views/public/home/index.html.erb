@@ -10,7 +10,7 @@
       </div>
 
       <div class="py-4 md:opacity-20 hover:opacity-100 transition-opacity max-w-64">
-        <%= @qrcode.as_svg(viewbox: [100, 100, 100, 100]).html_safe %>
+        <%= image_tag public_qrcode_path(@menu.id), alt: "Scan this QR Code to view an example menu" %>
       </div>
     </div>
   </div>
