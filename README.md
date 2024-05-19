@@ -32,3 +32,16 @@ When requested, enter the Stripe test API Key from `credentials.yml.enc`.
 stripe login
 stripe listen --forward-to localhost:3000/stripe/webhook
 ```
+
+## Benchmarking
+
+Using the `derailed_benchmarks` gem. There are many [handful tools](https://github.com/zombocom/derailed_benchmarks).
+This one measures iterations per second for a given path:
+
+```
+bundle exec derailed exec perf:ips
+PATH_TO_HIT=/menu/1 bundle exec derailed exec perf:ips
+PATH_TO_HIT=/menu/1 USE_SERVER=puma bundle exec derailed exec perf:ips
+```
+
+It uses the production environment, so before benchmarking, stop any running Rails server, set `force_ssl=false` and set the production database to point to the development database.
