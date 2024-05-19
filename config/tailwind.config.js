@@ -9,11 +9,18 @@ module.exports = {
   ],
   theme: {
     extend: {
+      borderRadius: {
+        phone: '3rem',
+        'phone-lg': '4.5rem',
+      },
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
       fontSize: {
         inherit: 'inherit',
+      },
+      height: {
+        phone: '852px',
       },
       spacing: {
         navigation: '2.75rem',
@@ -23,6 +30,9 @@ module.exports = {
       },
       transitionProperty: {
         visibility: 'visibility',
+      },
+      width: {
+        phone: '393px',
       },
     },
   },
