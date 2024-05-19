@@ -45,3 +45,9 @@ PATH_TO_HIT=/menu/1 USE_SERVER=puma bundle exec derailed exec perf:ips
 ```
 
 It uses the production environment, so before benchmarking, stop any running Rails server, set `force_ssl=false` and set the production database to point to the development database.
+
+Using Apach Benchmark:
+
+```
+ab -n 1000 -c 10 http://127.0.0.1:3000/
+```
