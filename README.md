@@ -51,3 +51,8 @@ Using Apach Benchmark:
 ```
 ab -n 1000 -c 10 http://127.0.0.1:3000/
 ```
+
+## Tailwind not Building
+
+You likely ran `rake assets:precompile` which generated `public/assets/`.
+Run `rake assets:clobber` to delete `public/assets` and Tailwind should build again.
