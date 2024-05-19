@@ -22,6 +22,15 @@ module.exports = {
       height: {
         phone: '852px',
       },
+      keyframes: {
+        scrollable: {
+          '0%, 100%': { position: 'relative', top: '0' },
+          '50%': { position: 'relative', top: '-1rem' },
+        }
+      },
+      animation: {
+        scrollable: 'scrollable 500ms ease-in-out 3s 1',
+      },
       spacing: {
         navigation: '2.75rem',
       },
