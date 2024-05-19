@@ -24,12 +24,42 @@ module.exports = {
       },
       keyframes: {
         scrollable: {
-          '0%, 100%': { position: 'relative', top: '0' },
-          '50%': { position: 'relative', top: '-1rem' },
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-2rem)' },
+        },
+        'ad-copy': {
+          '0%, 50%': { opacity: 0 },
+          '55%, 95%': { opacity: 1 },
+        },
+        'ad-phone': {
+          '0%': {
+            opacity: 0,
+            transform: 'scale(1)',
+          },
+          '5%, 10%': {
+            opacity: 1,
+            transform: 'scale(1.5)',
+          },
+          '15%, 45%': {
+            opacity: 1,
+            transform: 'scale(2.3) translateY(15%)',
+          },
+          '50%, 100%': {
+            opacity: 0,
+            transform: 'scale(1)',
+          },
+        },
+        'ad-screen': {
+          '0%, 10%': { transform: 'translateY(0%)' },
+          '25%': { transform: 'translateY(-50%)' },
+          '35%, 100%': { transform: 'translateY(0%)' },
         }
       },
       animation: {
         scrollable: 'scrollable 500ms ease-in-out 3s 1',
+        'ad-copy': 'ad-copy 10s ease-in-out 0s infinite',
+        'ad-phone': 'ad-phone 10s ease-in-out 0s infinite',
+        'ad-screen': 'ad-screen 10s ease-in-out 0s infinite',
       },
       spacing: {
         navigation: '2.75rem',

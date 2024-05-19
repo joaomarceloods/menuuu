@@ -1,0 +1,19 @@
+<div class="bg-black flex justify-center items-center">
+  <div class="bg-red-500 w-[1080px] h-[1350px] overflow-hidden relative">
+    <div class="absolute top-0 w-full h-full flex flex-col justify-center items-center animate-ad-copy">
+      <h1 class="text-[9.6rem] leading-[1em] text-center">Free QR code menu</h1>
+      <h2 class="text-[5.2rem] leading-[1em] text-center mb-[50px]">For your pub, cafe or restaurant</h2>
+      <%= image_tag public_qrcode_path(1), width: "84%" %>
+    </div>
+
+    <div class="absolute top-0 w-full h-full flex justify-center items-center">
+      <div class="animate-ad-phone">
+        <%= render "public/home/phone" do %>
+          <div class="animate-ad-screen">
+            <%= render "public/menus/menu", menu: Menu.first %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
