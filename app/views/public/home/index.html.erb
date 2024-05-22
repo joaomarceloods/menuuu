@@ -1,15 +1,15 @@
 <div class="flex w-full max-w-[1024px] mx-auto justify-between p-8">
-  <div class="flex-1 md:pt-32">
+  <div class="flex-1 pt-16 md:pt-32">
     <div class="max-w-64 mx-auto lg:max-w-fit">
       <h1 class="text-6xl lg:text-9xl font-bold">Menuuu</h1>
-      <h2 class="text-xl lg:text-4xl">QR Code menu for pubs and cafes</h2>
+      <h2 class="text-xl lg:text-4xl">Free QR Code menu maker</h2>
 
       <div class="py-4 flex gap-4">
-        <%= link_to "Start for free", new_user_registration_path, class: "border-2 border-solid border-black py-1 px-2 text-xl lg:text-2xl bg-black text-white" %>
+        <%= link_to "Make your menu", new_user_registration_path, class: "border-2 border-solid border-black py-1 px-2 text-xl lg:text-2xl bg-black text-white" %>
         <%= link_to "See example", public_menu_path(@menu), class: "border-2 border-solid border-black py-1 px-2 text-xl lg:text-2xl" %>
       </div>
 
-      <div class="py-4 md:opacity-20 hover:opacity-100 transition-opacity max-w-64">
+      <div class="py-4 md:opacity-20 hover:opacity-100 transition-opacity max-w-60 lg:max-w-72">
         <%= image_tag public_qrcode_path(@menu.id), alt: "Scan this QR Code to view an example menu" %>
       </div>
     </div>
