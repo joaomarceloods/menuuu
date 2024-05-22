@@ -34,15 +34,15 @@ module.exports = {
         'ad-phone': {
           '0%': {
             opacity: 0,
-            transform: 'scale(1)',
+            transform: 'scale(0.8)',
           },
           '5%, 10%': {
             opacity: 1,
-            transform: 'scale(1.5)',
+            transform: 'scale(1.2)',
           },
           '15%, 45%': {
             opacity: 1,
-            transform: 'scale(2.3) translateY(15%)',
+            transform: 'scale(2.3) translateY(22%)',
           },
           '50%, 100%': {
             opacity: 0,
@@ -50,9 +50,8 @@ module.exports = {
           },
         },
         'ad-screen': {
-          '0%, 10%': { transform: 'translateY(0%)' },
-          '25%': { transform: 'translateY(-50%)' },
-          '35%, 100%': { transform: 'translateY(0%)' },
+          '0%, 10%': { transform: 'translateY(38%)' },
+          '45%, 100%': { transform: 'translateY(-30%)' },
         }
       },
       animation: {

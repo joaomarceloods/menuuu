@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       resource :ads, except: :all do
         get :video
         get :bigphone
+        get :bigred
       end
     end
   end
