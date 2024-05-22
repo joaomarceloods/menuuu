@@ -17,7 +17,7 @@ ActiveRecord::Base.transaction do
 
   business = Business.create!(user:, name: "The Menuuu")
   Subscription.create!(business:, stripe_subscription_id: "sub_123456", expired_at: 100.years.from_now)
-  menu = Menu.create!(business:, name: "The Menuuu", published: true)
+  menu = Menu.create!(business:, name: "The Menuuu", published: true, demo: true)
 
   MenuSection.create!(menu:, name: "Appetizers") do |menu_section|
     MenuItem.create!(menu_section:, name: "Fried Pickles", price: 5.99)

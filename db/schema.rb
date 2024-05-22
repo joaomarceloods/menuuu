@@ -46,6 +46,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_28_192221) do
     t.bigint "business_id", null: false
     t.string "name", null: false
     t.boolean "published", default: false, null: false
+    t.boolean "demo", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["business_id"], name: "index_menus_on_business_id"
