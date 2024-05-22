@@ -2,15 +2,13 @@ class Public::BusinessesController < Public::ApplicationController
   def show
     @business = Business.find(params[:id])
     @menus = @business.menus.where(published: true)
-    redirect_to_first_menu_if_only_one(@menus)
+    redirect_to public_menu_path(@menus.first) if @menus.one? && !coming_from_menu?
   end
 
   private
 
-  def redirect_to_first_menu_if_only_one(menus)
-    if @menus.one? && previous_path != public_menu_path(@menus.first)
-      redirect_to public_menu_path(@menus.first)
-    end
+  def coming_from_menu?
+    previous_path&.starts_with?('/menu/')
   end
 
   def previous_path
