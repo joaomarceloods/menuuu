@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   namespace :public, path: nil do
     resources :businesses, only: %i[ show ], path: :b
     resources :menus, only: %i[ show ], path: :menu
-    resources :qrcodes, only: %i[ show ], path: :qr, param: :menu_id
+    resources :qrcodes, only: %i[ show ], path: :qr, param: :url, url: /.*/
 
     if Rails.env.development?
       resource :ads, except: :all do

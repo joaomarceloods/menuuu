@@ -6,8 +6,9 @@ RSpec.feature "Authentication", type: :feature do
 
   describe "root" do
     context "unauthenticated" do
+      let!(:menu) { Menu.create(name: "The Menuuu") }
       before { visit "/" }
-      it { is_expected.to have_text("Log in") }
+      it { is_expected.to have_text("Free QR code menu maker") }
     end
 
     context "authenticated" do

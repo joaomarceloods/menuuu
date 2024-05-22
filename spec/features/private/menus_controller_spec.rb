@@ -46,7 +46,7 @@ RSpec.feature "Private::MenusControllers", type: :feature do
               click_link "Print QR Code"
             end
           end
-          it { is_expected.to have_selector("svg[height=275][width=275]") }
+          it { is_expected.to have_selector("body > svg[height=363][width=363]") }
         end
       end
     end

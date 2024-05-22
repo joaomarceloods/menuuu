@@ -10,7 +10,7 @@
       </div>
 
       <div class="py-4 md:opacity-20 hover:opacity-100 transition-opacity max-w-60 lg:max-w-72">
-        <%= image_tag public_qrcode_path(@menu.id), alt: "Scan this QR Code to view an example menu" %>
+        <%= image_tag public_qrcode_path(public_menu_url(@menu)), alt: "Scan this QR Code to view an example menu", width: "100%" %>
       </div>
     </div>
   </div>

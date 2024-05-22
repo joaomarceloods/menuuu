@@ -5,7 +5,7 @@
               icon: "visibility",
               container_class: "bg-green-100",
               button_class: "text-green-600" do %>
-    <%= link_to public_qrcode_path(menu.business),
+    <%= link_to public_qrcode_path(public_business_url(menu.business)),
                 title: "Print QR Code and display in your restaurant",
                 class: "relative" do %>
       <span class="relative material-symbols-sharp z-100">qr_code</span>
