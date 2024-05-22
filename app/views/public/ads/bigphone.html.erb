@@ -1,0 +1,9 @@
+<div class="bg-black flex justify-center items-center">
+  <div class="bg-red-500 w-[3240px] h-[6480px] overflow-hidden relative flex justify-center items-center">
+    <div class="scale-[700%]">
+      <%= render "public/home/phone" do %>
+        <%= render "public/menus/menu", menu: Menu.first %>
+      <% end %>
+    </div>
+  </div>
+</div>

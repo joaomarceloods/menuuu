@@ -23,7 +23,13 @@ Rails.application.routes.draw do
     resources :businesses, only: %i[ show ], path: :b
     resources :menus, only: %i[ show ], path: :menu
     resources :qrcodes, only: %i[ show ], path: :qr, param: :menu_id
-    resource :animation, only: %i[ show ] if Rails.env.development?
+
+    if Rails.env.development?
+      resource :ads, except: :all do
+        get :video
+        get :bigphone
+      end
+    end
   end
 
   namespace :stripe do
