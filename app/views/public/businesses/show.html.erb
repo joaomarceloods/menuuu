@@ -1,15 +1,19 @@
-<h1>
-  <%= @business.name %>
-</h1>
+<main class="main-content mt-12 mb-40">
+  <h1 class="text-5xl mb-8">
+    <%= @business.name %>
+  </h1>
 
-<ul>
-  <% @menus.each do |menu| %>
-    <li>
-      <%= link_to menu.name, [:public, menu] %>
-    </li>
+  <ul class="text-3xl leading-loose">
+    <% @menus.each do |menu| %>
+      <li>
+        <%= link_to public_menu_path(menu), class: "flex items-center justify-between" do %>
+          <%= menu.name %>
+          <span>&#10095;</span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+
+  <% if @menus.empty? %>
+    <p>Our menus are unavailable right now.</p>
   <% end %>
-</ul>
-
-<% if @menus.empty? %>
-  <p>Our menus are unavailable right now.</p>
-<% end %>
