@@ -1,3 +1,13 @@
+<% unless @menu.business.menus.one? %>
+  <div class="main-content mt-4">
+    <%= link_to public_business_path(@menu.business) do %>
+      &#10094;
+      &nbsp;
+      <%= @menu.business.name %>
+    <% end %>
+  </div>
+<% end %>
+
 <%= render "menu", menu: @menu %>
 
 <% if @menu.id == 1 %>
