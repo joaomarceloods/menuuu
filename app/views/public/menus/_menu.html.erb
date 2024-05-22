@@ -7,15 +7,11 @@
   </h1>
 
   <nav class="sticky top-0 bg-white">
-    <ul class="flex items-center gap-2 overflow-x-auto scrollbar-none py-2 mb-6">
+    <ul class="flex items-center gap-2 overflow-x-auto scrollbar-none py-2 mb-6 text-nowrap whitespace-nowrap">
       <% if menu_sections.length > 1 %>
         <% menu_sections.each_with_index do |menu_section, index| %>
-          <li>
-            <%= link_to "##{dom_id(menu_section)}", class: "text-nowrap whitespace-nowrap" do %>
-              <%= tag.span "·", class: "mr-2" if index > 0 %>
-              <%= menu_section.name %>
-            <% end %>
-          </li>
+          <%= tag.span "&bull;".html_safe if index > 0 %>
+          <li><%= link_to menu_section.name, "##{dom_id(menu_section)}" %></li>
         <% end %>
       <% end %>
     </ul>
