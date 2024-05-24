@@ -1,0 +1,6 @@
+{
+  "name": "Menuuu",
+  "scripts": {
+    "postdeploy": "bin/rails db:prepare"
+  }
+}
