@@ -115,7 +115,7 @@
     transition: visibility 1ms
   }
 
-  .sortable-chosen .toolbar {
+  .sortable-chosen > .group\/toolbar > .toolbar {
     @apply visible
   }
 
