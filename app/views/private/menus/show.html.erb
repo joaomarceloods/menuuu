@@ -28,29 +28,31 @@
 <%# 1. Open this page in mobile and add enough items to fill the screen past the bottom %>
 <%# 2. Select the last item - the keyboard should slide up %>
 <%# 3. Drag the item around - the keyboard should slide down automatically but the page must NOT move %>
-<%= turbo_frame_tag :menu, class: "main-content mb-120", data: { controller: "sortable-menu-sections" } do %>
+<%= turbo_frame_tag :menu, class: "main-content mb-120" do %>
   <div class="mb-4 text-right">
     <%= render 'new_menu_section', menu: @menu, position: 1 %>
   </div>
 
-  <% @menu.menu_sections.order(:position).each do |menu_section| %>
-    <%= tag.div menu_section, class: "py-2" do %>
-      <div>
-        <%= render "private/menu_sections/form", menu_section: menu_section %>
+  <div data-controller="sortable-menu-sections">
+    <% @menu.menu_sections.order(:position).each do |menu_section| %>
+      <%= tag.div menu_section, class: "py-2" do %>
+        <div>
+          <%= render "private/menu_sections/form", menu_section: menu_section %>
 
-        <%= tag.div class: "mb-4", data: { controller: "sortable-menu-items", sortable_menu_items_menu_section_id: menu_section.id } do %>
-          <% menu_section.menu_items.order(:position).each do |menu_item| %>
-            <%= render "private/menu_items/form", menu_item: menu_item %>
+          <%= tag.div class: "mb-4", data: { controller: "sortable-menu-items", sortable_menu_items_menu_section_id: menu_section.id } do %>
+            <% menu_section.menu_items.order(:position).each do |menu_item| %>
+              <%= render "private/menu_items/form", menu_item: menu_item %>
+            <% end %>
           <% end %>
-        <% end %>
 
-        <div class="flex justify-between gap-4">
-          <%= render 'new_menu_item', menu: @menu, menu_section: menu_section, position: menu_section.menu_items.count + 1 %>
-          <%= render 'new_menu_section', menu: @menu, position: menu_section.position + 1 %>
+          <div class="flex justify-between gap-4">
+            <%= render 'new_menu_item', menu: @menu, menu_section: menu_section, position: menu_section.menu_items.count + 1 %>
+            <%= render 'new_menu_section', menu: @menu, position: menu_section.position + 1 %>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 
   <div class="saving">
     <span class="material-symbols-sharp">backup</span>
