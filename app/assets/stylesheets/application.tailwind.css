@@ -101,11 +101,11 @@
   }
 
   .group\/toolbar {
-    @apply relative -mx-12 px-12
+    @apply relative
   }
 
   .toolbar {
-    @apply invisible group-focus-within/toolbar:visible absolute top-0 flex justify-between items-center h-full w-full -mx-12;
+    @apply invisible group-focus-within/toolbar:visible absolute top-0 left-0 right-0 flex justify-between items-center h-full -mx-12;
     /*
     iPhone fix:
     If the action bar changes visibility immediately, it won't register clicks on action bar buttons.

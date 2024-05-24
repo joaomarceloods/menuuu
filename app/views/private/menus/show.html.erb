@@ -35,22 +35,22 @@
 
   <div data-controller="sortable-menu-sections">
     <% @menu.menu_sections.order(:position).each do |menu_section| %>
-      <%= tag.div menu_section, class: "py-2" do %>
-        <div>
-          <%= render "private/menu_sections/form", menu_section: menu_section %>
+      <div class="py-2 -mx-12 px-12 bg-white">
+        <%= render "private/menu_sections/form", menu_section: menu_section %>
 
-          <%= tag.div class: "mb-4", data: { controller: "sortable-menu-items", sortable_menu_items_menu_section_id: menu_section.id } do %>
-            <% menu_section.menu_items.order(:position).each do |menu_item| %>
+        <%= tag.div class: "mb-4", data: { controller: "sortable-menu-items", sortable_menu_items_menu_section_id: menu_section.id } do %>
+          <% menu_section.menu_items.order(:position).each do |menu_item| %>
+            <div class="-mx-12 px-12 bg-white">
               <%= render "private/menu_items/form", menu_item: menu_item %>
-            <% end %>
+            </div>
           <% end %>
+        <% end %>
 
-          <div class="flex justify-between gap-4">
-            <%= render 'new_menu_item', menu: @menu, menu_section: menu_section, position: menu_section.menu_items.count + 1 %>
-            <%= render 'new_menu_section', menu: @menu, position: menu_section.position + 1 %>
-          </div>
+        <div class="flex justify-between gap-4">
+          <%= render 'new_menu_item', menu: @menu, menu_section: menu_section, position: menu_section.menu_items.count + 1 %>
+          <%= render 'new_menu_section', menu: @menu, position: menu_section.position + 1 %>
         </div>
-      <% end %>
+      </div>
     <% end %>
   </div>
 
