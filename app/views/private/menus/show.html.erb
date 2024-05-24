@@ -46,7 +46,7 @@
           <% end %>
         <% end %>
 
-        <div class="flex justify-between gap-4">
+        <div class="menu-section-actions">
           <%= render 'new_menu_item', menu: @menu, menu_section: menu_section, position: menu_section.menu_items.count + 1 %>
           <%= render 'new_menu_section', menu: @menu, position: menu_section.position + 1 %>
         </div>

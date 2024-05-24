@@ -131,6 +131,14 @@
     @apply cursor-grabbing
   }
 
+  .menu-section-actions {
+    @apply flex justify-between gap-4;
+  }
+
+  .sortable-chosen .menu-section-actions {
+    @apply invisible
+  }
+
   .add-button {
     @apply text-xl transition-opacity opacity-20 disabled:opacity-20 focus:outline-none;
   }
