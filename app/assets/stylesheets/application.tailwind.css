@@ -115,10 +115,6 @@
     transition: visibility 1ms
   }
 
-  .sortable-chosen > .group\/toolbar > .toolbar {
-    @apply visible
-  }
-
   .toolbar__item {
     @apply text-xl w-12 text-center;
   }
@@ -127,8 +123,16 @@
     @apply cursor-grab
   }
 
-  .sortable-chosen .toolbar__item--handle {
-    @apply cursor-grabbing
+  .sortable-chosen > .group\/toolbar > .toolbar {
+    @apply visible
+  }
+
+  .sortable-chosen > .group\/toolbar > .toolbar .toolbar__item {
+    @apply invisible
+  }
+
+  .sortable-chosen > .group\/toolbar > .toolbar .toolbar__item.toolbar__item--handle {
+    @apply visible cursor-grabbing
   }
 
   .menu-section-actions {
