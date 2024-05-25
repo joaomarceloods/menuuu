@@ -41,6 +41,7 @@ gem "bootsnap", require: false
 
 # Flexible authentication solution for Rails with Warden [https://github.com/heartcombo/devise]
 gem "devise", "~> 4.8"
+gem "devise-i18n", "~> 1.12.0"
 
 # A Ruby library that encodes QR Codes [https://github.com/whomwah/rqrcode]
 gem "rqrcode", "~> 2.1"
