@@ -15,7 +15,7 @@
 <% if @menu.demo? %>
   <div class="fixed bottom-0 w-full">
     <%= render "banner", title: t('.example_menu'), icon: :warning, container_class: "bg-green-100", button_class: "text-green-600" do %>
-      <%= link_to t('.create_menu'), new_user_registration_path %>
+      <%= link_to t('public.menus.show.create_menu'), new_user_registration_path %>
     <% end %>
   </div>
 <% end %>
