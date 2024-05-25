@@ -2,7 +2,7 @@
   <%= button_to private_menus_path, class: local_assigns[:button_class] do %>
     <span class="material-symbols-sharp">add</span>
     &nbsp;
-    New menu
+    <%= t('private.menus.new_menu.new_menu') %>
   <% end %>
 <% else %>
   <%= tag.div class: 'inline-block',
@@ -11,14 +11,15 @@
                 tippy_allow_html_value: true,
                 tippy_interactive_value: true,
                 tippy_placement_value: :bottom,
-                tippy_content_value: link_to("Upgrade to add more menus", private_stripe_checkout_session_path),
+                tippy_content_value: link_to(t('private.menus.new_menu.upgrade'),
+                                             private_stripe_checkout_session_path),
               } do %>
     <%= button_to private_menus_path,
                   class: local_assigns[:button_class],
                   disabled: true do %>
       <span class="material-symbols-sharp">add</span>
       &nbsp;
-      New menu
+      <%= t('private.menus.new_menu.new_menu') %>
     <% end %>
   <% end %>
 <% end %>

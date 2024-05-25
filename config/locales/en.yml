@@ -27,5 +27,97 @@
 #       "yes": yup
 #       enabled: "ON"
 
+# Translate to Portuguese. Translate "menu" as "cardápio". Translate "QR Code" as "QR Code".
+# Translate to Spanish. Translate "item" as "producto". Translate "QR Code" as "QR Code".
+
 en:
-  hello: "Hello world"
+  layouts:
+    private:
+      navigation:
+        print_qr_code: "Print QR Code"
+        billing: "Billing"
+        sign_out: "Sign Out"
+      application:
+        title: "Menuuu - Private"
+    application:
+      title: "Menuuu"
+  private:
+    businesses:
+      new:
+        welcome: "Welcome!"
+        label: "What's your business' name?"
+        next: "Next"
+    menu_items:
+      form:
+        name_placeholder: "Enter item name…"
+        name_title: "Item name"
+        price_placeholder: "0"
+        price_title: "Item price"
+      toolbar:
+        drag: "Drag"
+        delete: "Delete"
+        delete_confirmation: "%{name} - Delete this item? Once deleted, it can't be restored."
+    menu_sections:
+      form:
+        name_placeholder: "Enter section name…"
+        name_title: "Section name"
+      toolbar:
+        drag: "Drag"
+        delete: "Delete"
+        delete_confirmation: "%{name} - Delete this section and all its items? Once deleted, it can't be restored."
+    menus:
+      index:
+        business_name: "Business name"
+        published: "Published"
+        not_published: "Not published"
+      show:
+        all_menus: "All menus"
+        delete_menu: "Delete menu"
+        delete_menu_confirmation: "Delete this menu? Once deleted, it can't be restored. If you just want to hide it from customers, you can unpublish instead."
+        menu_name: "Menu name"
+      destroy:
+        success: "Menu deleted: %{name}"
+      new_menu_item:
+        new_item: "New item"
+        upgrade: "Upgrade to add more items"
+      new_menu_section:
+        new_section: "New section"
+        upgrade: "Upgrade to add more sections"
+      new_menu:
+        new_menu: "New menu"
+        upgrade: "Upgrade to add more menus"
+      publish:
+        published: "Published"
+        published_tooltip: "Visible to customers"
+        publish_button: "Publish menu"
+        publish_confirmation: "Publish this menu? It will become visible to customers."
+        unpublished: "Unpublished"
+        unpublished_tooltip: "Hidden from customers"
+        unpublish_button: "Unpublish"
+        unpublish_confirmation: "Unpublish this menu? It will be hidden from customers."
+        view: "View"
+        qrcode_tooltip: "Print QR Code and display in your restaurant"
+      subscription:
+        title: "Free tier: 1 menu and 10 items. Unlock 10 menus and 1,000 items."
+        button: "Subscribe"
+    stripe_checkout_cancels:
+      show:
+        notice: "Payment cancelled. You're still on the free plan."
+    stripe_checkout_successes:
+      show:
+        notice: "Subscribed! Add up to 10 menus and 1,000 items per menu."
+  public:
+    businesses:
+      show:
+        no_menus: "No menus available…"
+    home:
+      index:
+        title: "Menuuu"
+        subtitle: "Free QR Code menu maker"
+        make_your_menu: "Make your menu"
+        see_example: "See example"
+        qr_code_alt: "Scan this QR Code to view an example menu"
+    menus:
+      show:
+        example_menu: "This is an example menu"
+        create_menu: "Create your own menu"

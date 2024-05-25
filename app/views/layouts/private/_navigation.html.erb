@@ -12,15 +12,15 @@
     <div class="navigation__menu" data-navigation-target="dropdownMenu">
       <%= yield :navigation_menu %>
       <% if @business.persisted? %>
-        <%= link_to "Print QR Code", public_qrcode_path(public_business_url(@business)) %>
+        <%= link_to t('.print_qr_code'), public_qrcode_path(public_business_url(@business)) %>
       <% end %>
       <% if @business.subscribed? %>
-        <%= link_to "Billing",
+        <%= link_to t(".billing"),
                     private_stripe_portal_session_path,
                     target: :_blank,
                     data: { turbo: false } %>
       <% end %>
-      <%= button_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
+      <%= button_to t('.sign_out'), destroy_user_session_path, method: :delete, data: { turbo: false } %>
     </div>
   </div>
 </div>

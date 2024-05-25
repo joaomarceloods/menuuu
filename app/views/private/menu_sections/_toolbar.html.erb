@@ -1,15 +1,16 @@
 <div class="toolbar">
-  <div class="toolbar__item toolbar__item--handle">
+  <%= tag.div class: "toolbar__item toolbar__item--handle", title: t('private.menu_items.toolbar.drag') do %>
     <span class="material-symbols-sharp">menu</span>
-  </div>
+  <% end %>
 
   <%= button_to \
         private_menu_section_path(menu_section),
         method: :delete,
-        title: "Delete",
+        title: t('private.menu_sections.toolbar.delete'),
         class: "toolbar__item text-red-500",
         data: {
-          turbo_confirm: "Remove the #{menu_section.name || "empty"} section permanently? Items under this section will also be removed."
+          turbo_confirm: t('private.menu_sections.toolbar.delete_confirmation',
+                           name: menu_section.name || t('private.menu_sections.form.name_placeholder')),
         } do %>
     <span class="material-symbols-sharp">close</span>
   <% end %>

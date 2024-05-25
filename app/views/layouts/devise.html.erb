@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Menuuu</title>
+    <title><%= t('layouts.application.title') %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,7 +12,7 @@
   <body class="devise">
     <%= render "layouts/notice" %>
     <div class="main-content py-12">
-      <h1>Menuuu</h1>
+      <h1><%= t('layouts.application.title') %></h1>
       <%= yield %>
     </div>
   </body>

@@ -36,7 +36,7 @@ class Private::MenusController < Private::ApplicationController
 
   def destroy
     @menu.destroy
-    redirect_to [:private, :menus], notice: "Menu was successfully destroyed."
+    redirect_to [:private, :menus], notice: t('.success', name: @menu.name)
   end
 
   private

@@ -1,16 +1,16 @@
 <%= content_for :navigation_bar do %>
-  <%= link_to [:private, :menus] do %>
+  <%= link_to private_menus_path do %>
     <span class="material-symbols-sharp">arrow_back</span>
     &nbsp;
-    All menus
+    <%= t('.all_menus') %>
   <% end %>
 <% end %>
 
 <%= content_for :navigation_menu do %>
-  <%= button_to "Delete menu",
+  <%= button_to t('.delete_menu'),
         private_menu_path(@menu),
         method: :delete,
-        data: { turbo_confirm: "Delete this menu? Once deleted, it can't be restored. If you just want to hide it from customers, you can unpublish instead." } %>
+        data: { turbo_confirm: t('.delete_menu_confirmation') } %>
 
 <% end %>
 
@@ -19,7 +19,11 @@
 <%= turbo_frame_tag :edit, class: "main-content" do %>
   <div class="mt-4 mb-4">
     <%= form_for @menu, url: [:private, @menu], html: { oninput: "this.requestSubmit()" } do |f| %>
-      <%= f.text_field :name, placeholder: "Menu name", autocomplete: :off, class: "menu-name lite-input text-5xl" %>
+      <%= f.text_field :name,
+                       placeholder: t('.menu_name'),
+                       title: t('.menu_name'),
+                       autocomplete: :off,
+                       class: "menu-name lite-input text-5xl" %>
     <% end %>
   </div>
 <% end %>

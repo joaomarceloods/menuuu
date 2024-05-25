@@ -3,7 +3,7 @@
                 class: "add-button",
                 params: { menu_item: { menu_section_id: menu_section.id, position: position } } do %>
     <span class="material-symbols-sharp">add</span>
-    New item
+    <%= t('private.menus.new_menu_item.new_item') %>
   <% end %>
 <% else %>
   <%= tag.div class: "inline-block",
@@ -12,15 +12,14 @@
                 tippy_allow_html_value: true,
                 tippy_interactive_value: true,
                 tippy_placement_value: :bottom,
-                tippy_content_value: link_to("Upgrade to add more items",
-                                             private_stripe_checkout_session_path,
-                                             data: { turbo_frame: :_top }),
+                tippy_content_value: link_to(t('private.menus.new_menu_item.upgrade'),
+                                             private_stripe_checkout_session_path),
               } do %>
     <%= button_to private_menu_items_path,
                   class: "add-button",
                   disabled: true do %>
       <span class="material-symbols-sharp">add</span>
-      New item
+      <%= t('private.menus.new_menu_item.new_item') %>
     <% end %>
   <% end %>
 <% end %>

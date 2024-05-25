@@ -5,20 +5,20 @@
 <div class="main-content">
   <%= turbo_frame_tag @business do %>
     <%# TODO: validate empty %>
-    <%= form_for @business, url: [:private, :business], html: { class: "mt-4", oninput: "this.requestSubmit()" } do |f| %>
-      <%= f.text_field :name, placeholder: "Business Name", autocomplete: :off, class: "lite-input text-5xl w-full mb-4" %>
+    <%= form_for @business, url: private_business_path, html: { class: "mt-4", oninput: "this.requestSubmit()" } do |f| %>
+      <%= f.text_field :name, placeholder: t('.business_name'), autocomplete: :off, class: "lite-input text-5xl w-full mb-4" %>
     <% end %>
   <% end %>
 
   <ul class="pb-4">
     <% @menus.each do |menu| %>
       <li class="text-xl flex justify-between leading-normal">
-        <%= link_to menu.name, [:private, menu] %>
-        <%= link_to [:private, menu] do %>
+        <%= link_to menu.name, private_menu_path(menu) %>
+        <%= link_to private_menu_path(menu) do %>
           <% if menu.published? %>
-            <span class="material-symbols-sharp text-green-600" title="Published">visibility</span>
+            <%= tag.span "visibility", title: t('.published'), class: "material-symbols-sharp text-green-600" %>
           <% else %>
-            <span class="material-symbols-sharp text-yellow-600" title="Not published">visibility_off</span>
+            <%= tag.span "visibility_off", title: t('.not_published'), class: "material-symbols-sharp text-yellow-600" %>
           <% end %>
         <% end %>
       </li>

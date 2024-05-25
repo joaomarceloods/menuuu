@@ -6,7 +6,7 @@
 
   <%= render "private/menu_items/toolbar", menu_item: %>
 
-  <%# Form position must be "relative" in order to overlay the toolbar element %>
+  <%# Form must be relative-positioned so it overlays the absolute-positioned toolbar %>
   <%= form_with \
         model: menu_item,
         url: private_menu_item_path(menu_item),
@@ -23,8 +23,8 @@
     <%= form.text_field \
           :name,
           autocomplete: :off,
-          placeholder: "Enter item name…",
-          title: "Item name",
+          placeholder: t('private.menu_items.form.name_placeholder'),
+          title: t('private.menu_items.form.name_title'),
           enterkeyhint: :enter,
           autofocus: menu_item.created_at > 1.second.ago,
           class: "lite-input text-xl min-w-0 flex-auto" %>
@@ -32,8 +32,8 @@
     <%= form.text_field \
           :price,
           autocomplete: :off,
-          placeholder: "0",
-          title: "Item price",
+          placeholder: t('private.menu_items.form.price_placeholder'),
+          title: t('private.menu_items.form.price_title'),
           enterkeyhint: :enter,
           inputmode: :numeric,
           class: "lite-input text-xl text-right w-16",

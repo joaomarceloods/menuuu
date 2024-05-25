@@ -1,13 +1,14 @@
 <div class="main-content">
-  <h1 class="text-5xl py-4">Welcome!</h1>
-
+  <h1 class="text-5xl py-4">
+    <%= t('.welcome') %>
+  </h1>
 
   <%= form_for @business, url: [:private, :business] do |f| %>
-    <%= f.label :name, "What's your business' name?", class: "text-2xl" %>
-    <%= f.text_field :name, placeholder: "My Business", class: "w-full text-2xl" %>
+    <%= f.label :name, t('.label'), class: "text-xl" %>
+    <%= f.text_field :name, class: "w-full text-2xl" %>
 
-    <%= button_tag class: "float-right text-2xl" do %>
-      Next
+    <%= button_tag class: "float-right text-xl mt-4" do %>
+      <%= t('.next') %>
       <span class="material-symbols-sharp">arrow_right_alt</span>
     <% end %>
   <% end %>

@@ -5,7 +5,7 @@
 
   <%= render "private/menu_sections/toolbar", menu_section: %>
 
-  <%# Form position must be "relative" in order to overlay the toolbar element %>
+  <%# Form must be relative-positioned so it overlays the absolute-positioned toolbar %>
   <%= form_with \
         model: menu_section,
         url: private_menu_section_path(menu_section),
@@ -21,7 +21,8 @@
     <%= form.text_field \
           :name,
           autocomplete: :off,
-          placeholder: "Enter section name…",
+          placeholder: t('private.menu_sections.form.name_placeholder'),
+          title: t('private.menu_sections.form.name_title'),
           enterkeyhint: :enter,
           autofocus: menu_section.created_at > 1.second.ago,
           class: "lite-input text-3xl flex-1" %>
