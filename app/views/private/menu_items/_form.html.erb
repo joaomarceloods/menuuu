@@ -27,7 +27,12 @@
           title: t('private.menu_items.form.name_title'),
           enterkeyhint: :enter,
           autofocus: menu_item.created_at > 1.second.ago,
-          class: "lite-input text-xl min-w-0 flex-auto" %>
+          class: "lite-input text-xl min-w-0 flex-auto",
+          data: {
+            lpignore: true,
+            '1p-ignore': true,
+            form_type: :other,
+          } %>
 
     <%= form.text_field \
           :price,

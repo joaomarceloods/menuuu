@@ -23,7 +23,12 @@
                        placeholder: t('.menu_name'),
                        title: t('.menu_name'),
                        autocomplete: :off,
-                       class: "menu-name lite-input text-5xl" %>
+                       class: "menu-name lite-input text-5xl",
+                       data: {
+                         lpignore: true,
+                         '1p-ignore': true,
+                         form_type: :other,
+                       } %>
     <% end %>
   </div>
 <% end %>

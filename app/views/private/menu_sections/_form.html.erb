@@ -25,7 +25,12 @@
           title: t('private.menu_sections.form.name_title'),
           enterkeyhint: :enter,
           autofocus: menu_section.created_at > 1.second.ago,
-          class: "lite-input text-3xl flex-1" %>
+          class: "lite-input text-3xl flex-1",
+          data: {
+            lpignore: true,
+            '1p-ignore': true,
+            form_type: :other,
+          } %>
   <% end %>
 
   <%= render "private/menu_items/new", menu_section_id: menu_section.id, position: 1 %>

@@ -6,7 +6,15 @@
   <%= turbo_frame_tag @business do %>
     <%# TODO: validate empty %>
     <%= form_for @business, url: private_business_path, html: { class: "mt-4", oninput: "this.requestSubmit()" } do |f| %>
-      <%= f.text_field :name, placeholder: t('.business_name'), autocomplete: :off, class: "lite-input text-5xl w-full mb-4" %>
+      <%= f.text_field :name,
+                        placeholder: t('.business_name'),
+                        autocomplete: :off,
+                        class: "lite-input text-5xl w-full mb-4",
+                        data: {
+                          lpignore: true,
+                          '1p-ignore': true,
+                          form_type: :other,
+                        } %>
     <% end %>
   <% end %>
 

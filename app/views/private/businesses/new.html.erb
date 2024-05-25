@@ -5,7 +5,13 @@
 
   <%= form_for @business, url: [:private, :business] do |f| %>
     <%= f.label :name, t('.label'), class: "text-xl" %>
-    <%= f.text_field :name, class: "w-full text-2xl" %>
+    <%= f.text_field :name,
+                      class: "w-full text-2xl",
+                      data: {
+                        lpignore: true,
+                        '1p-ignore': true,
+                        form_type: :other,
+                      } %>
 
     <%= button_tag class: "float-right text-xl mt-4" do %>
       <%= t('.next') %>
