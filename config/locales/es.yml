@@ -1,0 +1,91 @@
+es:
+  layouts:
+    private:
+      navigation:
+        print_qr_code: "Imprimir QR Code"
+        billing: "Facturación"
+        sign_out: "Cerrar sesión"
+      application:
+        title: "Menuuu - Privado"
+    application:
+      title: "Menuuu"
+  private:
+    businesses:
+      new:
+        welcome: "¡Bienvenido!"
+        label: "¿Cuál es el nombre de tu negocio?"
+        next: "Siguiente"
+    menu_items:
+      form:
+        name_placeholder: "Ingresa el nombre del producto..."
+        name_title: "Nombre del producto"
+        price_placeholder: "0"
+        price_title: "Precio del producto"
+      toolbar:
+        drag: "Arrastrar"
+        delete: "Eliminar"
+        delete_confirmation: "%{name} - ¿Eliminar este producto? Una vez eliminado, no se puede restaurar."
+    menu_sections:
+      form:
+        name_placeholder: "Ingresa el nombre de la sección..."
+        name_title: "Nombre de la sección"
+      toolbar:
+        drag: "Arrastrar"
+        delete: "Eliminar"
+        delete_confirmation: "%{name} - ¿Eliminar esta sección y todos sus productos? Una vez eliminada, no se puede restaurar."
+    menus:
+      index:
+        business_name: "Nombre del negocio"
+        published: "Publicado"
+        not_published: "No publicado"
+      show:
+        all_menus: "Todos los menús"
+        delete_menu: "Eliminar menú"
+        delete_menu_confirmation: "¿Eliminar este menú? Una vez eliminado, no se puede restaurar. Si solo deseas ocultarlo de los clientes, puedes despublicarlo en su lugar."
+        menu_name: "Nombre del menú"
+      destroy:
+        success: "Menu eliminado: %{name}"
+      new_menu_item:
+        new_item: "Nuevo producto"
+        upgrade: "Actualizar para agregar más productos"
+      new_menu_section:
+        new_section: "Nueva sección"
+        upgrade: "Actualizar para agregar más secciones"
+      new_menu:
+        new_menu: "Nuevo menú"
+        upgrade: "Actualizar para agregar más menús"
+      publish:
+        published: "Publicado"
+        published_tooltip: "Visible para los clientes"
+        publish_button: "Publicar menú"
+        publish_confirmation: "¿Publicar este menú? Se volverá visible para los clientes."
+        unpublished: "No publicado"
+        unpublished_tooltip: "Oculto para los clientes"
+        unpublish_button: "Despublicar"
+        unpublish_confirmation: "¿Despublicar este menú? Se ocultará para los clientes."
+        view: "Ver"
+        qrcode_tooltip: "Imprimir QR Code y mostrarlo en tu restaurante"
+      subscription:
+        title: "Nivel gratuito: 1 menú y 10 productos. Desbloquea 10 menús y 1,000 productos."
+        button: "Suscribirse"
+    stripe_checkout_cancels:
+      show:
+      notice: "Pago cancelado. Aún estás en el plan gratuito."
+    stripe_checkout_successes:
+      show:
+      notice: "¡Suscripción exitosa! Agrega hasta 10 menús y 1,000 productos por menú."
+  public:
+    businesses:
+      show:
+        no_menus: "No hay menús disponibles..."
+    home:
+      index:
+        title: "Menuuu"
+        subtitle: "Creador de menús QR Code gratuito"
+        make_your_menu: "Crea tu menú"
+        see_example: "Ver ejemplo"
+        qr_code_alt: "Escanea este QR Code para ver un ejemplo de menú"
+    menus:
+      show:
+        example_menu: "Este es un ejemplo de menú"
+        create_menu: "Crea tu propio menú"
