@@ -60,6 +60,8 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 
   gem 'rspec-rails', '~> 6.1.0'
+
+  gem "launchy", "~> 3.0.1"
 end
 
 group :development do
