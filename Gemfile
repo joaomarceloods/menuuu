@@ -86,4 +86,7 @@ group :test do
   # VCR and WebMock for mocking HTTP requests
   gem "vcr", "~> 6.2.0"
   gem "webmock", "~> 3.23.0"
+
+  # Orderly gem for asserting that some text (this) appears before other text (that) in rspec request specs [https://github.com/jmondo/orderly]
+  gem "orderly"
 end
