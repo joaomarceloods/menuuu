@@ -22,13 +22,13 @@ RSpec.feature "Private::MenusControllers", type: :feature do
         before { visit "/private/menus" }
 
         describe "content" do
-          it { is_expected.to have_field("Business Name", with: "My Business") }
+          it { is_expected.to have_field("Business name", with: "My Business") }
         end
 
         describe "rename business", js: true do
-          before { fill_in "Business Name", with: "My Restaurant" }
+          before { fill_in "Business name", with: "My Restaurant" }
           before { refresh }
-          it { is_expected.to have_field("Business Name", with: "My Restaurant") }
+          it { is_expected.to have_field("Business name", with: "My Restaurant") }
         end
 
         describe "add menu" do
@@ -156,7 +156,7 @@ RSpec.feature "Private::MenusControllers", type: :feature do
                 before do
                   find_field("menu_item_name").click
                   within "#menu_item_#{item.id} .toolbar" do
-                    accept_confirm "Remove the My Item item permanently?" do
+                    accept_confirm "My Item - Delete this item? Once deleted, it can't be restored." do
                       click_button "close"
                     end
                   end
@@ -172,22 +172,21 @@ RSpec.feature "Private::MenusControllers", type: :feature do
               before { visit path }
 
               describe "item order" do
-                let(:dom_id_1) { "#menu_item_#{item_1.id}" }
-                let(:dom_id_2) { "#menu_item_#{item_2.id}" }
-                it { is_expected.to have_selector("#{dom_id_1} + #{dom_id_2}") }
+                let(:item_field_1) { find_field("menu_item_name", with: "Item 1") }
+                let(:item_field_2) { find_field("menu_item_name", with: "Item 2") }
+
+                subject { item_field_1 }
+                it { is_expected.to appear_before(item_field_2) }
 
                 describe "dragging item 1 after item 2", js: true do
-                  let(:row_1_input) { find("#{dom_id_1} #menu_item_name") }
-                  let(:row_1_handle) { find("#{dom_id_1} .toolbar__item--handle") }
-                  let(:row_2) { find(dom_id_2) }
-
                   before do
-                    row_1_input.click
-                    row_1_handle.drag_to(row_2)
+                    item_field_1.click
+                    find(".toolbar__item--handle").drag_to(item_field_2)
                     refresh
                   end
 
-                  it { is_expected.to have_selector("#{dom_id_2} + #{dom_id_1}") }
+                  subject { find_field("menu_item_name", with: "Item 2") }
+                  it { is_expected.to appear_before(find_field("menu_item_name", with: "Item 1")) }
                 end
               end
             end

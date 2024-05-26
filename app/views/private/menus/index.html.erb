@@ -7,7 +7,7 @@
     <%# TODO: validate empty %>
     <%= form_for @business, url: private_business_path, html: { class: "mt-4", oninput: "this.requestSubmit()" } do |f| %>
       <%= f.text_field :name,
-                        placeholder: t('.business_name'),
+                        placeholder: t('private.menus.index.business_name'),
                         autocomplete: :off,
                         class: "lite-input text-5xl w-full mb-4",
                         data: {
