@@ -41,7 +41,6 @@ gem "bootsnap", require: false
 
 # Flexible authentication solution for Rails with Warden [https://github.com/heartcombo/devise]
 gem "devise", "~> 4.8"
-gem "devise-i18n", "~> 1.12.0"
 
 # A Ruby library that encodes QR Codes [https://github.com/whomwah/rqrcode]
 gem "rqrcode", "~> 2.1"
@@ -52,6 +51,9 @@ gem "acts_as_list", "~> 1.0"
 gem "tailwindcss-rails", "~> 2.4"
 
 gem "stripe", "~> 11.2.0"
+
+gem "rails-i18n", "~> 7.0.9"
+gem "devise-i18n", "~> 1.12.0"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
