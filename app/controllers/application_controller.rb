@@ -10,8 +10,8 @@ class ApplicationController < ActionController::Base
   def switch_locale(&action)
     logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
     available_locales = I18n.available_locales.map(&:to_s)
-    client_locales = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/[a-z]{2}\-[A-Z]{2}|[a-z]{2}/)
-    locale = client_locales.find { |l| l.in?(available_locales) } || I18n.default_locale
+    client_locales = request.env['HTTP_ACCEPT_LANGUAGE']&.scan(/[a-z]{2}\-[A-Z]{2}|[a-z]{2}/)
+    locale = client_locales&.find { |l| l.in?(available_locales) } || I18n.default_locale
     logger.debug "* Locale set to '#{locale}'"
     I18n.with_locale(locale, &action)
   end
