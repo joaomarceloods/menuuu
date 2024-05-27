@@ -89,7 +89,7 @@
 
 @layer components {
   .navigation {
-    @apply sticky top-0 z-20 bg-black text-white text-xl;
+    @apply sticky top-0 z-20 bg-black dark:border-b dark:border-neutral-900 text-white text-xl;
   }
 
   .navigation__bar {
@@ -152,11 +152,11 @@
   }
 
   .add-button {
-    @apply text-xl transition-opacity opacity-20 disabled:opacity-20 focus:outline-none;
+    @apply text-xl transition-opacity opacity-30 disabled:opacity-30 focus:outline-none dark:text-white;
   }
 
   .lite-input {
-    @apply bg-none border-0 m-0 p-0 max-w-full focus:ring-0 placeholder:text-black placeholder:opacity-20;
+    @apply bg-transparent border-0 m-0 p-0 max-w-full focus:ring-0 placeholder:text-black dark:placeholder:text-white placeholder:opacity-30;
   }
   .lite-input::-webkit-outer-spin-button,
   .lite-input::-webkit-inner-spin-button {

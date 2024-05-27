@@ -44,12 +44,12 @@
 
   <div data-controller="sortable-menu-sections">
     <% @menu.menu_sections.order(:position).each do |menu_section| %>
-      <div class="py-2 -mx-12 px-12 bg-white">
+      <div class="py-2 -mx-12 px-12 bg-white dark:bg-black">
         <%= render "private/menu_sections/form", menu_section: menu_section %>
 
         <%= tag.div class: "mb-4", data: { controller: "sortable-menu-items", sortable_menu_items_menu_section_id: menu_section.id } do %>
           <% menu_section.menu_items.order(:position).each do |menu_item| %>
-            <div class="-mx-12 px-12 bg-white">
+            <div class="-mx-12 px-12 bg-white dark:bg-black">
               <%= render "private/menu_items/form", menu_item: menu_item %>
             </div>
           <% end %>

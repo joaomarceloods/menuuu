@@ -29,7 +29,7 @@
               <%= number_to_currency(menu_item.price) if menu_item.price&.positive? %>
             </p>
             <% if menu_item.description.present? %>
-              <%= tag.p menu_item.description, class: "text-base leading-tight text-slate-500 mb-4" %>
+              <%= tag.p menu_item.description, class: "text-base leading-tight text-neutral-500 mb-4" %>
               <p></p>
             <% end %>
           </li>

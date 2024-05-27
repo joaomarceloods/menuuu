@@ -5,6 +5,5 @@
             button_class: "text-red-600" do %>
   <%= link_to t('private.menus.subscription.button'),
               private_stripe_checkout_session_path,
-              class: "button text-red-900",
               data: { turbo: false } %>
 <% end %>
