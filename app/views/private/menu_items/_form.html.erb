@@ -9,7 +9,7 @@
   <%= form_with \
         model: menu_item,
         url: private_menu_item_path(menu_item),
-        class: "flex relative",
+        class: "grid grid-cols-[auto_4rem] gap-x-4 relative mb-1",
         data: {
           menu_item_form_target: "editForm",
           action: "input->menu-item-form#input keypress.enter->menu-item-form#keypressEnter:prevent keypress.shift+enter->menu-item-form#keypressEnter:prevent",
@@ -40,9 +40,23 @@
           title: t('private.menu_items.form.price_title'),
           enterkeyhint: :enter,
           inputmode: :numeric,
-          class: "lite-input text-xl text-right w-16",
+          class: "lite-input text-xl text-right w-full",
           value: number_to_currency(form.object.price, unit: ''),
           data: { controller: "currency-input", action: "input->currency-input#handleChange" } %>
+
+    <%= form.text_area \
+          :description,
+          autocomplete: :off,
+          placeholder: "Description",
+          title: "Item description",
+          enterkeyhint: :enter,
+          class: "lite-input text-base min-w-0 flex-auto text-slate-500 resize-none",
+          data: {
+            lpignore: true,
+            '1p-ignore': true,
+            form_type: :other,
+            controller: "autosizing-textarea",
+          } %>
 
   <% end %>
 

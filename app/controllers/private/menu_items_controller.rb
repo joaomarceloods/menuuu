@@ -29,6 +29,6 @@ class Private::MenuItemsController < Private::ApplicationController
     end
 
     def menu_item_params
-      params.require(:menu_item).permit(:name, :price, :position, :menu_section_id)
+      params.require(:menu_item).permit(:name, :price, :description, :position, :menu_section_id)
     end
 end

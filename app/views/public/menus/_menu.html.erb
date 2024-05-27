@@ -21,18 +21,17 @@
     <%= tag.section id: dom_id(menu_section), class: "scroll-mt-12" do %>
       <%= tag.h2 menu_section.name, class: "text-3xl mb-2" %>
 
-      <ul class="mb-6">
+      <ul class="grid grid-cols-[auto_4rem] gap-x-4 mb-6 text-xl leading-tight">
         <% menu_section.publicly_visible_menu_items.order(:position).each do |menu_item| %>
-          <li class="flex justify-between gap-4 text-xl leading-none mb-2">
-            <div class="flex-1">
-              <%= menu_item.name %>
-            </div>
-
-            <div class="w-16 text-right">
-              <% if menu_item.price.present? %>
-                <%= number_to_currency(menu_item.price) %>
-              <% end %>
-            </div>
+          <li class="contents">
+            <%= tag.h3 menu_item.name %>
+            <p class="text-right">
+              <%= number_to_currency(menu_item.price) if menu_item.price&.positive? %>
+            </p>
+            <% if menu_item.description.present? %>
+              <%= tag.p menu_item.description, class: "text-base leading-tight text-slate-500 mb-4" %>
+              <p></p>
+            <% end %>
           </li>
         <% end %>
       </ul>
