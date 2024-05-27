@@ -28,6 +28,10 @@
     @apply transition-opacity hover:opacity-80 disabled:opacity-100 disabled:cursor-not-allowed
   }
 
+  body.devise {
+    @apply dark:bg-black dark:text-white
+  }
+
   body.devise h1 {
     @apply text-5xl
   }
@@ -66,7 +70,11 @@
 
   body.devise input[type=email],
   body.devise input[type=password] {
-    @apply w-full
+    @apply w-full dark:bg-black
+  }
+
+  body.devise input[type=checkbox] {
+    @apply bg-black;
   }
 
   .scrollbar-none::-webkit-scrollbar {

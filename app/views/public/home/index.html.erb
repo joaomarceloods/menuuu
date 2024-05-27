@@ -9,12 +9,12 @@
       </h2>
 
       <div class="py-4 flex gap-4">
-        <%= link_to t('.make_your_menu'), new_user_registration_path, class: "border-2 border-solid border-black py-1 px-2 text-xl lg:text-2xl bg-black text-white" %>
-        <%= link_to t('.see_example'), public_menu_path(@menu), class: "border-2 border-solid border-black py-1 px-2 text-xl lg:text-2xl" %>
+        <%= link_to t('.make_your_menu'), new_user_registration_path, class: "border-2 border-solid border-black py-1 px-2 text-xl lg:text-2xl bg-black text-white dark:bg-white dark:text-black" %>
+        <%= link_to t('.see_example'), public_menu_path(@menu), class: "border-2 border-solid border-black dark:border-white py-1 px-2 text-xl lg:text-2xl" %>
       </div>
 
       <div class="py-4 md:opacity-20 hover:opacity-100 transition-opacity max-w-60 lg:max-w-72">
-        <%= image_tag public_qrcode_path(public_menu_url(@menu)), alt: t('.qr_code_alt'), width: "100%" %>
+        <%= image_tag public_qrcode_path(public_menu_url(@menu)), alt: t('.qr_code_alt'), width: "100%", class: "dark:bg-white dark:border-white dark:border-8" %>
       </div>
     </div>
   </div>
