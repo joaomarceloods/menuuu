@@ -6,7 +6,7 @@
   <%= form_for @business, url: [:private, :business] do |f| %>
     <%= f.label :name, t('.label'), class: "text-xl" %>
     <%= f.text_field :name,
-                      class: "w-full text-2xl",
+                      class: "w-full text-2xl bg-transparent",
                       data: {
                         lpignore: true,
                         '1p-ignore': true,
