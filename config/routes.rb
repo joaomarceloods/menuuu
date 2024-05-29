@@ -5,7 +5,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  root 'public/home#index'
+  root 'public/home#index', as: :home
+  get 'help' => 'public/help#index', as: :help
 
   namespace :private do
     resource :business, only: %i[ new create update ]

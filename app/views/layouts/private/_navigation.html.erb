@@ -21,6 +21,7 @@
                     data: { turbo: false } %>
       <% end %>
       <%= button_to t('.sign_out'), destroy_user_session_path, method: :delete, data: { turbo: false } %>
+      <%= link_to 'Help', help_path %>
     </div>
   </div>
 </div>
