@@ -1,11 +1,13 @@
 <div class="main-content">
-  <h1 class="text-5xl my-8">Menuuu</h1>
+  <h1 class="text-5xl my-8">
+    <%= t('layouts.application.title') %>
+  </h1>
 
   <p class="text-xl my-6">
-    Need help? Send us an email at
-    <a href="mailto:themenuu@gmail.com" class="underline">themenuuu@gmail.com</a>
+    <%= t('.need_help', email: link_to(@email, "mailto:#{@help_email}", class: "underline")).html_safe %>
   </p>
 
   <p>
-    <%= link_to "Go back", home_path, onclick: "window.history.back()" %>
+    <%= link_to t('.go_back'), home_path, onclick: "window.history.back()" %>
+  </p>
 </div>

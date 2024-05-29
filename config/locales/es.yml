@@ -78,6 +78,10 @@ es:
     businesses:
       show:
         no_menus: "No hay menús disponibles..."
+    help:
+      index:
+        need_help: "¿Necesitas ayuda? Envíanos un mensaje a %{email}."
+        go_back: "← Volver"
     home:
       index:
         title: "Menuuu"

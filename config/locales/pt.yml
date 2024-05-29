@@ -78,6 +78,10 @@ pt:
     businesses:
       show:
         no_menus: "Nenhum cardápio disponível..."
+    help:
+      index:
+        need_help: "Precisa de ajuda? Envie-nos um email em %{email}."
+        go_back: "← Voltar"
     home:
       index:
         title: "Menuuu"

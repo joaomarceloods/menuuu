@@ -110,6 +110,10 @@ en:
     businesses:
       show:
         no_menus: "No menus available…"
+    help:
+      index:
+        need_help: "Need help? Send us an email at %{email}."
+        go_back: "← Go back"
     home:
       index:
         title: "Menuuu"
