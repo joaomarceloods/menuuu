@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   root 'public/home#index', as: :home
+  get ':locale' => 'public/home#index', constraints: { locale: Regexp.new(I18n.available_locales.join('|')) }
   get 'help' => 'public/help#index', as: :help
 
   namespace :private do
