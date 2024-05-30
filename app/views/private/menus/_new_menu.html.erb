@@ -12,7 +12,7 @@
                 tippy_interactive_value: true,
                 tippy_placement_value: :bottom,
                 tippy_content_value: link_to(t('private.menus.new_menu.upgrade'),
-                                             private_stripe_checkout_session_path),
+                                             private_stripe_checkout_session_path(lookup_key: :standard_monthly)),
               } do %>
     <%= button_to private_menus_path,
                   class: local_assigns[:button_class],

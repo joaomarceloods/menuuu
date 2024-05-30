@@ -47,13 +47,13 @@ pt:
         success: "Cardápio excluído: %{name}"
       new_menu_item:
         new_item: "Novo item"
-        upgrade: "Atualize para adicionar mais itens"
+        upgrade: "Assine para adicionar mais itens"
       new_menu_section:
         new_section: "Nova seção"
-        upgrade: "Atualize para adicionar mais seções"
+        upgrade: "Assine para adicionar mais seções"
       new_menu:
         new_menu: "Novo cardápio"
-        upgrade: "Atualize para adicionar mais cardápios"
+        upgrade: "Assine para adicionar mais cardápios"
       publish:
         published: "Publicado"
         published_tooltip: "Visível para os clientes"
@@ -67,7 +67,8 @@ pt:
         qrcode_tooltip: "Imprimir QR Code e exibir em seu restaurante"
       subscription:
         title: "Plano gratuito: 1 cardápio e 10 itens. Desbloqueie 10 cardápios e 1.000 itens."
-        button: "Assinar"
+        monthly_plan: "Mensal R$9,90"
+        yearly_plan: "Anual R$99,90"
     stripe_checkout_cancels:
       show:
         notice: "Pagamento cancelado. Você ainda está no plano gratuito."

@@ -47,13 +47,13 @@ es:
         success: "Menu eliminado: %{name}"
       new_menu_item:
         new_item: "Nuevo producto"
-        upgrade: "Actualizar para agregar más productos"
+        upgrade: "Suscríbete para agregar más productos"
       new_menu_section:
         new_section: "Nueva sección"
-        upgrade: "Actualizar para agregar más secciones"
+        upgrade: "Suscríbete para agregar más secciones"
       new_menu:
         new_menu: "Nuevo menú"
-        upgrade: "Actualizar para agregar más menús"
+        upgrade: "Suscríbete para agregar más menús"
       publish:
         published: "Publicado"
         published_tooltip: "Visible para los clientes"
@@ -67,7 +67,8 @@ es:
         qrcode_tooltip: "Imprimir QR Code y mostrarlo en tu restaurante"
       subscription:
         title: "Nivel gratuito: 1 menú y 10 productos. Desbloquea 10 menús y 1,000 productos."
-        button: "Suscribirse"
+        monthly_plan: "Mensual €1.90"
+        yearly_plan: "Anual €9.90"
     stripe_checkout_cancels:
       show:
       notice: "Pago cancelado. Aún estás en el plan gratuito."

@@ -79,13 +79,13 @@ en:
         success: "Menu deleted: %{name}"
       new_menu_item:
         new_item: "New item"
-        upgrade: "Upgrade to add more items"
+        upgrade: "Subscribe to add more items"
       new_menu_section:
         new_section: "New section"
-        upgrade: "Upgrade to add more sections"
+        upgrade: "Subscribe to add more sections"
       new_menu:
         new_menu: "New menu"
-        upgrade: "Upgrade to add more menus"
+        upgrade: "Subscribe to add more menus"
       publish:
         published: "Published"
         published_tooltip: "Visible to customers"
@@ -99,7 +99,8 @@ en:
         qrcode_tooltip: "Print QR Code and display in your restaurant"
       subscription:
         title: "Free tier: 1 menu and 10 items. Unlock 10 menus and 1,000 items."
-        button: "Subscribe"
+        monthly_plan: "Monthly $1.90"
+        yearly_plan: "Yearly $9.90"
     stripe_checkout_cancels:
       show:
         notice: "Payment cancelled. You're still on the free plan."
