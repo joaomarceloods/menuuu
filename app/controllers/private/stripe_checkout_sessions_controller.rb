@@ -12,6 +12,7 @@ class Private::StripeCheckoutSessionsController < Private::ApplicationController
         price: prices.data[0].id
       }],
       client_reference_id: Current.user.business.id,
+      customer_email: Current.user.email,
       success_url: private_stripe_checkout_success_url(redirect_to: request.referrer),
       cancel_url: private_stripe_checkout_cancel_url(redirect_to: request.referrer),
     })
