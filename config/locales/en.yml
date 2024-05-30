@@ -128,3 +128,18 @@ en:
       show:
         example_menu: "This is an example menu"
         create_menu: "Create your own menu"
+  menu:
+    default:
+      name: "New Menu (edit me)"
+      section_1: "This is a section"
+      item_1_1: "Rename this item"
+      description_1_1: "Changes are saved automatically (edit me)"
+      item_1_2: "Rename the section"
+      description_1_2: "When the menu is ready, click on Publish to make it visible to customers."
+      item_1_3: "Rename the menu at the top"
+      description_1_3: "After publishing, you can print a QR Code to display in your restaurant. Customers can scan it to view the menu."
+      section_2: "Another section"
+      item_2_1: "Drag items & sections around"
+      description_2_1: "Click on an item to reveal sorting and deleting options."
+      item_2_2: "You can delete sections"
+      item_2_3: "Set price on the right"

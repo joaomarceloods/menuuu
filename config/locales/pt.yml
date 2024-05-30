@@ -96,3 +96,18 @@ pt:
       show:
         example_menu: "Este é um exemplo de cardápio"
         create_menu: "Crie seu próprio cardápio"
+  menu:
+    default:
+      name: "Novo Cardápio (me edite)"
+      section_1: "Esta é uma seção"
+      item_1_1: "Renomeie este item"
+      description_1_1: "Alterações são salvas automaticamente (me edite)"
+      item_1_2: "Renomeie a seção"
+      description_1_2: "Quando o menu estiver pronto, clique em Publicar para torná-lo visível aos clientes."
+      item_1_3: "Renomeie o cardápio no topo"
+      description_1_3: "Após publicar, você pode imprimir um QR Code para exibir no seu restaurante. Os clientes poderão escaneá-lo para acessar o menu."
+      section_2: "Outra seção"
+      item_2_1: "Arraste itens e seções"
+      description_2_1: "Clique em um item para revelar opções de ordenação e exclusão."
+      item_2_2: "Você pode excluir seções"
+      item_2_3: "Defina o preço à direita"

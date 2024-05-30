@@ -96,3 +96,18 @@ es:
       show:
         example_menu: "Este es un ejemplo de menú"
         create_menu: "Crea tu propio menú"
+  menu:
+    default:
+      name: "Nuevo menú (edítame)"
+      section_1: "Esta es una sección"
+      item_1_1: "Renombra este producto"
+      description_1_1: "Los cambios se guardan automáticamente (edítame)"
+      item_1_2: "Renombra la sección"
+      description_1_2: "Cuando el menú estiver pronto, haga clic en Publicar para torná-lo visível aos clientes."
+      item_1_3: "Renombra el menú en la parte superior"
+      description_1_3: "Después de la publicación, puede imprimir un QR Code para mostrarlo en su restaurante. Los clientes pueden escanearlo para ver el menú."
+      section_2: "Otra sección"
+      item_2_1: "Arrastra productos y secciones"
+      description_2_1: "Haga clic en un elemento para revelar las opciones de clasificación y eliminación."
+      item_2_2: "Puedes eliminar secciones"
+      item_2_3: "Establece el precio a la derecha"

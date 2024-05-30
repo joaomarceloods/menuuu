@@ -1,19 +1,19 @@
 class Menu::BuildDefault < ApplicationService
   def call(menu_params)
-    Menu.new(menu_params.merge(name: "New Menu (edit)")).tap do |menu|
-      menu.menu_sections.build(menu:, name: "This is a section").tap do |menu_section|
+    Menu.new(menu_params.merge(name: I18n.t('menu.default.name'))).tap do |menu|
+      menu.menu_sections.build(menu:, name: I18n.t('menu.default.section_1')).tap do |menu_section|
         menu_section.menu_items.build([
-          { menu_section:, name: "Rename this item" },
-          { menu_section:, name: "Rename the section" },
-          { menu_section:, name: "Rename the menu at the top" },
+          { menu_section:, name: I18n.t('menu.default.item_1_1'), description: I18n.t('menu.default.description_1_1') },
+          { menu_section:, name: I18n.t('menu.default.item_1_2'), description: I18n.t('menu.default.description_1_2') },
+          { menu_section:, name: I18n.t('menu.default.item_1_3'), description: I18n.t('menu.default.description_1_3') },
         ])
       end
 
-      menu.menu_sections.build(menu:, name: "Another section").tap do |menu_section|
+      menu.menu_sections.build(menu:, name: I18n.t('menu.default.section_2')).tap do |menu_section|
         menu_section.menu_items.build([
-          { menu_section:, name: "Drag items & sections around" },
-          { menu_section:, name: "You can delete sections" },
-          { menu_section:, name: "Set price on the right", price: 9.90 },
+          { menu_section:, name: I18n.t('menu.default.item_2_1'), description: I18n.t('menu.default.description_2_1') },
+          { menu_section:, name: I18n.t('menu.default.item_2_2') },
+          { menu_section:, name: I18n.t('menu.default.item_2_3'), price: 9.90 },
         ])
       end
     end
