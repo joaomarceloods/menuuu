@@ -74,6 +74,10 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  config.action_mailer.default_url_options = {
+    host: Rails.application.credentials.dig(:host),
+  }
+
   config.action_mailer.smtp_settings = {
     address: Rails.application.credentials.dig(:smtp, :address),
     port: Rails.application.credentials.dig(:smtp, :port),
