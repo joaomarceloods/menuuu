@@ -53,6 +53,8 @@ en:
         name_title: "Item name"
         price_placeholder: "0"
         price_title: "Item price"
+        description_placeholder: "Description"
+        description_title: "Short item description"
       toolbar:
         drag: "Drag"
         delete: "Delete"

@@ -21,6 +21,8 @@ es:
         name_title: "Nombre del producto"
         price_placeholder: "0"
         price_title: "Precio del producto"
+        description_placeholder: "Descripción"
+        description_title: "Breve descripción del producto"
       toolbar:
         drag: "Arrastrar"
         delete: "Eliminar"

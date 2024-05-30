@@ -21,6 +21,8 @@ pt:
         name_title: "Nome do item"
         price_placeholder: "0"
         price_title: "Preço do item"
+        description_placeholder: "Descrição"
+        description_title: "Breve descrição do item"
       toolbar:
         drag: "Arrastar"
         delete: "Excluir"
