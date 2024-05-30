@@ -5,6 +5,7 @@ pt:
         print_qr_code: "Imprimir QR Code"
         billing: "Faturamento"
         sign_out: "Sair"
+        help: "Ajuda"
       application:
         title: "Menuuu - Privado"
     application:

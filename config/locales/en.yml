@@ -37,6 +37,7 @@ en:
         print_qr_code: "Print QR Code"
         billing: "Billing"
         sign_out: "Sign Out"
+        help: "Help"
       application:
         title: "Menuuu - Private"
     application:

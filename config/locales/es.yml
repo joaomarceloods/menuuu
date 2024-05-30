@@ -5,6 +5,7 @@ es:
         print_qr_code: "Imprimir QR Code"
         billing: "Facturación"
         sign_out: "Cerrar sesión"
+        help: "Ayuda"
       application:
         title: "Menuuu - Privado"
     application:
