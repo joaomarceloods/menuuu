@@ -3,7 +3,7 @@ class Private::MenuItemsController < Private::ApplicationController
 
   def create
     menu_item = MenuItem.build(menu_item_params)
-    menu_item.save! if Can.create_menu_item!(menu_item.menu)
+    menu_item.save! if Can.create_menu_item?(menu_item.menu)
     redirect_to private_menu_path(menu_item.menu.id)
   end
 
