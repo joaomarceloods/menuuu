@@ -67,8 +67,8 @@ es:
         qrcode_tooltip: "Imprimir QR Code y mostrarlo en tu restaurante"
       subscription:
         title: "Nivel gratuito: 1 menú y 10 productos. Desbloquea 10 menús y 1,000 productos."
-        monthly_plan: "Mensual €1.90"
-        yearly_plan: "Anual €9.90"
+        monthly_plan: "€1.90 / mes"
+        yearly_plan: "€9.90 / año"
     stripe_checkout_cancels:
       show:
       notice: "Pago cancelado. Aún estás en el plan gratuito."

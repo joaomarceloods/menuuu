@@ -67,8 +67,8 @@ pt:
         qrcode_tooltip: "Imprimir QR Code e exibir em seu restaurante"
       subscription:
         title: "Plano gratuito: 1 cardápio e 10 itens. Desbloqueie 10 cardápios e 1.000 itens."
-        monthly_plan: "Mensal R$9,90"
-        yearly_plan: "Anual R$99,90"
+        monthly_plan: "R$9,90 / mês"
+        yearly_plan: "R$99,90 / ano"
     stripe_checkout_cancels:
       show:
         notice: "Pagamento cancelado. Você ainda está no plano gratuito."

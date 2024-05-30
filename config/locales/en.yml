@@ -99,8 +99,8 @@ en:
         qrcode_tooltip: "Print QR Code and display in your restaurant"
       subscription:
         title: "Free tier: 1 menu and 10 items. Unlock 10 menus and 1,000 items."
-        monthly_plan: "Monthly $1.90"
-        yearly_plan: "Yearly $9.90"
+        monthly_plan: "$1.90 / month"
+        yearly_plan: "$9.90 / year"
     stripe_checkout_cancels:
       show:
         notice: "Payment cancelled. You're still on the free plan."

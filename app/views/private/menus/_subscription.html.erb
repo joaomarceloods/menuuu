@@ -3,7 +3,7 @@
             icon: "error",
             container_class: "bg-red-100 fixed left-0 bottom-0 z-10 w-full",
             button_class: "text-red-600" do %>
-  <div class="flex flex-col">
+  <div class="flex flex-col items-end">
     <%= link_to t('private.menus.subscription.monthly_plan'),
                 private_stripe_checkout_session_path(lookup_key: :standard_monthly),
                 data: { turbo: false } %>
