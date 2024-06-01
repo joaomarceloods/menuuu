@@ -101,7 +101,7 @@
   }
 
   .navigation__menu--expanded {
-    @apply max-h-40 pb-4
+    @apply max-h-48 pb-4
   }
 
   .notices {
