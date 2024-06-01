@@ -54,5 +54,16 @@ ab -n 1000 -c 10 http://127.0.0.1:3000/
 
 ## Tailwind not Building
 
-You likely ran `rake assets:precompile` which generated `public/assets/`.
+In case Tailwind is not building an updated CSS file, it may be because
+the `public/assets/` folder is present (maybe you ran `rake assets:precompile`).
 Run `rake assets:clobber` to delete `public/assets` and Tailwind should build again.
+
+## Javascript
+
+The preferred way to add a JS package is through import maps:
+
+```
+bin/importmap pin package_name
+```
+
+https://guides.rubyonrails.org/working_with_javascript_in_rails.html
