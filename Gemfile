@@ -55,8 +55,6 @@ gem "stripe", "~> 11.2.0"
 gem "rails-i18n", "~> 7.0.9"
 gem "devise-i18n", "~> 1.12.0"
 
-gem "rails_real_favicon"
-
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

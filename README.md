@@ -67,13 +67,3 @@ bin/importmap pin package_name
 ```
 
 https://guides.rubyonrails.org/working_with_javascript_in_rails.html
-
-## Favicon
-
-Favicon is auto-generated:
-
-1. Save the master PNG with transparent background to `app/assets/images/favicon_master.png`.
-2. Edit `config/favicon.json` to change colors and other options.
-3. Run `rails generate favicon`
-
-It uses the `rails_real_favicon` gem: https://github.com/RealFaviconGenerator/rails_real_favicon
