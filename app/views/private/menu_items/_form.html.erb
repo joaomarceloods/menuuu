@@ -1,7 +1,7 @@
 <%= tag.div \
       id: dom_id(menu_item),
       class: "group/toolbar",
-      data: { controller: "menu-item-form" } do %>
+      data: { controller: "menu-item-form currency-input" } do %>
 
   <%= render "private/menu_items/toolbar", menu_item: %>
 
@@ -41,8 +41,7 @@
           enterkeyhint: :enter,
           inputmode: :numeric,
           class: "lite-input text-xl text-right w-full",
-          value: number_to_currency(form.object.price, unit: ''),
-          data: { controller: "currency-input", action: "input->currency-input#handleChange" } %>
+          data: { currency_input_target: "formattedInput", action: "input->currency-input#handleInput" } %>
 
     <%= form.text_area \
           :description,
