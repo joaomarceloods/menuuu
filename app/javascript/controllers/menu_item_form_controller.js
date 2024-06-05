@@ -12,6 +12,10 @@ export default class extends Controller {
     this.#autofocus()
   }
 
+  #autofocus() {
+    document.querySelector("[autofocus]")?.focus()
+  }
+
   // input->menu-item-form#input
   input() {
     // Turbo Drive requires usage of requestSubmit() instead of submit().
@@ -23,10 +27,6 @@ export default class extends Controller {
   keypressEnter() {
     this.#hackMobileSafariFocus()
     this.newFormTarget?.requestSubmit()
-  }
-
-  #autofocus() {
-    document.querySelector("[autofocus]")?.focus()
   }
 
   // On Mobile Safari, applying focus to an element asynchronously doesn't show the keyboard.
