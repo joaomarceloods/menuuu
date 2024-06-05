@@ -9,13 +9,11 @@ export default class extends Controller {
 
   connect() {
     this.input = debounce(this.input, 300).bind(this)
-    this.#formatPrice()
     this.#autofocus()
   }
 
   // input->menu-item-form#input
   input() {
-    this.#formatPrice()
     // Turbo Drive requires usage of requestSubmit() instead of submit().
     // https://turbo.hotwired.dev/handbook/drive#form-submissions
     this.editFormTarget?.requestSubmit()
@@ -25,13 +23,6 @@ export default class extends Controller {
   keypressEnter() {
     this.#hackMobileSafariFocus()
     this.newFormTarget?.requestSubmit()
-  }
-
-  #formatPrice() {
-    if (!this.hasEditFormTarget) return
-    const priceInput = this.editFormTarget.querySelector(".menu-item-price")
-    if (!priceInput || !priceInput.length) return
-    priceInput.value = parseFloat(priceInput.value).toFixed(2)
   }
 
   #autofocus() {
