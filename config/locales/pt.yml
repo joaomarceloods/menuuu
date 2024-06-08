@@ -112,3 +112,7 @@ pt:
       description_2_1: "Clique em um item para revelar opções de ordenação e exclusão."
       item_2_2: "Você pode excluir seções"
       item_2_3: "Defina o preço à direita"
+  recaptcha:
+    errors:
+      verification_failed: "A verificação reCAPTCHA falhou, por favor tente novamente."
+      recaptcha_unreachable: "Ops, não conseguimos validar sua resposta reCAPTCHA. Por favor tente novamente."

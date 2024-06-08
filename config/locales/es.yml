@@ -112,3 +112,7 @@ es:
       description_2_1: "Haga clic en un elemento para revelar las opciones de clasificación y eliminación."
       item_2_2: "Puedes eliminar secciones"
       item_2_3: "Establece el precio a la derecha"
+  recaptcha:
+    errors:
+      verification_failed: "La verificación reCAPTCHA falló, por favor inténtalo de nuevo."
+      recaptcha_unreachable: "Oops, no pudimos validar tu respuesta reCAPTCHA. Por favor inténtalo de nuevo."

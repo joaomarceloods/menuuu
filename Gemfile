@@ -57,6 +57,8 @@ gem "devise-i18n", "~> 1.12.0"
 
 gem "rails_real_favicon"
 
+gem "recaptcha", "~> 5.16.0"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
