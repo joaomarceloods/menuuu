@@ -9,7 +9,8 @@ pt:
       application:
         title: "Menuuu - Privado"
     application:
-      title: "Menuuu"
+      title: "Menuuu - Criador de Cardápio QR Code"
+      description: "Crie um cardápio digital em minutos. Compartilhe um link ou imprima um QR Code para seu cardápio. Comece gratuitamente."
   private:
     businesses:
       new:
@@ -89,7 +90,7 @@ pt:
     home:
       index:
         title: "Menuuu"
-        subtitle: "Criador de cardápio QR Code grátis"
+        subtitle: "Criador de cardápio QR Code"
         make_your_menu: "Crie seu cardápio"
         see_example: "Veja um exemplo"
         qr_code_alt: "Escaneie este QR Code para visualizar um exemplo de cardápio"

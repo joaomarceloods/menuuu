@@ -41,7 +41,8 @@ en:
       application:
         title: "Menuuu - Private"
     application:
-      title: "Menuuu"
+      title: "Menuuu - QR Code Menu Maker"
+      description: "Create a digital menu in minutes. Share a link or print a QR Code to your menu. Start for free."
   private:
     businesses:
       new:
@@ -121,7 +122,7 @@ en:
     home:
       index:
         title: "Menuuu"
-        subtitle: "Free QR Code menu maker"
+        subtitle: "QR Code menu maker"
         make_your_menu: "Make your menu"
         see_example: "See example"
         qr_code_alt: "Scan this QR Code to view an example menu"

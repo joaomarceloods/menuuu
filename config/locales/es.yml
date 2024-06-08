@@ -9,7 +9,8 @@ es:
       application:
         title: "Menuuu - Privado"
     application:
-      title: "Menuuu"
+      title: "Menuuu - Creador de menús QR Code"
+      description: "Crea un menú digital en minutos. Comparte un enlace o imprime un código QR a tu menú. Empiece gratis."
   private:
     businesses:
       new:
@@ -89,7 +90,7 @@ es:
     home:
       index:
         title: "Menuuu"
-        subtitle: "Creador de menús QR Code gratuito"
+        subtitle: "Creador de menús QR Code"
         make_your_menu: "Crea tu menú"
         see_example: "Ver ejemplo"
         qr_code_alt: "Escanea este QR Code para ver un ejemplo de menú"

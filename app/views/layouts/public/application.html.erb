@@ -3,7 +3,9 @@
   <head>
     <title><%= t('layouts.application.title') %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= tag.meta name: :description, content: t('layouts.application.description') %>
     <%= render 'application/favicon' %>
+    <%= render 'layouts/og' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= render "layouts/google_fonts" %>
