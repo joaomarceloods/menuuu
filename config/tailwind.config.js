@@ -14,7 +14,7 @@ module.exports = {
         'phone-lg': '4.5rem',
       },
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ['Bebas Neue', ...defaultTheme.fontFamily.sans],
       },
       fontSize: {
         inherit: 'inherit',
