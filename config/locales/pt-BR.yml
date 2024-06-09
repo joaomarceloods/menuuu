@@ -1,0 +1,119 @@
+pt-BR:
+  layouts:
+    private:
+      navigation:
+        print_qr_code: "Imprimir QR Code"
+        billing: "Faturamento"
+        sign_out: "Sair"
+        help: "Ajuda"
+      application:
+        title: "Menuuu - Privado"
+    application:
+      title: "Menuuu - Criador de Cardápio QR Code"
+      description: "Crie um cardápio digital em minutos. Compartilhe um link ou imprima um QR Code para seu cardápio. Comece gratuitamente."
+  private:
+    businesses:
+      new:
+        welcome: "Bem-vindo!"
+        label: "Qual é o nome do seu negócio?"
+        next: "Próximo"
+    menu_items:
+      form:
+        name_placeholder: "Digite o nome do item..."
+        name_title: "Nome do item"
+        price_placeholder: "0"
+        price_title: "Preço do item"
+        description_placeholder: "Descrição"
+        description_title: "Breve descrição do item"
+      toolbar:
+        drag: "Arrastar"
+        delete: "Excluir"
+        delete_confirmation: "%{name} - Excluir este item? Uma vez excluído, não poderá ser restaurado."
+    menu_sections:
+      form:
+        name_placeholder: "Digite o nome da seção..."
+        name_title: "Nome da seção"
+      toolbar:
+        drag: "Arrastar"
+        delete: "Excluir"
+        delete_confirmation: "%{name} - Excluir esta seção e todos os seus itens? Uma vez excluída, não poderá ser restaurada."
+    menus:
+      index:
+        business_name: "Nome do negócio"
+        published: "Publicado"
+        not_published: "Não publicado"
+      show:
+        all_menus: "Todos os cardápios"
+        delete_menu: "Excluir cardápio"
+        delete_menu_confirmation: "Excluir este cardápio? Uma vez excluído, não poderá ser restaurado. Se você apenas deseja ocultá-lo dos clientes, você pode despublicar em vez disso."
+        menu_name: "Nome do cardápio"
+      destroy:
+        success: "Cardápio excluído: %{name}"
+      new_menu_item:
+        new_item: "Novo item"
+        upgrade: "Assine para adicionar mais itens"
+      new_menu_section:
+        new_section: "Nova seção"
+        upgrade: "Assine para adicionar mais seções"
+      new_menu:
+        new_menu: "Novo cardápio"
+        upgrade: "Assine para adicionar mais cardápios"
+      publish:
+        published: "Publicado"
+        published_tooltip: "Visível para os clientes"
+        publish_button: "Publicar cardápio"
+        publish_confirmation: "Publicar este cardápio? Ele se tornará visível para os clientes."
+        unpublished: "Não publicado"
+        unpublished_tooltip: "Oculto dos clientes"
+        unpublish_button: "Despublicar"
+        unpublish_confirmation: "Despublicar este cardápio? Ele será ocultado dos clientes."
+        view: "Visualizar"
+        qrcode_tooltip: "Imprimir QR Code e exibir em seu restaurante"
+      subscription:
+        title: "Plano gratuito: 1 cardápio e 10 itens. Desbloqueie 10 cardápios e 1.000 itens."
+        monthly_plan: "R$9,90 / mês"
+        yearly_plan: "R$99,90 / ano"
+    stripe_checkout_cancels:
+      show:
+        notice: "Pagamento cancelado. Você ainda está no plano gratuito."
+    stripe_checkout_successes:
+      show:
+        notice: "Assinado! Adicione até 10 menus e 1.000 itens por menu."
+  public:
+    businesses:
+      show:
+        no_menus: "Nenhum cardápio disponível..."
+    help:
+      index:
+        need_help: "Precisa de ajuda? Envie-nos um email em %{email}."
+        go_back: "← Voltar"
+    home:
+      index:
+        title: "Menuuu"
+        subtitle: "Criador de cardápio QR Code"
+        make_your_menu: "Crie seu cardápio"
+        see_example: "Veja um exemplo"
+        qr_code_alt: "Escaneie este QR Code para visualizar um exemplo de cardápio"
+    menus:
+      show:
+        example_menu: "Este é um exemplo de cardápio"
+        create_menu: "Crie seu próprio cardápio"
+  menu:
+    default:
+      name: "Novo Cardápio (me edite)"
+      section_1: "Esta é uma seção"
+      item_1_1: "Renomeie este item"
+      description_1_1: "Alterações são salvas automaticamente (me edite)"
+      item_1_2: "Renomeie a seção"
+      description_1_2: "Quando o menu estiver pronto, clique em Publicar para torná-lo visível aos clientes."
+      item_1_3: "Renomeie o cardápio no topo"
+      description_1_3: "Após publicar, você pode imprimir um QR Code para exibir no seu restaurante. Os clientes poderão escaneá-lo para acessar o menu."
+      section_2: "Outra seção"
+      item_2_1: "Arraste itens e seções"
+      description_2_1: "Clique em um item para revelar opções de ordenação e exclusão."
+      item_2_2: "Você pode excluir seções"
+      item_2_3: "Defina o preço à direita"
+  recaptcha:
+    errors:
+      verification_failed: "A verificação reCAPTCHA falhou, por favor tente novamente."
+      recaptcha_unreachable: "Ops, não conseguimos validar sua resposta reCAPTCHA. Por favor tente novamente."

@@ -99,9 +99,13 @@ ActiveRecord::Base.transaction do
   end
 end
 
-# Create a demo menu in Portuguese
+if Menu.exists?(demo: true, locale: :pt) && !Menu.exists?(demo: true, locale: :"pt-BR")
+  Menu.where(demo: true, locale: :pt).update_all(locale: :'pt-BR')
+end
+
+# Create a demo menu in Portuguese (Brazil)
 ActiveRecord::Base.transaction do
-  break if Menu.exists?(demo: true, locale: :pt)
+  break if Menu.exists?(demo: true, locale: :'pt-BR')
 
   menu = Menu.create!(business:, name: "O Cardápio", published: true, demo: true, locale: :pt)
 
@@ -137,5 +141,46 @@ ActiveRecord::Base.transaction do
     MenuItem.create!(menu_section:, name: "Cheesecake", price: 4.99)
     MenuItem.create!(menu_section:, name: "Sorvete", price: 3.99)
     MenuItem.create!(menu_section:, name: "Torta", price: 4.99)
+  end
+end
+
+# Create a demo menu in Portuguese
+ActiveRecord::Base.transaction do
+  break if Menu.exists?(demo: true, locale: :pt)
+
+  menu = Menu.create!(business:, name: "O Menu", published: true, demo: true, locale: :pt)
+
+  MenuSection.create!(menu:, name: "Entradas") do |menu_section|
+    MenuItem.create!(menu_section:, name: "Pickles Fritos", price: 5.99)
+    MenuItem.create!(menu_section:, name: "Palitos de Mozzarella", price: 6.99)
+    MenuItem.create!(menu_section:, name: "Anéis de Cebola", price: 4.99)
+  end
+
+  MenuSection.create!(menu:, name: "Pratos Principais").tap do |menu_section|
+    MenuItem.create!(menu_section:, name: "Costelas", price: 15.99)
+    MenuItem.create!(menu_section:, name: "Frango", price: 12.99)
+    MenuItem.create!(menu_section:, name: "Carne de Porco Desfiada", price: 13.99)
+    MenuItem.create!(menu_section:, name: "Brisket", price: 14.99)
+    MenuItem.create!(menu_section:, name: "Salsicha", price: 11.99)
+  end
+
+  MenuSection.create!(menu:, name: "Acompanhamentos").tap do |menu_section|
+    MenuItem.create!(menu_section:, name: "Batatas Fritas", price: 2.99)
+    MenuItem.create!(menu_section:, name: "Macarrão com Queijo", price: 3.99)
+    MenuItem.create!(menu_section:, name: "Salada de Couve", price: 1.99)
+  end
+
+  MenuSection.create!(menu:, name: "Bebidas").tap do |menu_section|
+    MenuItem.create!(menu_section:, name: "Refrigerante", price: 1.99)
+    MenuItem.create!(menu_section:, name: "Cerveja", price: 3.99)
+    MenuItem.create!(menu_section:, name: "Vinho", price: 5.99)
+    MenuItem.create!(menu_section:, name: "Cocktail", price: 7.99)
+    MenuItem.create!(menu_section:, name: "Água", price: 0.99)
+  end
+
+  MenuSection.create!(menu:, name: "Sobremesa").tap do |menu_section|
+    MenuItem.create!(menu_section:, name: "Cheesecake", price: 4.99)
+    MenuItem.create!(menu_section:, name: "Gelado", price: 3.99)
+    MenuItem.create!(menu_section:, name: "Tarte", price: 4.99)
   end
 end
