@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
-  root 'public/home#index', as: :home
+  root 'public/home#index', as: :home, defaults: { locale: :en }
   get ':locale' => 'public/home#index', constraints: { locale: Regexp.new(I18n.available_locales.join('|')) }
   get 'help' => 'public/help#index', as: :help
 
