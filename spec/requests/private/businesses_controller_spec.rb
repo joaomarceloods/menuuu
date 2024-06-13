@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Private::BusinessesControllers", type: :request do
   subject { response }
-  let(:user) { User.create!(email: "user@example.com", password: "password") }
+  let(:user) { User.create!(email: "user@example.com", password: "password123@") }
   let(:business) { Business.create!(name: "My Business", user: user) }
   let(:menu) { Menu.create!(name: "My Menu", business: business) }
 

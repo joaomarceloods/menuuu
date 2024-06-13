@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Private::MenusControllers", type: :request do
   subject { response }
-  let(:user) { User.create!(email: "user@example.com", password: "password") }
+  let(:user) { User.create!(email: "user@example.com", password: "password123@") }
   let(:business) { Business.create!(name: "My Business", user: user) }
   let(:menu) { Menu.create!(name: "My Menu", business: business) }
 
@@ -57,7 +57,7 @@ RSpec.describe "Private::MenusControllers", type: :request do
         end
 
         context "with another user's menu" do
-          let!(:another_user) { User.create!(email: "another@example.com", password: "password") }
+          let!(:another_user) { User.create!(email: "another@example.com", password: "password123@") }
           let!(:another_business) { Business.create!(name: "Another Business", user: another_user) }
           let!(:another_menu) { Menu.create!(name: "Another Menu", business: another_business) }
           before { get "/private/menus/#{another_menu.id}" }

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Authentication", type: :feature do
   subject { page }
-  let(:user) { User.create!(email: "user@example.com", password: "password") }
+  let(:user) { User.create!(email: "user@example.com", password: "password123@") }
 
   describe "root" do
     context "unauthenticated" do
@@ -29,8 +29,8 @@ RSpec.feature "Authentication", type: :feature do
       before do
         visit "/users/sign_up"
         fill_in "Email", with: "user@example.com"
-        fill_in "Password", with: "password"
-        fill_in "Password confirmation", with: "password"
+        fill_in "Password", with: "password123@"
+        fill_in "Password confirmation", with: "password123@"
         click_button "Sign up"
       end
 
@@ -50,7 +50,7 @@ RSpec.feature "Authentication", type: :feature do
         user
         visit "/users/sign_in"
         fill_in "Email", with: "user@example.com"
-        fill_in "Password", with: "password"
+        fill_in "Password", with: "password123@"
         click_button "Log in"
       end
 
@@ -64,16 +64,9 @@ RSpec.feature "Authentication", type: :feature do
         end
 
         it "has fields" do
-          expect(subject).to have_field("Menu name", with: "New Menu (edit)")
-          expect(subject).to have_field("Enter section name…", with: "This is a section")
-          expect(page.all('input#menu_item_name').map(&:value)).to eq([
-            "Rename this item",
-            "Rename the section",
-            "Rename the menu at the top",
-            "Drag items & sections around",
-            "You can delete sections",
-            "Set price on the right",
-          ])
+          expect(subject).to have_field("Menu name", with: "New Menu (edit me)")
+          expect(subject).to have_field("Enter section name…", count: 1)
+          expect(subject).to have_field("Enter item name…", count: 3)
         end
       end
     end

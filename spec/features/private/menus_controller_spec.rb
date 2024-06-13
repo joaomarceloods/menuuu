@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Private::MenusControllers", type: :feature do
   subject { page }
-  let(:user) { User.create!(email: "user@example.com", password: "password") }
+  let(:user) { User.create!(email: "user@example.com", password: "password123@") }
   let(:business) { Business.create!(name: "My Business", user: user) }
   let(:menu) { Menu.create!(name: "My Menu", business: business) }
 
@@ -33,7 +33,7 @@ RSpec.feature "Private::MenusControllers", type: :feature do
 
         describe "add menu" do
           before { click_button "New menu", match: :first }
-          it { is_expected.to have_field("Menu name", with: "New Menu (edit)") }
+          it { is_expected.to have_field("Menu name", with: "New Menu (edit me)") }
           it { is_expected.to have_button("New section") }
         end
 
@@ -204,7 +204,7 @@ RSpec.feature "Private::MenusControllers", type: :feature do
 
                 describe "content" do
                   it { is_expected.not_to have_content("Free tier: 1 menu and 10 items. Unlock 10 menus and 1,000 items.") }
-                  it { is_expected.not_to have_link("Subscribe", href: "/private/stripe_checkout_session") }
+                  it { is_expected.not_to have_link("$1.90 / month", href: "/private/stripe_checkout_session") }
                 end
 
                 describe "navigation" do
@@ -218,7 +218,8 @@ RSpec.feature "Private::MenusControllers", type: :feature do
 
                 describe "content" do
                   it { is_expected.to have_content("Free tier: 1 menu and 10 items. Unlock 10 menus and 1,000 items.") }
-                  it { is_expected.to have_link("Subscribe", href: "/private/stripe_checkout_session") }
+                  it { is_expected.to have_link("$1.90 / month", href: "/private/stripe_checkout_session?lookup_key=standard_monthly") }
+                  it { is_expected.to have_link("$9.90 / year", href: "/private/stripe_checkout_session?lookup_key=standard_yearly") }
                 end
 
                 describe "navigation" do

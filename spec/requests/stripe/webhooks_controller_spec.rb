@@ -12,7 +12,7 @@ RSpec.describe Stripe::WebhooksController, type: :request do
     let(:stripe_event_subscription_deleted) { "evt_1PD98DCuBTi6G1R5DaH8Txn3" }
 
     let(:path) { '/stripe/webhook' }
-    let(:user) { User.create!(email: "john@doe.com", password: "password") }
+    let(:user) { User.create!(email: "john@doe.com", password: "password123@") }
 
     let!(:business) {
       Business.create!(
