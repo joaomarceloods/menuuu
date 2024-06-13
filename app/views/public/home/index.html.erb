@@ -1,6 +1,6 @@
 <div class="flex flex-col lg:flex-row w-full max-w-[1024px] items-center justify-between mx-auto p-8">
   <div class="flex-1">
-    <div class="mx-auto lg:max-w-fit flex flex-col items-center lg:items-end justify-center text-center lg:text-right">
+    <div class="mx-auto lg:max-w-fit flex flex-col items-center justify-center text-center">
       <h1 class="text-[25vw] leading-none md:text-9xl font-bold">
         <%= t('.title') %>
       </h1>
@@ -8,13 +8,13 @@
         <%= t('.subtitle') %>
       </h2>
 
-      <ol class="my-8 text-[6vw] md:text-2xl list-decimal list-inside text-left lg:text-right">
+      <ol class="my-8 text-[6vw] md:text-2xl list-decimal list-inside text-left">
         <%= tag.li t('.features_1') %>
         <%= tag.li t('.features_2') %>
         <%= tag.li t('.features_3') %>
       </ol>
 
-      <div class="text-[6vw] md:text-2xl">
+      <div class="mb-4 text-[6vw] md:text-2xl">
         <%= link_to t('.make_your_menu'), new_user_registration_path, class: "border-2 border-solid border-black dark:border-white py-1 px-2 bg-black text-white dark:bg-white dark:text-black" %>
         &nbsp;
         <%= link_to t('.see_example'), public_menu_path(@menu), class: "border-2 border-solid border-black dark:border-white py-1 px-2" %>
