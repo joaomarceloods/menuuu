@@ -94,6 +94,9 @@ pt-BR:
         make_your_menu: "Crie seu cardápio"
         see_example: "Veja um exemplo"
         qr_code_alt: "Escaneie este QR Code para visualizar um exemplo de cardápio"
+        features_1: "Crie um cardápio digital em minutos"
+        features_2: "Compartilhe um link ou imprima um QR Code"
+        features_3: "Voilà! Seu cardápio está pronto"
     menus:
       show:
         example_menu: "Este é um exemplo de cardápio"

@@ -94,6 +94,9 @@ pt:
         make_your_menu: "Crie o seu menu"
         see_example: "Veja um exemplo"
         qr_code_alt: "Leia este QR Code para visualizar um exemplo de menu"
+        features_1: "Crie um menu digital em minutos"
+        features_2: "Partilhe um link ou imprima um QR Code"
+        features_3: "Voilà! O seu menu está pronto"
     menus:
       show:
         example_menu: "Este é um exemplo de menu"
