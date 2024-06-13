@@ -13,7 +13,7 @@ user = User.find_by(email: Rails.application.credentials.dig(:admin, :email)) ||
           password: Rails.application.credentials.dig(:admin, :password),
         )
 
-business = Business.find_or_create_by!(user:, name: "The Menuuu")
+business = Business.find_or_create_by!(user:, name: "All Menus")
 
 Subscription.find_or_create_by!(business:, stripe_subscription_id: "sub_demo", expired_at: "3000-01-01")
 
@@ -21,7 +21,7 @@ Subscription.find_or_create_by!(business:, stripe_subscription_id: "sub_demo", e
 ActiveRecord::Base.transaction do
   break if Menu.exists?(demo: true, locale: :en)
 
-  menu = Menu.create!(business:, name: "The Menuuu", published: true, demo: true, locale: :en)
+  menu = Menu.create!(business:, name: "The Menu", published: true, demo: true, locale: :en)
 
   MenuSection.create!(menu:, name: "Appetizers") do |menu_section|
     MenuItem.create!(menu_section:, name: "Fried Pickles", price: 5.99)
