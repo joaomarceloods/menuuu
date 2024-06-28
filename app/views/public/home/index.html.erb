@@ -1,32 +1,44 @@
 <div class="flex flex-col lg:flex-row w-full max-w-[1024px] items-center justify-between mx-auto p-8">
   <div class="flex-1">
-    <div class="mx-auto lg:max-w-fit flex flex-col items-center justify-center text-center">
-      <h1 class="text-[25vw] leading-none md:text-9xl font-bold">
-        <%= t('.title') %>
-      </h1>
-      <h2 class="text-[10vw] leading-none md:text-4xl">
-        <%= t('.subtitle') %>
-      </h2>
+    <div class="mx-auto lg:max-w-fit flex flex-col gap-8 items-center justify-center text-center">
+      <div>
+        <h1 class="text-[25vw] leading-none md:text-9xl font-bold">
+          <%= t('.title') %>
+        </h1>
+        <h2 class="text-[10vw] leading-none md:text-4xl">
+          <%= t('.subtitle') %>
+        </h2>
+      </div>
 
-      <ol class="my-8 text-[6vw] md:text-2xl list-decimal list-inside text-left">
+      <ol class="text-[6vw] md:text-2xl list-decimal list-inside text-left">
         <%= tag.li t('.features_1') %>
         <%= tag.li t('.features_2') %>
         <%= tag.li t('.features_3') %>
       </ol>
 
-      <div class="mb-4 text-[6vw] md:text-2xl">
+      <div class="text-[6vw] md:text-2xl">
         <%= link_to t('.make_your_menu'), new_user_registration_path, class: "border-2 border-solid border-black dark:border-white py-1 px-2 bg-black text-white dark:bg-white dark:text-black" %>
         &nbsp;
         <%= link_to t('.see_example'), public_menu_path(@menu), class: "border-2 border-solid border-black dark:border-white py-1 px-2" %>
       </div>
 
-      <div class="hidden lg:block py-4 opacity-10 hover:opacity-100 scale-90 hover:scale-100 transition-all float-right">
+      <div class="hidden lg:block opacity-10 hover:opacity-100 scale-90 hover:scale-100 transition-all float-right">
         <%= image_tag public_qrcode_path(public_menu_url(@menu)),
                       alt: t('.qr_code_alt'),
                       title: "Scan with your phone to see an example menu",
                       width: 278,
                       height: 278,
                       class: "dark:bg-white dark:border-white dark:border-8 cursor-help" %>
+      </div>
+
+      <div class="flex gap-4">
+        <%= link_to 'https://www.instagram.com/themenuuucom', target: :_blank do %>
+          <%= image_tag 'Instagram_Glyph_White.svg', alt: 'Instagram', class: 'w-8 h-8' %>
+        <% end %>
+
+        <%= link_to 'https://www.facebook.com/profile.php?id=61560339876401', target: :_blank do %>
+          <%= image_tag 'Facebook_Logo_Secondary.png', alt: 'Facebook', class: 'w-8 h-8' %>
+        <% end %>
       </div>
     </div>
   </div>
